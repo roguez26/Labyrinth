@@ -3,16 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7ECE7631-4B0B-41D1-BE93-BFD2F2E3C8C8}|..\\ChatService\\ChatService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\chatservice\\chatserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7ECE7631-4B0B-41D1-BE93-BFD2F2E3C8C8}|..\\ChatService\\ChatService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\chatservice\\ichatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7ECE7631-4B0B-41D1-BE93-BFD2F2E3C8C8}|..\\ChatService\\ChatService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\chatservice\\ichatservicecallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -25,71 +24,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatServiceImplementation.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
-              "RelativeDocumentMoniker": "..\\ChatService\\ChatServiceImplementation.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
-              "RelativeToolTip": "..\\ChatService\\ChatServiceImplementation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T23:49:28.345Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Host\\Program.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\Program.cs",
-              "RelativeToolTip": "..\\Host\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T23:33:11.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IChatServiceCallback.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
-              "RelativeDocumentMoniker": "..\\ChatService\\IChatServiceCallback.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
-              "RelativeToolTip": "..\\ChatService\\IChatServiceCallback.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T23:37:40.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IChatService.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatService.cs",
-              "RelativeDocumentMoniker": "..\\ChatService\\IChatService.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatService.cs",
-              "RelativeToolTip": "..\\ChatService\\IChatService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T23:37:07.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
               "RelativeDocumentMoniker": "..\\Host\\App.config",
               "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
               "RelativeToolTip": "..\\Host\\App.config",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-14T23:33:26.587Z",
+              "WhenOpened": "2024-10-15T06:02:52.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.Config",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
+              "RelativeDocumentMoniker": "DataAccess\\App.Config",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config*",
+              "RelativeToolTip": "DataAccess\\App.Config*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-15T06:02:02.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Model.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx",
+              "RelativeDocumentMoniker": "DataAccess\\Model.edmx",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx [Diagram1]*",
+              "RelativeToolTip": "DataAccess\\Model.edmx [Diagram1]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-10-15T05:55:45.715Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IChatServiceCallback.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
+              "RelativeDocumentMoniker": "..\\ChatService\\IChatServiceCallback.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
+              "RelativeToolTip": "..\\ChatService\\IChatServiceCallback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T04:57:21.009Z",
               "EditorCaption": ""
             }
           ]

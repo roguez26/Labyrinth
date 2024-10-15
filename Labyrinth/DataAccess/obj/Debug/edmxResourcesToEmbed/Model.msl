@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LabyrinthModelStoreContainer" CdmEntityContainer="LabyrinthEntities">
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="LabyrinthModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FriendRequest">
+      <EntityTypeMapping TypeName="LabyrinthModel.FriendRequest">
+        <MappingFragment StoreEntitySet="FriendRequest">
+          <ScalarProperty Name="idFriendRequest" ColumnName="idFriendRequest" />
+          <ScalarProperty Name="idRequester" ColumnName="idRequester" />
+          <ScalarProperty Name="idRequested" ColumnName="idRequested" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preferences">
+      <EntityTypeMapping TypeName="LabyrinthModel.Preferences">
+        <MappingFragment StoreEntitySet="Preferences">
+          <ScalarProperty Name="idPreference" ColumnName="idPreference" />
+          <ScalarProperty Name="lastPickedSkin" ColumnName="lastPickedSkin" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="lastPickedGameboard" ColumnName="lastPickedGameboard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skin">
+      <EntityTypeMapping TypeName="LabyrinthModel.Skin">
+        <MappingFragment StoreEntitySet="Skin">
+          <ScalarProperty Name="idSkin" ColumnName="idSkin" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lock" ColumnName="lock" />
+          <ScalarProperty Name="gamesWonToUnlock" ColumnName="gamesWonToUnlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stats">
+      <EntityTypeMapping TypeName="LabyrinthModel.Stats">
+        <MappingFragment StoreEntitySet="Stats">
+          <ScalarProperty Name="idStats" ColumnName="idStats" />
+          <ScalarProperty Name="gamesWon" ColumnName="gamesWon" />
+          <ScalarProperty Name="gamesPlayed" ColumnName="gamesPlayed" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="LabyrinthModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
+          <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FriendList" TypeName="LabyrinthModel.FriendList" StoreEntitySet="FriendList">
+      <EndProperty Name="User">
+        <ScalarProperty Name="idUser" ColumnName="idUserOne" />
+      </EndProperty>
+      <EndProperty Name="User1">
+        <ScalarProperty Name="idUser" ColumnName="idUserTwo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlayerSkins" TypeName="LabyrinthModel.PlayerSkins" StoreEntitySet="PlayerSkins">
+      <EndProperty Name="Skin">
+        <ScalarProperty Name="idSkin" ColumnName="idSkin" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="idUser" ColumnName="idUser" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
