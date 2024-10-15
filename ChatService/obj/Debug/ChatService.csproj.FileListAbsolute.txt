@@ -1,0 +1,6 @@
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.dll
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.pdb
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.csproj.AssemblyReference.cache
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.csproj.CoreCompileInputs.cache
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.dll
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.pdb
