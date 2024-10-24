@@ -26,10 +26,13 @@ namespace DataAccess
         }
     
         public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<FriendList> FriendList { get; set; }
         public virtual DbSet<FriendRequest> FriendRequest { get; set; }
+        public virtual DbSet<PlayerSkins> PlayerSkins { get; set; }
         public virtual DbSet<Preferences> Preferences { get; set; }
         public virtual DbSet<Skin> Skin { get; set; }
         public virtual DbSet<Stats> Stats { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<VerificationCode> VerificationCode { get; set; }
     }
 }

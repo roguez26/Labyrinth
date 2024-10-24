@@ -17,7 +17,7 @@ namespace DataAccess
         public int idFriendRequest { get; set; }
         public int idRequester { get; set; }
         public int idRequested { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
         public string status { get; set; }
     
         public virtual User User { get; set; }

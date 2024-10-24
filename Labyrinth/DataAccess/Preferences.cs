@@ -14,7 +14,7 @@ namespace DataAccess
     
     public partial class Preferences
     {
-        public int idPreference { get; set; }
+        public int idPreferences { get; set; }
         public int lastPickedSkin { get; set; }
         public int idUser { get; set; }
         public Nullable<int> lastPickedGameboard { get; set; }

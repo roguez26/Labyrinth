@@ -17,7 +17,7 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Skin()
         {
-            this.User = new HashSet<User>();
+            this.PlayerSkins = new HashSet<PlayerSkins>();
         }
     
         public int idSkin { get; set; }
@@ -26,6 +26,6 @@ namespace DataAccess
         public Nullable<int> gamesWonToUnlock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<PlayerSkins> PlayerSkins { get; set; }
     }
 }

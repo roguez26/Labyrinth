@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8EA73369-1581-408E-9492-3E87B10F3089}</ProjectGuid>
+    <ProjectGuid>{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataAccess</RootNamespace>
@@ -50,7 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Country.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FriendList.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="FriendRequest.cs">
@@ -71,6 +75,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PlayerSkins.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Preferences.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -82,6 +89,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VerificationCode.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>

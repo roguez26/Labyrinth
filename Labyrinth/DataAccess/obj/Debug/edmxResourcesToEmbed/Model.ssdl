@@ -4,44 +4,40 @@
     <Key>
       <PropertyRef Name="idCountry" />
     </Key>
-    <Property Name="idCountry" Type="int" Nullable="false" />
+    <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Labyrinth.dbo.FriendList' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="FriendList">
     <Key>
-      <PropertyRef Name="idUserOne" />
-      <PropertyRef Name="idUserTwo" />
+      <PropertyRef Name="idFriendList" />
     </Key>
     <Property Name="idUserOne" Type="int" Nullable="false" />
     <Property Name="idUserTwo" Type="int" Nullable="false" />
+    <Property Name="idFriendList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="FriendRequest">
     <Key>
       <PropertyRef Name="idFriendRequest" />
     </Key>
-    <Property Name="idFriendRequest" Type="int" Nullable="false" />
+    <Property Name="idFriendRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idRequester" Type="int" Nullable="false" />
     <Property Name="idRequested" Type="int" Nullable="false" />
-    <Property Name="description" Type="varbinary" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="varchar" MaxLength="12" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Labyrinth.dbo.PlayerSkins' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="PlayerSkins">
     <Key>
-      <PropertyRef Name="idUser" />
-      <PropertyRef Name="idSkin" />
+      <PropertyRef Name="idPlayerSkins" />
     </Key>
+    <Property Name="idPlayerSkins" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
     <Property Name="idSkin" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Preferences">
     <Key>
-      <PropertyRef Name="idPreference" />
+      <PropertyRef Name="idPreferences" />
     </Key>
-    <Property Name="idPreference" Type="int" Nullable="false" />
+    <Property Name="idPreferences" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="lastPickedSkin" Type="int" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
     <Property Name="lastPickedGameboard" Type="int" />
@@ -50,7 +46,7 @@ advertencia 6002: La tabla o vista 'Labyrinth.dbo.PlayerSkins' no tiene definida
     <Key>
       <PropertyRef Name="idSkin" />
     </Key>
-    <Property Name="idSkin" Type="int" Nullable="false" />
+    <Property Name="idSkin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="lock" Type="bit" Nullable="false" />
     <Property Name="gamesWonToUnlock" Type="int" />
@@ -59,7 +55,7 @@ advertencia 6002: La tabla o vista 'Labyrinth.dbo.PlayerSkins' no tiene definida
     <Key>
       <PropertyRef Name="idStats" />
     </Key>
-    <Property Name="idStats" Type="int" Nullable="false" />
+    <Property Name="idStats" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="gamesWon" Type="int" />
     <Property Name="gamesPlayed" Type="int" />
     <Property Name="idUser" Type="int" Nullable="false" />
@@ -68,12 +64,20 @@ advertencia 6002: La tabla o vista 'Labyrinth.dbo.PlayerSkins' no tiene definida
     <Key>
       <PropertyRef Name="idUser" />
     </Key>
-    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
     <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="profilePicture" Type="varchar" MaxLength="120" />
     <Property Name="idCountry" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VerificationCode">
+    <Key>
+      <PropertyRef Name="idVerificationCode" />
+    </Key>
+    <Property Name="idVerificationCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_FriendList_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -185,23 +189,14 @@ advertencia 6002: La tabla o vista 'Labyrinth.dbo.PlayerSkins' no tiene definida
   </Association>
   <EntityContainer Name="LabyrinthModelStoreContainer">
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FriendList" EntityType="Self.FriendList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FriendRequest" EntityType="Self.FriendRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Preferences" EntityType="Self.Preferences" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Skin" EntityType="Self.Skin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="FriendList" EntityType="Self.FriendList" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [FriendList].[idUserOne] AS [idUserOne], 
-    [FriendList].[idUserTwo] AS [idUserTwo]
-    FROM [dbo].[FriendList] AS [FriendList]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [PlayerSkins].[idUser] AS [idUser], 
-    [PlayerSkins].[idSkin] AS [idSkin]
-    FROM [dbo].[PlayerSkins] AS [PlayerSkins]</DefiningQuery>
-    </EntitySet>
+    <EntitySet Name="VerificationCode" EntityType="Self.VerificationCode" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_FriendList_User" Association="Self.FK_FriendList_User">
       <End Role="User" EntitySet="User" />
       <End Role="FriendList" EntitySet="FriendList" />

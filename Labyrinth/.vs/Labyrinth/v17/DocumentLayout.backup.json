@@ -1,20 +1,98 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
+  "WorkspaceRootPath": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\catalogmanagementservice\\catalogmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\catalogmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{8EA73369-1581-408E-9492-3E87B10F3089}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7ECE7631-4B0B-41D1-BE93-BFD2F2E3C8C8}|..\\ChatService\\ChatService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\chatservice\\ichatservicecallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\model.context.tt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.context.tt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\host\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\preferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\preferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\playerskins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\playerskins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\friendlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\friendlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\skin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\skin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\stats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\model.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\model.edmx.diagram||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.edmx.diagram||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\model.tt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model.tt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\catalogmanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,58 +102,301 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-18T00:43:46.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ChatServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T20:10:41.95Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
-              "RelativeDocumentMoniker": "..\\Host\\App.config",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
-              "RelativeToolTip": "..\\Host\\App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-15T06:02:52.525Z",
+              "Title": "UserManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeToolTip": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwEsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T23:19:29.114Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "App.Config",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
-              "RelativeDocumentMoniker": "DataAccess\\App.Config",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config*",
-              "RelativeToolTip": "DataAccess\\App.Config*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-15T06:02:02.117Z",
-              "EditorCaption": ""
+              "Title": "CatalogManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\CatalogManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "CatalogManagementService\\CatalogManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\CatalogManagementServiceImplementation.cs",
+              "RelativeToolTip": "CatalogManagementService\\CatalogManagementServiceImplementation.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAewDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T20:10:34.819Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Model.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx",
-              "RelativeDocumentMoniker": "DataAccess\\Model.edmx",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx [Diagram1]*",
-              "RelativeToolTip": "DataAccess\\Model.edmx [Diagram1]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-10-15T05:55:45.715Z",
-              "EditorCaption": " [Diagram1]"
+              "Title": "IUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T05:24:30.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Model.Context.tt",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.Context.tt",
+              "RelativeDocumentMoniker": "DataAccess\\Model.Context.tt",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.Context.tt",
+              "RelativeToolTip": "DataAccess\\Model.Context.tt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-20T01:04:41.736Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IChatServiceCallback.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
-              "RelativeDocumentMoniker": "..\\ChatService\\IChatServiceCallback.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\ChatService\\IChatServiceCallback.cs",
-              "RelativeToolTip": "..\\ChatService\\IChatServiceCallback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Title": "Model.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx",
+              "RelativeDocumentMoniker": "DataAccess\\Model.edmx",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx [Diagram1]",
+              "RelativeToolTip": "DataAccess\\Model.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-10-22T04:29:43.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Preferences.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Preferences.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Preferences.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Preferences.cs",
+              "RelativeToolTip": "DataAccess\\Preferences.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T04:57:21.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T21:17:39.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\User.cs",
+              "RelativeDocumentMoniker": "DataAccess\\User.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\User.cs",
+              "RelativeToolTip": "DataAccess\\User.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:17:07.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PlayerSkins.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\PlayerSkins.cs",
+              "RelativeDocumentMoniker": "DataAccess\\PlayerSkins.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\PlayerSkins.cs",
+              "RelativeToolTip": "DataAccess\\PlayerSkins.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:17:38.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FriendList.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\FriendList.cs",
+              "RelativeDocumentMoniker": "DataAccess\\FriendList.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\FriendList.cs",
+              "RelativeToolTip": "DataAccess\\FriendList.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:17:33.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Skin.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Skin.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Skin.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Skin.cs",
+              "RelativeToolTip": "DataAccess\\Skin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:17:17.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Stats.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Stats.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Stats.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Stats.cs",
+              "RelativeToolTip": "DataAccess\\Stats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T21:16:59.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Model.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.Designer.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Model.Designer.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.Designer.cs",
+              "RelativeToolTip": "DataAccess\\Model.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T01:04:43.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICatalogManagement.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeDocumentMoniker": "CatalogManagementService\\ICatalogManagement.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeToolTip": "CatalogManagementService\\ICatalogManagement.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T20:32:26.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Model.edmx.diagram",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx.diagram",
+              "RelativeDocumentMoniker": "DataAccess\\Model.edmx.diagram",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.edmx.diagram",
+              "RelativeToolTip": "DataAccess\\Model.edmx.diagram",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-20T01:04:44.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Model.tt",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.tt",
+              "RelativeDocumentMoniker": "DataAccess\\Model.tt",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Model.tt",
+              "RelativeToolTip": "DataAccess\\Model.tt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-20T01:04:48.838Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Country.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Country.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Country.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Country.cs",
+              "RelativeToolTip": "DataAccess\\Country.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T00:34:08.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Host\\Program.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\Program.cs",
+              "RelativeToolTip": "..\\Host\\Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA3wBsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T22:51:57.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\App.config",
+              "RelativeDocumentMoniker": "..\\Host\\App.config",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\App.config",
+              "RelativeToolTip": "..\\Host\\App.config",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAB0AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-18T22:42:41.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\App.config",
+              "RelativeDocumentMoniker": "CatalogManagementService\\App.config",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\CatalogManagementService\\App.config",
+              "RelativeToolTip": "CatalogManagementService\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-18T22:58:27.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\App.config",
+              "RelativeDocumentMoniker": "UserManagementService\\App.config",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\App.config",
+              "RelativeToolTip": "UserManagementService\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-18T22:56:33.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Class1.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Class1.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\Class1.cs",
+              "RelativeToolTip": "DataAccess\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T22:53:27.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "App.Config",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
+              "RelativeDocumentMoniker": "DataAccess\\App.Config",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
+              "RelativeToolTip": "DataAccess\\App.Config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-18T22:56:23.226Z"
             }
           ]
         }
