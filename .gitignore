@@ -43,3 +43,78 @@ TestResults/
 *.mdf
 *.ldf
 *.ndf
+
+# Archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos binarios y de compilación
+bin/
+obj/
+Debug/
+Release/
+*.exe
+*.dll
+*.pdb
+*.appx
+*.appxbundle
+*.msi
+*.app
+
+# Archivos de configuración
+*.config
+
+# Archivos de paquetes NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+
+# Archivos de logs
+*.log
+
+# Archivos de bases de datos
+*.mdf
+*.ldf
+*.ndf
+*.db
+
+# Archivos de proyectos de Entity Framework
+*.edmx
+*.tt
+
+# Archivos de cache de Visual Studio
+.vs/
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# Archivos de almacenamiento
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+
+# Archivos de documentación
+*.docx
+*.pdf
+*.xlsx
+
+# Archivos de prueba
+TestResults/
+*.trx
+
+# Otras configuraciones específicas
+*.cache
+*.pdb
+
+# Ignorar carpetas específicas de usuario
+.DS_Store
+Thumbs.db
