@@ -67,6 +67,7 @@ namespace CatalogManagementService
                 {
                     TransferStats.StatId = 0;
                 }
+                
                 return TransferStats;
             }
         }
