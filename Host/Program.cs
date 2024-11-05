@@ -1,41 +1,67 @@
 ﻿using ChatService;
 using CatalogManagementService;
 using UserManagementService;
-using LobbyManagementService;
 using System;
 using System.ServiceModel;
 
 namespace Host
 {
-    class Program
+    public class Program
     {
+        private static ServiceHost _chatHost;
+        private static ServiceHost _userManagementHost;
+        private static ServiceHost _catalogManagementHost;
+        private static ServiceHost _lobbyManagementHost;
+
+        public static void StartHost()
+        {
+            _chatHost = new ServiceHost(typeof(ChatService.ChatServiceImplementation));
+            _userManagementHost = new ServiceHost(typeof(UserManagementService.UserManagementServiceImplementation));
+            _catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation));
+            _lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation));
+
+
+            _chatHost.Open();
+            Console.WriteLine("chat service is running");
+
+            _userManagementHost.Open();
+            Console.WriteLine("user management service is running");
+
+            _catalogManagementHost.Open();
+            Console.WriteLine("catalog management service is running");
+
+            _lobbyManagementHost.Open();
+            Console.WriteLine("lobby management service is running:");
+        }
+
+        public static void StopHost()
+        {
+            if (_chatHost != null)
+            {
+                _chatHost.Close();
+            }
+
+            if (_userManagementHost != null)
+            {
+                _userManagementHost.Close();
+            }
+
+            if (_catalogManagementHost != null)
+            {
+                _catalogManagementHost.Close();
+            }
+
+            if (_lobbyManagementHost != null)
+            {
+                _lobbyManagementHost.Close();
+            }
+        }
+
         static void Main(string[] args)
         {
-            using (ServiceHost chatHost = new ServiceHost(typeof(ChatService.ChatServiceImplementation)))
-            {
-                using (ServiceHost userManagementHost = new ServiceHost(typeof(UserManagementService.UserManagementServiceImplementation)))
-                {
-                    using (ServiceHost catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation)))
-                    {
-                        using (ServiceHost lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation)))
-                        {
-                            chatHost.Open();
-                            Console.WriteLine("chat service is running");
-
-                            userManagementHost.Open();
-                            Console.WriteLine("user management service is running");
-
-                            catalogManagementHost.Open();
-                            Console.WriteLine("catalog management service is running");
-
-                            lobbyManagementHost.Open();
-                            Console.WriteLine("lobby management service is running");
-
-                            Console.ReadLine();
-                        }
-                    }
-                }
-            }
+            StartHost();
+            Console.ReadLine();
+            StopHost();
         }
 
     }

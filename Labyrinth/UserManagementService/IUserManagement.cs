@@ -15,25 +15,31 @@ namespace UserManagementService
     public interface IUserManagement
     {
         [OperationContract]
-        int addUser(TransferUser user);
+        int AddUser(TransferUser user);
 
         [OperationContract]
-        TransferUser userVerification(TransferUser user);
+        TransferUser UserVerification(TransferUser user);
 
         [OperationContract]
-        int updateUser(TransferUser newUser);
+        int UpdateUser(TransferUser newUser);
 
         [OperationContract]
-        string changeUserProfilePicture(int userId, byte[] imagenData);
+        string ChangeUserProfilePicture(int userId, byte[] imagenData);
 
         [OperationContract]
-        byte[] getUserProfilePicture(string path);
+        byte[] GetUserProfilePicture(string path);
 
         [OperationContract]
-        Boolean verificateCode(string email, string code);
+        Boolean VerificateCode(string email, string code);
 
         [OperationContract]
-        int addVerificationCode(string email);
+        int AddVerificationCode(string email);
+
+        [OperationContract]
+        bool IsEmailRegistered(string email);
+
+        [OperationContract]
+        int DeleteAllVerificationCodes();
     }
 
     [DataContract]
@@ -41,7 +47,7 @@ namespace UserManagementService
     {
 
         [DataMember]
-        public int IdUser {  get; set; }
+        public int IdUser { get; set; } = 0;
 
         [DataMember]
         public string Username { get; set; }
@@ -62,7 +68,7 @@ namespace UserManagementService
         public TransferCountry TransferCountry { get; set; }
 
         [DataMember]
-        public string ProfilePicture {  get; set; }
+        public string ProfilePicture { get; set; }
 
 
     }

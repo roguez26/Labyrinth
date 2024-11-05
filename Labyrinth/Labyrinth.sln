@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameService", "GameService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyManagementService", "LobbyManagementService\LobbyManagementService.csproj", "{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{6F828126-5181-4E98-BBFC-ED52CA20CA9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F828126-5181-4E98-BBFC-ED52CA20CA9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F828126-5181-4E98-BBFC-ED52CA20CA9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F828126-5181-4E98-BBFC-ED52CA20CA9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F828126-5181-4E98-BBFC-ED52CA20CA9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

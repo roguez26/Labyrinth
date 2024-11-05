@@ -13,15 +13,15 @@ namespace CatalogManagementService
     public interface ICatalogManagement
     {
         [OperationContract]
-        List<TransferCountry> getAllCountries();
+        List<TransferCountry> GetAllCountries();
 
         [OperationContract]
-        TransferCountry getCountryById(int idCountry);
+        TransferCountry GetCountryById(int idCountry);
 
         [OperationContract]
-        TransferStats getStatsByUserId (int userId);
+        TransferStats GetStatsByUserId(int userId);
 
-        
+
     }
     [DataContract]
     public class TransferCountry
@@ -29,9 +29,10 @@ namespace CatalogManagementService
         [DataMember]
         public string CountryName { get; set; }
         [DataMember]
-        public int CountryId { get; set; }
+        public int CountryId { get; set; } = 0;
     }
 
+    [DataContract]
     public class TransferStats
     {
         [DataMember]

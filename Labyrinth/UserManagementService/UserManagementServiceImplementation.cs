@@ -16,20 +16,27 @@ namespace UserManagementService
 {
     public class UserManagementServiceImplementation : IUserManagement
     {
-        public int addUser(TransferUser user)
+        public int AddUser(TransferUser user)
         {
+            int idUser = 0;
             using (var context = new LabyrinthEntities())
             {
-                context.User.Add(new User() { 
-                    userName = user.Username, 
-                    password = user.Password, 
-                    email = user.Email, 
-                    idCountry = user.Country });
-                return context.SaveChanges();
+                var newUser = new User
+                {
+                    userName = user.Username,
+                    password = user.Password,
+                    email = user.Email,
+                    idCountry = user.Country
+                };
+                context.User.Add(newUser);
+                context.SaveChanges();
+
+                idUser = newUser.idCountry;
             }
+            return idUser;
         }
 
-        public Boolean verificateCode(string email, string code)
+        public Boolean VerificateCode(string email, string code)
         {
             Boolean response = false;
             using (var context = new LabyrinthEntities())
@@ -44,14 +51,13 @@ namespace UserManagementService
                 }
                 return response;
             }
-
             
         }
 
-        public int addVerificationCode(string email)
+        public int AddVerificationCode(string email)
         {
             int response = 0;
-            string verificationCode = generateVerificationCode();
+            string verificationCode = GenerateVerificationCode();
             using (var context = new LabyrinthEntities())
             {
                 var userForDuplicationVerification = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
@@ -71,7 +77,7 @@ namespace UserManagementService
                 }
             }
 
-            if (sendVerificationCode(email, verificationCode) > 0)
+            if (SendVerificationCode(email, verificationCode) > 0)
             {
                 response = 1;
             }
@@ -79,7 +85,20 @@ namespace UserManagementService
             return response;
         }
 
-        private int sendVerificationCode(string email, string code)
+        public int DeleteAllVerificationCodes()
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                var allVerificationCodes = context.VerificationCode.ToList();
+
+                context.VerificationCode.RemoveRange(allVerificationCodes);
+                int rowsAffected = context.SaveChanges();
+                return rowsAffected;
+            }
+
+        }
+
+        private int SendVerificationCode(string email, string code)
         {
             int response = 0;
             MailAddress addressFrom = new MailAddress("labyrinththerealgame@gmail.com", "Labyrinth");
@@ -115,7 +134,7 @@ namespace UserManagementService
         }
 
 
-        public int updateUser(TransferUser newUser)
+        public int UpdateUser(TransferUser newUser)
         {
             int response = 0;
 
@@ -159,7 +178,7 @@ namespace UserManagementService
 
         
 
-        public TransferUser userVerification(TransferUser user)
+        public TransferUser UserVerification(TransferUser user)
         {
             var userForVerification = new TransferUser();
             using (var context = new LabyrinthEntities())
@@ -181,7 +200,7 @@ namespace UserManagementService
                             Password = searchedUser.password,
                             Email = searchedUser.email,
                             ProfilePicture = searchedUser.profilePicture,
-                            TransferCountry = catalogManagementServiceImplementation.getCountryById(searchedUser.idCountry),
+                            TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
 
                         };
                     }
@@ -194,7 +213,7 @@ namespace UserManagementService
             }
         }
 
-        public string changeUserProfilePicture(int userId, byte[] imagenData)
+        public string ChangeUserProfilePicture(int userId, byte[] imagenData)
         {
     
             string imageDirectory = Path.Combine("C:\\labyrinthImages", "profilePictures");
@@ -228,7 +247,7 @@ namespace UserManagementService
             return filePath;
         }
 
-        public byte[] getUserProfilePicture(string path)
+        public byte[] GetUserProfilePicture(string path)
         {
             byte[] response = new byte[0];
 
@@ -239,7 +258,7 @@ namespace UserManagementService
             return response;
         }
 
-        private string generateVerificationCode()
+        private string GenerateVerificationCode()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder result = new StringBuilder(12);
@@ -253,6 +272,13 @@ namespace UserManagementService
             return result.ToString();
         }
 
-       
+        public bool IsEmailRegistered(string email)
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                return context.User.Any(user => user.email == email);
+            }
+        }
+
     }
 }

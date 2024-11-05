@@ -12,7 +12,7 @@ namespace CatalogManagementService
 {
     public class CatalogManagementServiceImplementation : ICatalogManagement
     {
-        public List<TransferCountry> getAllCountries()
+        public List<TransferCountry> GetAllCountries()
         {
             using (var context = new LabyrinthEntities())
             {
@@ -26,24 +26,27 @@ namespace CatalogManagementService
             }
         }
 
-        public TransferCountry getCountryById(int idCountry)
+        public TransferCountry GetCountryById(int idCountry)
         {
+            var transferCountry = new TransferCountry();
+
             using (var context = new LabyrinthEntities())
             {
-               
-                var country = context.Country.FirstOrDefault(countryForSearching => countryForSearching.idCountry == idCountry);
-               
-                var transferCountry = new TransferCountry
+                var _country = context.Country.FirstOrDefault(country => country.idCountry == idCountry);
+
+                if (_country != null)
                 {
-                    CountryId = country.idCountry,
-                    CountryName = country.name,
-                };
-                return transferCountry;
+                    transferCountry.CountryId = _country.idCountry;
+                    transferCountry.CountryName = _country.name;
+                }
             }
-           
+
+            return transferCountry;
         }
 
-        public TransferStats getStatsByUserId(int userId)
+
+
+        public TransferStats GetStatsByUserId(int userId)
         {
             using (var context = new LabyrinthEntities())
             {
@@ -64,7 +67,7 @@ namespace CatalogManagementService
                 {
                     TransferStats.StatId = 0;
                 }
-                
+
                 return TransferStats;
             }
         }
