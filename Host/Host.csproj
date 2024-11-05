@@ -74,10 +74,17 @@
       <Project>{45c9a4a2-ea61-4469-bcaf-1dd02bfe421f}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Labyrinth\LobbyManagementService\LobbyManagementService.csproj">
+      <Project>{f92b1874-cdbb-44a3-8c9b-c28118b60fd0}</Project>
+      <Name>LobbyManagementService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labyrinth\UserManagementService\UserManagementService.csproj">
       <Project>{cb054e87-4fdc-4879-995b-fa83d58e9cda}</Project>
       <Name>UserManagementService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

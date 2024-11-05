@@ -31,11 +31,18 @@ namespace UserManagementService
 
         public Boolean verificateCode(string email, string code)
         {
+            Boolean response = false;
             using (var context = new LabyrinthEntities())
             {
                 var verification = context.VerificationCode.FirstOrDefault(verificaitonForSearching => verificaitonForSearching.email == email);
 
-                return (verification != null && verification.code == code);
+                if (verification != null && verification.code == code)
+                {
+                    context.VerificationCode.Remove(verification);
+                    context.SaveChanges();
+                    response = true;
+                }
+                return response;
             }
 
             
@@ -52,7 +59,8 @@ namespace UserManagementService
                 if (userForDuplicationVerification != null)
                 {
                     response = -1;
-                } else
+                } 
+                else
                 {
                     context.VerificationCode.Add(new VerificationCode()
                     {
@@ -196,8 +204,13 @@ namespace UserManagementService
                 Directory.CreateDirectory(imageDirectory);
             }
 
-            string fileName = $"{userId}_{Guid.NewGuid()}.jpg";
+            string fileName = $"{userId}.jpg";
             string filePath = Path.Combine(imageDirectory, fileName);
+
+            if (!File.Exists(filePath)) 
+            {
+                File.Delete(filePath);
+            }
 
             File.WriteAllBytes(filePath, imagenData);
 
@@ -225,8 +238,6 @@ namespace UserManagementService
             }
             return response;
         }
-
-        
 
         private string generateVerificationCode()
         {

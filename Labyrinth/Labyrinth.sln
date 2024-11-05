@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogManagementService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "profilePictures", "profilePictures", "{A59DB138-269C-477A-812A-E2918E6B396E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameService", "GameService\GameService.csproj", "{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyManagementService", "LobbyManagementService\LobbyManagementService.csproj", "{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,7 +11,8 @@ namespace ChatService
     public class ChatServiceImplementation : IChatService
     {
         private static List<IChatServiceCallback> _clients = new List<IChatServiceCallback>();
-        public void SendMessage(string message)
+
+        public void Start()
         {
             IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
 
@@ -19,7 +20,11 @@ namespace ChatService
             {
                 _clients.Add(callback);
             }
+        }
 
+        public void SendMessage(string message)
+        {
+            
             List<IChatServiceCallback> clientsToRemove = new List<IChatServiceCallback>();
 
             foreach (var client in _clients)

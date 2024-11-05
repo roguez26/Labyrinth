@@ -12,5 +12,8 @@ namespace ChatService
     {
         [OperationContract(IsOneWay = true)]
         void SendMessage(string message);
+
+        [OperationContract]
+        void Start();
     }
 }

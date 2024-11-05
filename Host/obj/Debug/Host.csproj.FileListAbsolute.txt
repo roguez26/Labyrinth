@@ -29,12 +29,14 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\ChatService.dl
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\DataAccess.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\EntityFramework.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\LobbyManagementService.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\UserManagementService.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\ChatService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\CatalogManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\CatalogManagementService.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\DataAccess.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\DataAccess.dll.config
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\LobbyManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\UserManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\UserManagementService.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\EntityFramework.xml
