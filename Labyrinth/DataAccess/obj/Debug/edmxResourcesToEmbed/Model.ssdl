@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LabyrinthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="idCountry" />
+    </Key>
+    <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FriendList">
+    <Key>
+      <PropertyRef Name="idFriendList" />
+    </Key>
+    <Property Name="idUserOne" Type="int" Nullable="false" />
+    <Property Name="idUserTwo" Type="int" Nullable="false" />
+    <Property Name="idFriendList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FriendRequest">
+    <Key>
+      <PropertyRef Name="idFriendRequest" />
+    </Key>
+    <Property Name="idFriendRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRequester" Type="int" Nullable="false" />
+    <Property Name="idRequested" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+    <Property Name="status" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlayerSkins">
+    <Key>
+      <PropertyRef Name="idPlayerSkins" />
+    </Key>
+    <Property Name="idPlayerSkins" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idSkin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Preferences">
+    <Key>
+      <PropertyRef Name="idPreferences" />
+    </Key>
+    <Property Name="idPreferences" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lastPickedSkin" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="lastPickedGameboard" Type="int" />
+  </EntityType>
+  <EntityType Name="Skin">
+    <Key>
+      <PropertyRef Name="idSkin" />
+    </Key>
+    <Property Name="idSkin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lock" Type="bit" Nullable="false" />
+    <Property Name="gamesWonToUnlock" Type="int" />
+  </EntityType>
+  <EntityType Name="Stats">
+    <Key>
+      <PropertyRef Name="idStats" />
+    </Key>
+    <Property Name="idStats" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gamesWon" Type="int" />
+    <Property Name="gamesPlayed" Type="int" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="profilePicture" Type="varchar" MaxLength="120" />
+    <Property Name="idCountry" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VerificationCode">
+    <Key>
+      <PropertyRef Name="idVerificationCode" />
+    </Key>
+    <Property Name="idVerificationCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FriendList_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="idUserOne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendList_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="idUserTwo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendRequest_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FriendRequest" Type="Self.FriendRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendRequest">
+        <PropertyRef Name="idRequester" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendRequest_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FriendRequest" Type="Self.FriendRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendRequest">
+        <PropertyRef Name="idRequested" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerSkins_Skin">
+    <End Role="Skin" Type="Self.Skin" Multiplicity="1" />
+    <End Role="PlayerSkins" Type="Self.PlayerSkins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skin">
+        <PropertyRef Name="idSkin" />
+      </Principal>
+      <Dependent Role="PlayerSkins">
+        <PropertyRef Name="idSkin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerSkins_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PlayerSkins" Type="Self.PlayerSkins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="PlayerSkins">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Preferences_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Preferences" Type="Self.Preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Preferences">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stats_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Stats" Type="Self.Stats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Stats">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="idCountry" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="idCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LabyrinthModelStoreContainer">
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FriendList" EntityType="Self.FriendList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FriendRequest" EntityType="Self.FriendRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Preferences" EntityType="Self.Preferences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skin" EntityType="Self.Skin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VerificationCode" EntityType="Self.VerificationCode" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FriendList_User" Association="Self.FK_FriendList_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendList" EntitySet="FriendList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendList_User1" Association="Self.FK_FriendList_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendList" EntitySet="FriendList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendRequest_User" Association="Self.FK_FriendRequest_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendRequest" EntitySet="FriendRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendRequest_User1" Association="Self.FK_FriendRequest_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendRequest" EntitySet="FriendRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerSkins_Skin" Association="Self.FK_PlayerSkins_Skin">
+      <End Role="Skin" EntitySet="Skin" />
+      <End Role="PlayerSkins" EntitySet="PlayerSkins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerSkins_User" Association="Self.FK_PlayerSkins_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="PlayerSkins" EntitySet="PlayerSkins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preferences_User" Association="Self.FK_Preferences_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Preferences" EntitySet="Preferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stats_User" Association="Self.FK_Stats_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Stats" EntitySet="Stats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
