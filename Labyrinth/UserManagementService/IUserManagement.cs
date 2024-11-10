@@ -34,7 +34,7 @@ namespace UserManagementService
         byte[] GetUserProfilePicture(string path);
 
         [OperationContract]
-        Boolean VerificateCode(string email, string code);
+        bool VerificateCode(string email, string code);
 
         [OperationContract]
         int AddVerificationCode(string email);

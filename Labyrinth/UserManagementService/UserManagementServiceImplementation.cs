@@ -37,22 +37,37 @@ namespace UserManagementService
             return idUser;
         }
 
-        public Boolean VerificateCode(string email, string code)
+        public bool VerificateCode(string email, string code)
         {
-            Boolean response = false;
-            using (var context = new LabyrinthEntities())
-            {
-                var verification = context.VerificationCode.FirstOrDefault(verificaitonForSearching => verificaitonForSearching.email == email);
+            bool response = false;
 
-                if (verification != null && verification.code == code)
+            try
+            {
+                if (!IsEmailRegistered(email))
                 {
-                    context.VerificationCode.Remove(verification);
-                    context.SaveChanges();
-                    response = true;
+                    using (var context = new LabyrinthEntities())
+                    {
+                        var verification = context.VerificationCode.FirstOrDefault(verificaitonForSearching => verificaitonForSearching.email == email);
+
+                        if (verification != null && verification.code == code)
+                        {
+                            context.VerificationCode.Remove(verification);
+                            context.SaveChanges();
+                            response = true;
+                        }
+                    }
                 }
-                return response;
+                else
+                {
+                    //lanza excecpcion personalizada
+                }
+            } 
+            catch (Exception ex)
+            {
+               //lanzar excepcion 
             }
-            
+   
+            return response;
         }
 
         public int AddVerificationCode(string email)
@@ -211,7 +226,6 @@ namespace UserManagementService
                         {
                             IdUser = searchedUser.idUser,
                             Username = searchedUser.userName,
-                            //Password = searchedUser.password,
                             Email = searchedUser.email,
                             ProfilePicture = searchedUser.profilePicture,
                             TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
