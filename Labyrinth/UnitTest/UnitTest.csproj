@@ -101,6 +101,10 @@
       <Project>{2b51d536-7b8c-4b7a-b688-94e1dc95ef9b}</Project>
       <Name>GameService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LabyrinthCommon\LabyrinthCommon.csproj">
+      <Project>{A0F18E9D-E422-4202-81AB-5082E4DDF86E}</Project>
+      <Name>LabyrinthCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LobbyManagementService\LobbyManagementService.csproj">
       <Project>{f92b1874-cdbb-44a3-8c9b-c28118b60fd0}</Project>
       <Name>LobbyManagementService</Name>

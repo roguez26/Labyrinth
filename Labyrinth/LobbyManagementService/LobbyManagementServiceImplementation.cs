@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TransferUser = LabyrinthCommon.TransferUser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -11,40 +12,64 @@ namespace LobbyManagementService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LobbyManagementServiceImplementation : ILobbyManagementService
     {
-        private Dictionary<string, List<ILobbyManagementCallback>> lobbies = new Dictionary<string, List<ILobbyManagementCallback>>();
-        public void createLobby()
+        private Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>> lobbies = new Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>>();
+        public string CreateLobby(TransferUser lobbyCreator)
         {
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
-            string lobbyCode = generateLobbyCode();
+            string lobbyCode = GenerateLobbyCode();
 
             while (lobbies.ContainsKey(lobbyCode))
             {
-                lobbyCode = generateLobbyCode();
+                lobbyCode = GenerateLobbyCode();
             }
 
-            lobbies[lobbyCode] = new List<ILobbyManagementCallback>();
-            lobbies[lobbyCode].Add(callback);
-            Console.WriteLine(lobbyCode);
-            callback.BroadcastCreated(lobbyCode);
+            var lobbyMembers = new Dictionary<ILobbyManagementCallback, TransferUser>();
+            lobbyMembers.Add(callback, lobbyCreator);
+
+            lobbies[lobbyCode] = lobbyMembers;
+           
+            return lobbyCode;
         }
 
-        public void joinToGame(string lobbyCode, string userName)
+        public List<TransferUser> JoinToGame(string lobbyCode, TransferUser user)
         {
+            List<TransferUser>  members = new List<TransferUser>();
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
 
-            if (lobbies.ContainsKey(lobbyCode))
+            if (callback == null)
             {
-                lobbies[lobbyCode].Add (callback);
-                List<ILobbyManagementCallback> lobbyMembers = lobbies[lobbyCode];
+                //Lanzar excepcion
+            }
 
+            if (lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+            {
+                if (lobbyMembers.ContainsKey(callback))
+                {
+                    //Lanzar excepcion
+                }
+
+                lobbyMembers[callback] = user;
+                members.Add(user);
                 foreach (var member in lobbyMembers)
                 {
-                    member.BroadcastJoined(userName);
+                    // `member.Key` es el callback asociado a cada miembro, y `member.Value` es el usuario
+                    if (!member.Value.Equals(user))
+                    {
+                        // Notificar a los demás usuarios
+                        member.Key.NotifyUserHasJoined(user);
+                        members.Add(member.Value);
+                    }
+                    
                 }
             }
+            else
+            {
+                //Lanzar excepcion
+            }
+            return members;
         }
 
-        public static string generateLobbyCode()
+        public static string GenerateLobbyCode()
         {
             Random random = new Random();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -53,7 +78,7 @@ namespace LobbyManagementService
             for (int i = 0; i < 3; i++)
             {
                 if (i > 0)
-                {
+                {     
                     stringBuilder.Append('-');
                 }
 

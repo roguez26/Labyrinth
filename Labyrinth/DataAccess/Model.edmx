@@ -27,7 +27,6 @@
           <Property Name="idFriendRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idRequester" Type="int" Nullable="false" />
           <Property Name="idRequested" Type="int" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="100" />
           <Property Name="status" Type="varchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <EntityType Name="PlayerSkins">
@@ -268,7 +267,6 @@
           <Property Name="idFriendRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idRequester" Type="Int32" Nullable="false" />
           <Property Name="idRequested" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_FriendRequest_User" FromRole="FriendRequest" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="Self.FK_FriendRequest_User1" FromRole="FriendRequest" ToRole="User" />
@@ -524,7 +522,6 @@
                 <ScalarProperty Name="idFriendRequest" ColumnName="idFriendRequest" />
                 <ScalarProperty Name="idRequester" ColumnName="idRequester" />
                 <ScalarProperty Name="idRequested" ColumnName="idRequested" />
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>

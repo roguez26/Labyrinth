@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using LabyrinthCommon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,30 +24,8 @@ namespace CatalogManagementService
 
 
     }
-    [DataContract]
-    public class TransferCountry
-    {
-        [DataMember]
-        public string CountryName { get; set; }
-        [DataMember]
-        public int CountryId { get; set; } = 0;
-    }
+   
 
-    [DataContract]
-    public class TransferStats
-    {
-        [DataMember]
-        public int StatId { get; set; }
-
-        [DataMember]
-        public int UserId { get; set; }
-
-        [DataMember]
-        public int GamesWon { get; set; }
-
-        [DataMember]
-        public int GamesPlayed { get; set; }
-
-    }
+    
 }
 
