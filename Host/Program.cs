@@ -12,6 +12,7 @@ namespace Host
         private static ServiceHost _userManagementHost;
         private static ServiceHost _catalogManagementHost;
         private static ServiceHost _lobbyManagementHost;
+        private static ServiceHost _friendsManagementHost;
 
         public static void StartHost()
         {
@@ -19,7 +20,7 @@ namespace Host
             _userManagementHost = new ServiceHost(typeof(UserManagementService.UserManagementServiceImplementation));
             _catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation));
             _lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation));
-
+            _friendsManagementHost = new ServiceHost(typeof(FriendsManagementService.FriendsManagementServiceImplementation));
 
             _chatHost.Open();
             Console.WriteLine("chat service is running");
@@ -32,6 +33,9 @@ namespace Host
 
             _lobbyManagementHost.Open();
             Console.WriteLine("lobby management service is running:");
+
+            _friendsManagementHost.Open();
+            Console.WriteLine("friends management service is running");
         }
 
         public static void StopHost()
@@ -54,6 +58,11 @@ namespace Host
             if (_lobbyManagementHost != null)
             {
                 _lobbyManagementHost.Close();
+            }
+
+            if (_friendsManagementHost != null)
+            {
+                _friendsManagementHost.Close();
             }
         }
 

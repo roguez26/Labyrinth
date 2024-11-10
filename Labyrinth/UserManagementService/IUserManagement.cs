@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using DataAccess;
 using CatalogManagementService;
 using System.Security.Cryptography;
+using TransferUser = LabyrinthCommon.TransferUser;
 
 namespace UserManagementService
 {
@@ -15,13 +16,16 @@ namespace UserManagementService
     public interface IUserManagement
     {
         [OperationContract]
-        int AddUser(TransferUser user);
+        int AddUser(TransferUser user, string password);
 
         [OperationContract]
-        TransferUser UserVerification(TransferUser user);
+        TransferUser UserVerification(string email, string password);
 
         [OperationContract]
         int UpdateUser(TransferUser newUser);
+
+        [OperationContract]
+        int UpdatePassword(string pasword, string newPassword, string email);
 
         [OperationContract]
         string ChangeUserProfilePicture(int userId, byte[] imagenData);
@@ -42,34 +46,5 @@ namespace UserManagementService
         int DeleteAllVerificationCodes();
     }
 
-    [DataContract]
-    public class TransferUser
-    {
-
-        [DataMember]
-        public int IdUser { get; set; } = 0;
-
-        [DataMember]
-        public string Username { get; set; }
-
-        [DataMember]
-        public string Password { get; set; }
-
-        [DataMember]
-        public string Email { get; set; }
-
-        [DataMember]
-        public int Country { get; set; }
-
-        [DataMember]
-        public string ErrorCode { get; set; }
-
-        [DataMember]
-        public TransferCountry TransferCountry { get; set; }
-
-        [DataMember]
-        public string ProfilePicture { get; set; }
-
-
-    }
+   
 }

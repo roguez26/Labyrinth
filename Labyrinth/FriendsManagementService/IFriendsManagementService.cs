@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 using System.ServiceModel;
-using TransferUser = LabyrinthCommon.TransferUser;
 
-namespace LobbyManagementService
+namespace FriendsManagementService
 {
     [ServiceContract]
-    public interface ILobbyManagementCallback
+    public interface IFriendsManagementService
     {
-       
         [OperationContract]
-        void NotifyUserHasJoined(TransferUser user);
+        int SendFriendRequest(int userId, int friendId);
 
-
+        
     }
 }

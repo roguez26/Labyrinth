@@ -1,5 +1,6 @@
 ﻿using CatalogManagementService;
 using DataAccess;
+using TransferUser = LabyrinthCommon.TransferUser;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,7 +17,7 @@ namespace UserManagementService
 {
     public class UserManagementServiceImplementation : IUserManagement
     {
-        public int AddUser(TransferUser user)
+        public int AddUser(TransferUser user, string password)
         {
             int idUser = 0;
             using (var context = new LabyrinthEntities())
@@ -24,7 +25,7 @@ namespace UserManagementService
                 var newUser = new User
                 {
                     userName = user.Username,
-                    password = user.Password,
+                    password = password,
                     email = user.Email,
                     idCountry = user.Country
                 };
@@ -162,13 +163,9 @@ namespace UserManagementService
                         userSearched.email = newUser.Email;
                         userSearched.userName = newUser.Username;
                         userSearched.idCountry = newUser.Country;
-                        userSearched.password = newUser.Password;
-
                         context.Entry(userSearched).Property(u => u.email).IsModified = true;
                         context.Entry(userSearched).Property(u => u.userName).IsModified = true;
                         context.Entry(userSearched).Property(u => u.idCountry).IsModified = true;
-                        context.Entry(userSearched).Property(u => u.password).IsModified = true;
-
                         response = context.SaveChanges();
                     }
                 }
@@ -176,28 +173,45 @@ namespace UserManagementService
             return response;
         }
 
+        public int UpdatePassword(string password, string newPassword, string email)
+        {
+            int response = 0;
+
+            using (var context = new LabyrinthEntities())
+            {
+                var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
+                if (password.Equals(userSearched.password)) {
+                    userSearched.password = newPassword;
+                    context.Entry(userSearched).Property(u => u.password).IsModified = true;
+                    response = context.SaveChanges();
+                }
+            }
+
+            return response;
+        }
+
         
 
-        public TransferUser UserVerification(TransferUser user)
+        public TransferUser UserVerification(string email, string password)
         {
             var userForVerification = new TransferUser();
             using (var context = new LabyrinthEntities())
             {
-                var searchedUser = context.User.FirstOrDefault(userForSearching => userForSearching.email == user.Email);
+                var searchedUser = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
                 if (searchedUser == null)
                 {
                     userForVerification.ErrorCode = "FailUserNotFoundMessage";
                 }
                 else
                 {
-                    if (searchedUser.password == user.Password)
+                    if (searchedUser.password == password)
                     {
                         CatalogManagementServiceImplementation catalogManagementServiceImplementation = new CatalogManagementServiceImplementation();
                         userForVerification = new TransferUser
                         {
                             IdUser = searchedUser.idUser,
                             Username = searchedUser.userName,
-                            Password = searchedUser.password,
+                            //Password = searchedUser.password,
                             Email = searchedUser.email,
                             ProfilePicture = searchedUser.profilePicture,
                             TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
@@ -257,7 +271,7 @@ namespace UserManagementService
             }
             return response;
         }
-
+          
         private string GenerateVerificationCode()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

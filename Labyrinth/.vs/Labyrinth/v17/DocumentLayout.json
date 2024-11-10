@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,19 +39,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UserManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeToolTip": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T19:17:47.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ICatalogManagement.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
               "RelativeDocumentMoniker": "CatalogManagementService\\ICatalogManagement.cs",
               "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
               "RelativeToolTip": "CatalogManagementService\\ICatalogManagement.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwB4AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-10T19:02:13.527Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CatalogManagementServiceImplementation.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\CatalogManagementServiceImplementation.cs",
               "RelativeDocumentMoniker": "CatalogManagementService\\CatalogManagementServiceImplementation.cs",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LobbyManagementServiceImplementation.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LobbyManagementService\\LobbyManagementServiceImplementation.cs",
               "RelativeDocumentMoniker": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "packages.config",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UnitTest\\packages.config",
               "RelativeDocumentMoniker": "UnitTest\\packages.config",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserManagementServiceTest.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UnitTest\\UserManagementServiceTest.cs",
               "RelativeDocumentMoniker": "UnitTest\\UserManagementServiceTest.cs",
