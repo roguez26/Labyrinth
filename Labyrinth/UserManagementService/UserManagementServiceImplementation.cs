@@ -122,9 +122,9 @@ namespace UserManagementService
                         smtpClient.Send(message);
                         response = 1; // Envío exitoso
                     }
-                    catch (Exception ex)
+                    catch (SmtpException exception)
                     {
-                        Console.WriteLine("Error al enviar el correo: " + ex.ToString());
+                        Console.WriteLine("Error al enviar el correo: " + exception.ToString());
                         response = -1; // Envío fallido
                     }
                 }

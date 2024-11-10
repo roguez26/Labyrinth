@@ -11,10 +11,10 @@ namespace LobbyManagementService
     internal interface ILobbyManagementService
     {
         [OperationContract(IsOneWay = true)]
-        void createLobby();
+        void CreateLobby();
 
         [OperationContract(IsOneWay = true)]
-        void joinToGame(string lobbyCode, string userName);
+        void JoinToGame(string lobbyCode, string userName);
 
     }
 }

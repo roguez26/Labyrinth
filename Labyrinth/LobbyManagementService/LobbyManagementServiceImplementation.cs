@@ -11,31 +11,31 @@ namespace LobbyManagementService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LobbyManagementServiceImplementation : ILobbyManagementService
     {
-        private Dictionary<string, List<ILobbyManagementCallback>> lobbies = new Dictionary<string, List<ILobbyManagementCallback>>();
-        public void createLobby()
+        private Dictionary<string, List<ILobbyManagementCallback>> _lobbies = new Dictionary<string, List<ILobbyManagementCallback>>();
+        public void CreateLobby()
         {
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
-            string lobbyCode = generateLobbyCode();
+            string lobbyCode = GenerateLobbyCode();
 
-            while (lobbies.ContainsKey(lobbyCode))
+            while (_lobbies.ContainsKey(lobbyCode))
             {
-                lobbyCode = generateLobbyCode();
+                lobbyCode = GenerateLobbyCode();
             }
 
-            lobbies[lobbyCode] = new List<ILobbyManagementCallback>();
-            lobbies[lobbyCode].Add(callback);
+            _lobbies[lobbyCode] = new List<ILobbyManagementCallback>();
+            _lobbies[lobbyCode].Add(callback);
             Console.WriteLine(lobbyCode);
             callback.BroadcastCreated(lobbyCode);
         }
 
-        public void joinToGame(string lobbyCode, string userName)
+        public void JoinToGame(string lobbyCode, string userName)
         {
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
 
-            if (lobbies.ContainsKey(lobbyCode))
+            if (_lobbies.ContainsKey(lobbyCode))
             {
-                lobbies[lobbyCode].Add (callback);
-                List<ILobbyManagementCallback> lobbyMembers = lobbies[lobbyCode];
+                _lobbies[lobbyCode].Add (callback);
+                List<ILobbyManagementCallback> lobbyMembers = _lobbies[lobbyCode];
 
                 foreach (var member in lobbyMembers)
                 {
@@ -44,7 +44,7 @@ namespace LobbyManagementService
             }
         }
 
-        public static string generateLobbyCode()
+        public static string GenerateLobbyCode()
         {
             Random random = new Random();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
