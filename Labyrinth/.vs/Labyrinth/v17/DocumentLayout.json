@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\catalogmanagementservice\\catalogmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\catalogmanagementservice\\catalogmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\catalogmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -55,8 +55,7 @@
               "RelativeToolTip": "CatalogManagementService\\CatalogManagementServiceImplementation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:02:12.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T19:02:12.338Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T00:10:30.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T00:10:30.056Z"
             },
             {
               "$type": "Document",
