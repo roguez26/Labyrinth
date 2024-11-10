@@ -11,6 +11,8 @@ using System.Net.Mail;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
+using LabyrinthCommon;
 
 
 namespace UserManagementService
@@ -20,19 +22,26 @@ namespace UserManagementService
         public int AddUser(TransferUser user, string password)
         {
             int idUser = 0;
-            using (var context = new LabyrinthEntities())
-            {
-                var newUser = new User
-                {
-                    userName = user.Username,
-                    password = password,
-                    email = user.Email,
-                    idCountry = user.Country
-                };
-                context.User.Add(newUser);
-                context.SaveChanges();
 
-                idUser = newUser.idCountry;
+            try
+            {                
+                using (var context = new LabyrinthEntities())
+                {
+                    var newUser = new User
+                    {
+                        userName = user.Username,
+                        password = password,
+                        email = user.Email,
+                        idCountry = user.Country
+                    };
+                    context.User.Add(newUser);
+                    context.SaveChanges();
+
+                    idUser = newUser.idCountry;
+                }
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("AddUserError"));
             }
             return idUser;
         }
@@ -40,42 +49,57 @@ namespace UserManagementService
         public Boolean VerificateCode(string email, string code)
         {
             Boolean response = false;
-            using (var context = new LabyrinthEntities())
-            {
-                var verification = context.VerificationCode.FirstOrDefault(verificaitonForSearching => verificaitonForSearching.email == email);
 
-                if (verification != null && verification.code == code)
+            try
+            {
+                using (var context = new LabyrinthEntities())
                 {
-                    context.VerificationCode.Remove(verification);
-                    context.SaveChanges();
-                    response = true;
+                    var verification = context.VerificationCode.FirstOrDefault(verificaitonForSearching => verificaitonForSearching.email == email);
+
+                    if (verification != null && verification.code == code)
+                    {
+                        context.VerificationCode.Remove(verification);
+                        context.SaveChanges();
+                        response = true;
+                    }
                 }
-                return response;
             }
-            
+            catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("VerificateCodeError"));
+
+            }
+            return response;
         }
 
         public int AddVerificationCode(string email)
         {
             int response = 0;
             string verificationCode = GenerateVerificationCode();
-            using (var context = new LabyrinthEntities())
-            {
-                var userForDuplicationVerification = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
 
-                if (userForDuplicationVerification != null)
+            try
+            {                
+                using (var context = new LabyrinthEntities())
                 {
-                    response = -1;
-                } 
-                else
-                {
-                    context.VerificationCode.Add(new VerificationCode()
+                    var userForDuplicationVerification = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
+
+                    if (userForDuplicationVerification != null)
                     {
-                        email = email,
-                        code = verificationCode,
-                    });
-                    response = context.SaveChanges();
+                        response = -1;
+                    }
+                    else
+                    {
+                        context.VerificationCode.Add(new VerificationCode()
+                        {
+                            email = email,
+                            code = verificationCode,
+                        });
+                        response = context.SaveChanges();
+                    }
                 }
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("AddVerificationCodeError"));
             }
 
             if (SendVerificationCode(email, verificationCode) > 0)
@@ -88,15 +112,20 @@ namespace UserManagementService
 
         public int DeleteAllVerificationCodes()
         {
-            using (var context = new LabyrinthEntities())
+            try
             {
-                var allVerificationCodes = context.VerificationCode.ToList();
+                using (var context = new LabyrinthEntities())
+                {
+                    var allVerificationCodes = context.VerificationCode.ToList();
 
-                context.VerificationCode.RemoveRange(allVerificationCodes);
-                int rowsAffected = context.SaveChanges();
-                return rowsAffected;
+                    context.VerificationCode.RemoveRange(allVerificationCodes);
+                    int rowsAffected = context.SaveChanges();
+                    return rowsAffected;
+                }
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("DeleteAllVerificationCodesError"));
             }
-
         }
 
         private int SendVerificationCode(string email, string code)
@@ -121,12 +150,11 @@ namespace UserManagementService
                     try
                     {
                         smtpClient.Send(message);
-                        response = 1; // Envío exitoso
+                        response = 1;
                     }
                     catch (SmtpException exception)
                     {
-                        Console.WriteLine("Error al enviar el correo: " + exception.ToString());
-                        response = -1; // Envío fallido
+                        throw new FaultException<LabyrinthException>(new LabyrinthException("SendVerificationCodeError"));
                     }
                 }
             }
@@ -144,11 +172,12 @@ namespace UserManagementService
                 var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.idUser == newUser.IdUser);
                 if (userSearched == null)
                 {
-                    response = -1;
+                    throw new FaultException<LabyrinthException>(new LabyrinthException("FailUserNotFoundMessage"));
                 }
                 else
                 {
                     User emailDuplicatedUser = null;
+
                     if (userSearched.email != newUser.Email)
                     {
                         emailDuplicatedUser = context.User.FirstOrDefault(userForEmailConfirmation => userForEmailConfirmation.email == newUser.Email);
@@ -156,7 +185,7 @@ namespace UserManagementService
 
                     if (emailDuplicatedUser != null)
                     {
-                        response = -2;
+                        throw new FaultException<LabyrinthException>(new LabyrinthException("FailDuplicatedUserFoundMessage"));
                     }
                     else
                     {
@@ -173,20 +202,34 @@ namespace UserManagementService
             return response;
         }
 
+        public bool IsEmailRegistered(string email)
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                return context.User.Any(user => user.email == email);
+            }
+        }
+
         public int UpdatePassword(string password, string newPassword, string email)
         {
             int response = 0;
 
-            using (var context = new LabyrinthEntities())
+            try
             {
-                var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
-                if (password.Equals(userSearched.password)) {
-                    userSearched.password = newPassword;
-                    context.Entry(userSearched).Property(u => u.password).IsModified = true;
-                    response = context.SaveChanges();
+                using (var context = new LabyrinthEntities())
+                {
+                    var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
+                    if (password.Equals(userSearched.password))
+                    {
+                        userSearched.password = newPassword;
+                        context.Entry(userSearched).Property(u => u.password).IsModified = true;
+                        response = context.SaveChanges();
+                    }
                 }
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("UpdatePasswordError"));
             }
-
             return response;
         }
 
@@ -195,36 +238,44 @@ namespace UserManagementService
         public TransferUser UserVerification(string email, string password)
         {
             var userForVerification = new TransferUser();
-            using (var context = new LabyrinthEntities())
-            {
-                var searchedUser = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
-                if (searchedUser == null)
-                {
-                    userForVerification.ErrorCode = "FailUserNotFoundMessage";
-                }
-                else
-                {
-                    if (searchedUser.password == password)
-                    {
-                        CatalogManagementServiceImplementation catalogManagementServiceImplementation = new CatalogManagementServiceImplementation();
-                        userForVerification = new TransferUser
-                        {
-                            IdUser = searchedUser.idUser,
-                            Username = searchedUser.userName,
-                            //Password = searchedUser.password,
-                            Email = searchedUser.email,
-                            ProfilePicture = searchedUser.profilePicture,
-                            TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
 
-                        };
+            try
+            {
+                using (var context = new LabyrinthEntities())
+                {
+                    var searchedUser = context.User.FirstOrDefault(userForSearching => userForSearching.email == email);
+
+                    if (searchedUser == null)
+                    {
+                        throw new FaultException<LabyrinthException>(new LabyrinthException("FailUserNotFoundMessage"));
                     }
                     else
                     {
-                        userForVerification.ErrorCode = "FailIncorrectPasswordMessage";
+                        if (searchedUser.password == password)
+                        {
+                            CatalogManagementServiceImplementation catalogManagementServiceImplementation = new CatalogManagementServiceImplementation();
+                            userForVerification = new TransferUser
+
+                            {
+                                IdUser = searchedUser.idUser,
+                                Username = searchedUser.userName,
+                                //Password = searchedUser.password,
+                                Email = searchedUser.email,
+                                ProfilePicture = searchedUser.profilePicture,
+                                TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
+                            };
+                        }
+                        else
+                        {
+                            throw new FaultException<LabyrinthException>(new LabyrinthException("FailIncorrectPasswordMessage"));
+                        }
                     }
                 }
-                return userForVerification;
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("UserVerificationError"));
             }
+            return userForVerification;
         }
 
         public string ChangeUserProfilePicture(int userId, byte[] imagenData)
@@ -247,17 +298,22 @@ namespace UserManagementService
 
             File.WriteAllBytes(filePath, imagenData);
 
-            using (var context = new LabyrinthEntities())
+            try
             {
-                var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.idUser == userId);
-                if (userSearched != null)
+                using (var context = new LabyrinthEntities())
                 {
-                    userSearched.profilePicture = filePath;
-                    context.Entry(userSearched).Property(u => u.profilePicture).IsModified = true;
-                    context.SaveChanges();
+                    var userSearched = context.User.FirstOrDefault(userForSearching => userForSearching.idUser == userId);
+                    if (userSearched != null)
+                    {
+                        userSearched.profilePicture = filePath;
+                        context.Entry(userSearched).Property(u => u.profilePicture).IsModified = true;
+                        context.SaveChanges();
+                    }
                 }
+            } catch (Exception exception)
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("ChangeUserProfilePictureError"));
             }
-
             return filePath;
         }
 
@@ -268,6 +324,9 @@ namespace UserManagementService
             if (File.Exists(path))
             {
                 response = File.ReadAllBytes(path);
+            } else
+            {
+                throw new FaultException<LabyrinthException>(new LabyrinthException("ProfilePictureNotFoundMessage"));
             }
             return response;
         }
@@ -284,14 +343,6 @@ namespace UserManagementService
             }
 
             return result.ToString();
-        }
-
-        public bool IsEmailRegistered(string email)
-        {
-            using (var context = new LabyrinthEntities())
-            {
-                return context.User.Any(user => user.email == email);
-            }
         }
 
     }
