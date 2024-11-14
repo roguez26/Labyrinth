@@ -1,4 +1,4 @@
-﻿using TransferUser = LabyrinthCommon.TransferUser;
+using TransferUser = LabyrinthCommon.TransferUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
