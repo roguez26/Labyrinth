@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using TransferUser = LabyrinthCommon.TransferUser;
+using LabyrinthCommon;
 
 namespace LobbyManagementService
 {

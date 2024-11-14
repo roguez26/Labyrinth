@@ -34,6 +34,10 @@ namespace UserManagementService
 
         [OperationContract]
         [FaultContract(typeof(LabyrinthException))]
+        int DeleteAllUsers();
+
+        [OperationContract]
+        [FaultContract(typeof(LabyrinthException))]
         string ChangeUserProfilePicture(int userId, byte[] imagenData);
 
         [OperationContract]
@@ -51,10 +55,6 @@ namespace UserManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthException))]
         bool IsEmailRegistered(string email);
-
-        [OperationContract]
-        [FaultContract(typeof(LabyrinthException))]
-        int DeleteAllVerificationCodes();
     }
 
    

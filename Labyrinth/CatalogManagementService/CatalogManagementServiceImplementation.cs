@@ -1,29 +1,63 @@
 ﻿using DataAccess;
 using LabyrinthCommon;
+using log4net;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using static DataAccess.LabyrinthEntities;
 
 namespace CatalogManagementService
 {
     public class CatalogManagementServiceImplementation : ICatalogManagement
     {
-        public List<TransferCountry> GetAllCountries()
+        private static readonly ILog _log = LogManager.GetLogger(typeof(CatalogManagementServiceImplementation));
+
+        public TransferCountry AddCountry(TransferCountry country)
         {
             using (var context = new LabyrinthEntities())
             {
-                var countries = context.Country.ToList();
-                var transferCountries = countries.Select(countryToTransfer => new TransferCountry
+                var newCountry = new Country
                 {
-                    CountryId = countryToTransfer.idCountry,
-                    CountryName = countryToTransfer.name,
-                }).ToList();
-                return transferCountries;
+                    name = country.CountryName
+                };
+
+                context.Country.Add(newCountry);
+                context.SaveChanges();
+                country.CountryId = newCountry.idCountry;
+            }
+            return country;
+        }
+
+        public List<TransferCountry> GetAllCountries()
+        {
+            try
+            {
+                using (var context = new LabyrinthEntities())
+                {
+                    var countries = context.Country.ToList();
+                    var transferCountries = countries.Select(countryToTransfer => new TransferCountry
+                    {
+                        CountryId = countryToTransfer.idCountry,
+                        CountryName = countryToTransfer.name,
+                    }).ToList();
+                    return transferCountries;
+                }
+            }
+            catch (Exception exception)
+            {
+                _log.Error("GetAllCountriesError", exception);
+                throw new FaultException<LabyrinthException>(new LabyrinthException("GetAllCountriesException"));
+            }
+        }
+
+        public int DeleteAllCountries()
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                int countriesRemoved = context.Country.Count();
+                context.Country.RemoveRange(context.Country);
+                context.SaveChanges();
+                return countriesRemoved;
             }
         }
 
@@ -31,44 +65,57 @@ namespace CatalogManagementService
         {
             var transferCountry = new TransferCountry();
 
-            using (var context = new LabyrinthEntities())
+            try
             {
-                var _country = context.Country.FirstOrDefault(country => country.idCountry == idCountry);
-
-                if (_country != null)
+                using (var context = new LabyrinthEntities())
                 {
-                    transferCountry.CountryId = _country.idCountry;
-                    transferCountry.CountryName = _country.name;
+                    var _country = context.Country.FirstOrDefault(country => country.idCountry == idCountry);
+
+                    if (_country != null)
+                    {
+                        transferCountry.CountryId = _country.idCountry;
+                        transferCountry.CountryName = _country.name;
+                    }
                 }
             }
-
+            catch (Exception exception)
+            {
+                _log.Error("GetCountryByIdError", exception);
+                throw new FaultException<LabyrinthException>(new LabyrinthException("GetCountryByIdException"));
+            }
             return transferCountry;
         }
 
-
-
         public TransferStats GetStatsByUserId(int userId)
         {
-            using (var context = new LabyrinthEntities())
+            try
             {
-                var stats = context.Stats.FirstOrDefault(statsForSearching => statsForSearching.idUser == userId);
+                using (var context = new LabyrinthEntities())
+                {
+                    var stats = context.Stats.FirstOrDefault(statsForSearching => statsForSearching.idUser == userId);
+                    var transferStats = new TransferStats();
 
-                var TransferStats = new TransferStats();
-                if (stats != null)
-                {
-                    TransferStats = new TransferStats
+                    if (stats != null)
                     {
-                        GamesPlayed = (int)stats.gamesPlayed,
-                        GamesWon = (int)stats.gamesWon,
-                        UserId = stats.idUser,
-                        StatId = stats.idStats,
-                    };
+                        transferStats = new TransferStats
+                        {
+                            GamesPlayed = (int)stats.gamesPlayed,
+                            GamesWon = (int)stats.gamesWon,
+                            UserId = stats.idUser,
+                            StatId = stats.idStats,
+                        };
+                    }
+                    else
+                    {
+                        transferStats.StatId = 0;
+                    }
+                    return transferStats;
                 }
-                else
-                {
-                    TransferStats.StatId = 0;
-                }
-                return TransferStats;
+            }
+            catch (Exception exception)
+            {
+                _log.Error("GetStatsByUserIdError", exception);
+                throw new FaultException<LabyrinthException>(new LabyrinthException("GetStatsByUserIdException"));
             }
         }
     }

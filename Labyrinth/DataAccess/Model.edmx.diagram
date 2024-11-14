@@ -12,17 +12,17 @@
         <EntityTypeShape EntityType="LabyrinthModel.Preferences" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="LabyrinthModel.Skin" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LabyrinthModel.Stats" Width="1.5" PointX="1.25" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabyrinthModel.User" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="LabyrinthModel.FK_User_Country" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_FriendList_User" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_FriendList_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_FriendRequest_User" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_FriendRequest_User1" ManuallyRouted="false" />
         <AssociationConnector Association="LabyrinthModel.FK_PlayerSkins_Skin" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_PlayerSkins_User" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_Preferences_User" ManuallyRouted="false" />
-        <AssociationConnector Association="LabyrinthModel.FK_Stats_User" ManuallyRouted="false" />
         <EntityTypeShape EntityType="LabyrinthModel.VerificationCode" Width="1.5" PointX="2.375" PointY="1.5" />
+        <EntityTypeShape EntityType="LabyrinthModel.User" Width="1.5" PointX="3" PointY="8" />
+        <AssociationConnector Association="LabyrinthModel.FK_User_Country" />
+        <AssociationConnector Association="LabyrinthModel.FK_FriendList_User" />
+        <AssociationConnector Association="LabyrinthModel.FK_FriendList_User1" />
+        <AssociationConnector Association="LabyrinthModel.FK_FriendRequest_User" />
+        <AssociationConnector Association="LabyrinthModel.FK_FriendRequest_User1" />
+        <AssociationConnector Association="LabyrinthModel.FK_PlayerSkins_User" />
+        <AssociationConnector Association="LabyrinthModel.FK_Preferences_User" />
+        <AssociationConnector Association="LabyrinthModel.FK_Stats_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

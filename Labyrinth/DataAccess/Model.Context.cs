@@ -32,7 +32,7 @@ namespace DataAccess
         public virtual DbSet<Preferences> Preferences { get; set; }
         public virtual DbSet<Skin> Skin { get; set; }
         public virtual DbSet<Stats> Stats { get; set; }
-        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<VerificationCode> VerificationCode { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

@@ -1,13 +1,19 @@
 ﻿using ChatService;
 using CatalogManagementService;
 using UserManagementService;
+using LobbyManagementService;
+using FriendsManagementService;
 using System;
 using System.ServiceModel;
+using log4net;
+using log4net.Config;
 
 namespace Host
 {
     public class Program
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         private static ServiceHost _chatHost;
         private static ServiceHost _userManagementHost;
         private static ServiceHost _catalogManagementHost;
@@ -16,59 +22,87 @@ namespace Host
 
         public static void StartHost()
         {
-            _chatHost = new ServiceHost(typeof(ChatService.ChatServiceImplementation));
-            _userManagementHost = new ServiceHost(typeof(UserManagementService.UserManagementServiceImplementation));
-            _catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation));
-            _lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation));
-            _friendsManagementHost = new ServiceHost(typeof(FriendsManagementService.FriendsManagementServiceImplementation));
+            XmlConfigurator.Configure();
+            string logDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs");
+            if (!System.IO.Directory.Exists(logDirectory))
+            {
+                System.IO.Directory.CreateDirectory(logDirectory);
+            }
 
-            _chatHost.Open();
-            Console.WriteLine("chat service is running");
+            try
+            {
+                _chatHost = new ServiceHost(typeof(ChatService.ChatServiceImplementation));
+                _userManagementHost = new ServiceHost(typeof(UserManagementService.UserManagementServiceImplementation));
+                _catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation));
+                _lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation));
+                _friendsManagementHost = new ServiceHost(typeof(FriendsManagementService.FriendsManagementServiceImplementation));
 
-            _userManagementHost.Open();
-            Console.WriteLine("user management service is running");
+                _chatHost.Open();
+                log.Info("Chat service is running");
 
-            _catalogManagementHost.Open();
-            Console.WriteLine("catalog management service is running");
+                _userManagementHost.Open();
+                log.Info("User management service is running");
 
-            _lobbyManagementHost.Open();
-            Console.WriteLine("lobby management service is running:");
+                _catalogManagementHost.Open();
+                log.Info("Catalog management service is running");
 
-            _friendsManagementHost.Open();
-            Console.WriteLine("friends management service is running");
+                _lobbyManagementHost.Open();
+                log.Info("Lobby management service is running");
+
+                _friendsManagementHost.Open();
+                log.Info("Friends management service is running");
+            }
+            catch (Exception exception)
+            {
+                log.Error("Error al iniciar los servicios", exception);
+                StopHost();
+            }
         }
 
         public static void StopHost()
         {
-            if (_chatHost != null)
+            try
             {
-                _chatHost.Close();
-            }
+                if (_chatHost != null)
+                {
+                    _chatHost.Close();
+                    log.Info("Chat service stopped");
+                }
 
-            if (_userManagementHost != null)
-            {
-                _userManagementHost.Close();
-            }
+                if (_userManagementHost != null)
+                {
+                    _userManagementHost.Close();
+                    log.Info("User management service stopped");
+                }
 
-            if (_catalogManagementHost != null)
-            {
-                _catalogManagementHost.Close();
-            }
+                if (_catalogManagementHost != null)
+                {
+                    _catalogManagementHost.Close();
+                    log.Info("Catalog management service stopped");
+                }
 
-            if (_lobbyManagementHost != null)
-            {
-                _lobbyManagementHost.Close();
-            }
+                if (_lobbyManagementHost != null)
+                {
+                    _lobbyManagementHost.Close();
+                    log.Info("Lobby management service stopped");
+                }
 
-            if (_friendsManagementHost != null)
+                if (_friendsManagementHost != null)
+                {
+                    _friendsManagementHost.Close();
+                    log.Info("Friends management service stopped");
+                }
+            }
+            catch (Exception ex)
             {
-                _friendsManagementHost.Close();
+                log.Error("Error al detener los servicios", ex);
             }
         }
 
         static void Main(string[] args)
         {
             StartHost();
+            Console.WriteLine("Press Enter to stop services...");
             Console.ReadLine();
             StopHost();
         }

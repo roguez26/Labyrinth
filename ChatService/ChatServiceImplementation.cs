@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using log4net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace ChatService
     public class ChatServiceImplementation : IChatService
     {
         private static List<IChatServiceCallback> _clients = new List<IChatServiceCallback>();
+        private static readonly ILog _log = LogManager.GetLogger(typeof(ChatServiceImplementation));
 
         public void Start()
         {
@@ -42,8 +44,7 @@ namespace ChatService
                 }
                 catch (Exception exception)
                 {
-                    clientsToRemove.Add(client);
-                    Console.WriteLine($"Error al enviar mensaje a un cliente: {exception.Message}");
+                    _log.Error("SendMessageError", exception);
                 }
             }
 

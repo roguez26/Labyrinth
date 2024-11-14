@@ -3,31 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\lobbymanagementservice\\ilobbymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\ilobbymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\friendsmanagementservice\\friendsmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\friendsmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\labyrinthcommon\\labyrinthexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\labyrinthexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\labyrinthcommon\\transferuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transferuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\labyrinthcommon\\transferstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transferstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\labyrinthcommon\\transfercountry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transfercountry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,98 +36,98 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 204,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
-              "RelativeDocumentMoniker": "..\\Host\\App.config",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
-              "RelativeToolTip": "..\\Host\\App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-11-10T20:56:58.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUserManagement.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
-              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAA1wDQAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:26:57.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "UserManagementServiceImplementation.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
               "RelativeDocumentMoniker": "UserManagementService\\UserManagementServiceImplementation.cs",
               "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
               "RelativeToolTip": "UserManagementService\\UserManagementServiceImplementation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAUwGYBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:25:56.248Z",
+              "WhenOpened": "2024-11-14T17:43:49.31Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TransferUser.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferUser.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferUser.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferUser.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferUser.cs",
+              "DocumentIndex": 1,
+              "Title": "LobbyManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LobbyManagementService\\LobbyManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LobbyManagementService\\LobbyManagementServiceImplementation.cs",
+              "RelativeToolTip": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAYwD4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T17:41:40.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ILobbyManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementService.cs",
+              "RelativeDocumentMoniker": "LobbyManagementService\\ILobbyManagementService.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementService.cs",
+              "RelativeToolTip": "LobbyManagementService\\ILobbyManagementService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:24:03.346Z",
+              "WhenOpened": "2024-11-14T17:41:34.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LabyrinthException.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\LabyrinthException.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\LabyrinthException.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\LabyrinthException.cs",
-              "RelativeToolTip": "LabyrinthCommon\\LabyrinthException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Host\\Program.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\Program.cs",
+              "RelativeToolTip": "..\\Host\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:23:45.948Z",
+              "WhenOpened": "2024-11-14T17:41:27.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TransferStats.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferStats.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferStats.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferStats.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferStats.cs",
+              "DocumentIndex": 4,
+              "Title": "FriendsManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\FriendsManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "FriendsManagementService\\FriendsManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\FriendsManagementServiceImplementation.cs",
+              "RelativeToolTip": "FriendsManagementService\\FriendsManagementServiceImplementation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:24:01.489Z",
+              "WhenOpened": "2024-11-14T17:40:52.114Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TransferCountry.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferCountry.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferCountry.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferCountry.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferCountry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "IUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T19:23:57.949Z",
+              "WhenOpened": "2024-11-14T17:40:40.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IFriendsManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeDocumentMoniker": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeToolTip": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T17:40:23.938Z",
               "EditorCaption": ""
             }
           ]

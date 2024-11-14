@@ -12,12 +12,14 @@ namespace LabyrinthCommon
     {
 
         [DataMember]
-        public string Code { get; set; }
+        public string ErrorCode { get; set; }
+        
 
         public LabyrinthException(string code)
         {
-            Code = code;
+            ErrorCode = code;
         }
 
     }
 }
+

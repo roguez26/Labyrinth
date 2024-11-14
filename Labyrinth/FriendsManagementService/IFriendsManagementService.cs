@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using LabyrinthCommon;
 
 namespace FriendsManagementService
 {

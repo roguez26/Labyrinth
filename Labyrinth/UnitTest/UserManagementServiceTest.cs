@@ -64,7 +64,6 @@ namespace UnitTest
             var newUser = new TransferUser
             {
                 Username = "TestUser",
-                //Password = "TestPassword",
                 Email = "TestEmail@example.com",
                 Country = _testCountryId
             };
@@ -79,7 +78,6 @@ namespace UnitTest
             var newUser = new LabyrinthCommon.TransferUser
             {
                 Username = "TestUser",
-               // Password = "TestPassword",
                 Email = "TestEmail@example.com",
                 Country = 0
             };
@@ -212,7 +210,6 @@ namespace UnitTest
             var testUser = new TransferUser
             {
                 Email = testEmail,
-               // Password = "12345"
             };
             
             var verificatedUser = _userManagementServiceImplementation.UserVerification(testUser.Email, "12345");
@@ -226,7 +223,6 @@ namespace UnitTest
             var testUser = new TransferUser
             {
                 Email = testEmail,
-               // Password = "12345"
             };
 
             var verificatedUser = _userManagementServiceImplementation.UserVerification(testUser.Email,  "12345");
