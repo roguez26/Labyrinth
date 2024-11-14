@@ -52,11 +52,8 @@ namespace UnitTest
             using (var context = new DataAccess.LabyrinthEntities())
             {
                 context.VerificationCode.RemoveRange(context.VerificationCode.ToList());
-
                 context.User.RemoveRange(context.User.ToList());
-
                 context.Country.RemoveRange(context.Country.ToList());
-
                 context.SaveChanges();
             }
         }

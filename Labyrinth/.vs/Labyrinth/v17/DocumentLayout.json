@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\labyrinthcommon\\transferuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transferuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\dataaccess\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\lobbymanagementservice\\ilobbymanagementcallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\ilobbymanagementcallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\lobbymanagementservice\\lobbymanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,23 +23,31 @@
       "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\ilobbymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\lobbymanagementservice\\ilobbymanagementcallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\ilobbymanagementcallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\labyrinthcommon\\labyrinthexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\labyrinthexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\dataaccess\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\friendsmanagementservice\\friendsmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\friendsmanagementservice\\friendsmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\friendsmanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\friendsmanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\friendsmanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
@@ -56,34 +64,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IFriendsManagementService.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
-              "RelativeDocumentMoniker": "FriendsManagementService\\IFriendsManagementService.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
-              "RelativeToolTip": "FriendsManagementService\\IFriendsManagementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T23:48:07.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IUserManagement.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
-              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T23:49:13.519Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -92,9 +74,34 @@
               "RelativeDocumentMoniker": "UserManagementService\\UserManagementServiceImplementation.cs",
               "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
               "RelativeToolTip": "UserManagementService\\UserManagementServiceImplementation.cs",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAwwOQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAwE0AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-09T23:56:38.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T23:49:13.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransferUser.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferUser.cs",
+              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferUser.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferUser.cs",
+              "RelativeToolTip": "LabyrinthCommon\\TransferUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T23:06:28.427Z",
               "EditorCaption": ""
             },
             {
@@ -105,10 +112,9 @@
               "RelativeDocumentMoniker": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
               "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\LobbyManagementServiceImplementation.cs",
               "RelativeToolTip": "LobbyManagementService\\LobbyManagementServiceImplementation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAwwEUAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T02:02:12.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T02:02:12.833Z"
             },
             {
               "$type": "Document",
@@ -118,27 +124,50 @@
               "RelativeDocumentMoniker": "LobbyManagementService\\ILobbyManagementService.cs",
               "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementService.cs",
               "RelativeToolTip": "LobbyManagementService\\ILobbyManagementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T02:02:11.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-08T02:02:11.821Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "ILobbyManagementCallback.cs",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementCallback.cs",
               "RelativeDocumentMoniker": "LobbyManagementService\\ILobbyManagementCallback.cs",
               "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementCallback.cs",
               "RelativeToolTip": "LobbyManagementService\\ILobbyManagementCallback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-08T02:19:59.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
+              "Title": "LabyrinthException.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\LabyrinthException.cs",
+              "RelativeDocumentMoniker": "LabyrinthCommon\\LabyrinthException.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\LabyrinthException.cs",
+              "RelativeToolTip": "LabyrinthCommon\\LabyrinthException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T00:06:17.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IFriendsManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeDocumentMoniker": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeToolTip": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T23:48:07.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FriendsManagementServiceImplementation.cs",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\FriendsManagementServiceImplementation.cs",
               "RelativeDocumentMoniker": "FriendsManagementService\\FriendsManagementServiceImplementation.cs",
@@ -146,12 +175,11 @@
               "RelativeToolTip": "FriendsManagementService\\FriendsManagementServiceImplementation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T23:48:38.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T23:48:38.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "FriendRequest.cs",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\DataAccess\\FriendRequest.cs",
               "RelativeDocumentMoniker": "DataAccess\\FriendRequest.cs",
@@ -159,12 +187,11 @@
               "RelativeToolTip": "DataAccess\\FriendRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T01:01:39.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T01:01:39.417Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\FriendsManagementService\\App.config",
               "RelativeDocumentMoniker": "FriendsManagementService\\App.config",
@@ -172,25 +199,23 @@
               "RelativeToolTip": "FriendsManagementService\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-11-10T00:06:08.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T00:06:08.056Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Host\\Program.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\Program.cs",
-              "RelativeToolTip": "..\\Host\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\Host\\Program.cs",
+              "RelativeDocumentMoniker": "Host\\Program.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\Host\\Program.cs",
+              "RelativeToolTip": "Host\\Program.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAwwBYAAAB9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T00:09:01.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T00:09:01.513Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\UserManagementService\\App.config",
               "RelativeDocumentMoniker": "UserManagementService\\App.config",
@@ -198,12 +223,11 @@
               "RelativeToolTip": "UserManagementService\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-11-10T00:06:13.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T00:06:13.701Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Host\\App.config",
               "RelativeDocumentMoniker": "..\\Host\\App.config",
@@ -211,8 +235,7 @@
               "RelativeToolTip": "..\\Host\\App.config",
               "ViewState": "AgIAACwAAAAAAAAAAAAIwEYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-11-10T00:06:52.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T00:06:52.412Z"
             }
           ]
         }
