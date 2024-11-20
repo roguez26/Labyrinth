@@ -30,7 +30,7 @@ namespace LobbyManagementService
             return lobbyCode;
         }
 
-        public List<TransferUser> JoinToGame(string lobbyCode, TransferUser user)
+        public void JoinToGame(string lobbyCode, TransferUser user)
         {
             List<TransferUser> members = new List<TransferUser>();
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
@@ -56,14 +56,14 @@ namespace LobbyManagementService
 
             foreach (var member in lobbyMembers)
             {
-                if (!member.Value.Equals(user))
-                {
-                    member.Key.NotifyUserHasJoined(user);
-                    members.Add(member.Value);
-                }
+                members.Add(member.Value);
             }
 
-            return members;
+            foreach (var member in lobbyMembers)
+            {
+                member.Key.NotifyUserHasJoined(user);
+                member.Key.GestMembersList(members);
+            }
         }
 
         public string GenerateLobbyCode()

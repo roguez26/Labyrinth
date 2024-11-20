@@ -14,5 +14,8 @@ namespace LobbyManagementService
     {
         [OperationContract]
         void NotifyUserHasJoined(TransferUser user);
+
+        [OperationContract]
+        void GestMembersList(List<TransferUser> members);
     }
 }
