@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using TransferUser = LabyrinthCommon.TransferUser;
+using LabyrinthCommon;
 
 namespace LobbyManagementService
 {
     [ServiceContract]
     public interface ILobbyManagementCallback
     {
-       
         [OperationContract]
         void NotifyUserHasJoined(TransferUser user);
-
-
     }
 }

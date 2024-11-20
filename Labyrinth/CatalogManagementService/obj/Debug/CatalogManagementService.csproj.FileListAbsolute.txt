@@ -5,11 +5,14 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementSe
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\EntityFramework.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\LabyrinthCommon.dll
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\log4net.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\DataAccess.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\DataAccess.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\LabyrinthCommon.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\EntityFramework.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\log4net.pdb
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\bin\Debug\log4net.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\obj\Debug\CatalogManagementService.csproj.AssemblyReference.cache
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\obj\Debug\CatalogManagementService.csproj.CoreCompileInputs.cache
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\CatalogManagementService\obj\Debug\CatalogM.CBC31535.Up2Date

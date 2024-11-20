@@ -1,27 +1,39 @@
 ﻿using DataAccess;
+using LabyrinthCommon;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 
 namespace FriendsManagementService
 {
     public class FriendsManagementServiceImplementation: IFriendsManagementService
     {
-        public int SendFriendRequest(int idUser, int idFriend)
+        public int SendFriendRequest(int userId, int friendId)
         {
             int idFriendRequest = 0;
+
+            if (IsFriendRequestRegistered(userId, friendId))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailFriendRequestDuplicated"));
+            }
 
             using (var context = new LabyrinthEntities())
             {
                 var newFriendRequest = new FriendRequest
                 {
                    
-                    idRequester = idUser,
-                    idRequested = idFriend,
-                    status = "Pendiente"
+                    idRequester = userId,
+                    idRequested = friendId,
+                    status = FriendRequestStatus.Pending.ToString()
                 };
 
                 context.FriendRequest.Add(newFriendRequest);
@@ -32,6 +44,87 @@ namespace FriendsManagementService
             return idFriendRequest;
         }
 
+        public bool IsFriendRequestRegistered(int userId, int friendId)
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                return context.FriendRequest.Any(friendRequest => (friendRequest.idRequester == userId && friendRequest.idRequested == friendId) || (friendRequest.idRequested == userId && friendRequest.idRequester == friendId));
+            }
+        }
+
+        public TransferUser[] GetMyFriendsList(int idUser)
+        {
+            TransferUser[] friends;
+
+            UserManagementService.UserManagementServiceImplementation userManagement =
+                new UserManagementService.UserManagementServiceImplementation();
+
+            using (var context = new LabyrinthEntities())
+            {
+                var friendIds = context.FriendList
+                    .Where(fr => fr.idUserOne == idUser || fr.idUserTwo == idUser)
+                    .Select(fr => fr.idUserOne == idUser ? fr.idUserTwo : fr.idUserOne)
+                    .ToList();
+
+                var users = context.User
+                    .Where(u => friendIds.Contains(u.idUser))
+                    .ToList(); 
+
+                friends = users.Select(u => new TransferUser
+                {
+                    IdUser = u.idUser,
+                    Username = u.userName,
+                    ProfilePicture = !string.IsNullOrEmpty(u.profilePicture)
+                        ? userManagement.GetUserProfilePicture(u.profilePicture)
+                        : new byte[0]
+                }).ToArray();
+            }
+
+            return friends;
+        }
+
+
+
+        public TransferFriendRequest[] GetFriendRequestsList(int idUser)
+        {
+            List<TransferFriendRequest> friendRequests = new List<TransferFriendRequest>();
+            UserManagementService.UserManagementServiceImplementation userManagement =
+                new UserManagementService.UserManagementServiceImplementation();
+
+            using (var context = new LabyrinthEntities())
+            {
+                friendRequests = context.FriendRequest
+                    .Where(fr => fr.idRequested == idUser && fr.status == FriendRequestStatus.Pending.ToString())
+                    .Select(fr => new TransferFriendRequest
+                    {
+                        IdFriendRequest = fr.idFriendRequest,
+                        Status = (FriendRequestStatus)Enum.Parse(typeof(FriendRequestStatus), fr.status),
+                        Requester = context.User
+                            .Where(u => u.idUser == fr.idRequester)
+                            .Select(u => new TransferUser
+                            {
+                                IdUser = u.idUser,
+                                Username = u.userName,
+                                ProfilePicture = userManagement.GetUserProfilePicture(u.profilePicture )
+                            })
+                            .FirstOrDefault() 
+                    })
+                    .ToList(); 
+
+            }
+
+            return friendRequests.ToArray();
+        }
+
+        public bool IsFriend(int userId, int friendId)
+        {
+            bool isFriend = false;
+            using (var context = new LabyrinthEntities())
+            {
+                isFriend = context.FriendList.Any(friends => (friends.User.idUser == userId && friends.User1.idUser == friendId) || (friends.User.idUser == userId && friends.User1.idUser == friendId));
+            }
+            return isFriend || IsFriendRequestRegistered(userId, friendId);
+        }
 
     }
 }

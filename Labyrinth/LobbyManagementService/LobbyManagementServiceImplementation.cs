@@ -1,11 +1,10 @@
-﻿using TransferUser = LabyrinthCommon.TransferUser;
+using TransferUser = LabyrinthCommon.TransferUser;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 using System.Text;
-using System.Threading.Tasks;
+using LabyrinthCommon;
+using log4net;
 
 namespace LobbyManagementService
 {
@@ -13,23 +12,21 @@ namespace LobbyManagementService
     public class LobbyManagementServiceImplementation : ILobbyManagementService
     {
         private Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>> _lobbies = new Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>>();
+        private static readonly ILog _log = LogManager.GetLogger(typeof(LobbyManagementServiceImplementation));
 
         public string CreateLobby(TransferUser lobbyCreator)
         {
             ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
             string lobbyCode = GenerateLobbyCode();
 
-            // Genera un código de lobby único
             while (_lobbies.ContainsKey(lobbyCode))
             {
                 lobbyCode = GenerateLobbyCode();
             }
 
-            // Crea un nuevo diccionario para el lobby y añade el creador
             _lobbies[lobbyCode] = new Dictionary<ILobbyManagementCallback, TransferUser>();
             _lobbies[lobbyCode].Add(callback, lobbyCreator);
 
-            // Retorna el código del lobby recién creado
             return lobbyCode;
         }
 
@@ -40,24 +37,23 @@ namespace LobbyManagementService
 
             if (callback == null)
             {
-                throw new InvalidOperationException("No se pudo obtener el canal de callback.");
+                _log.Error("NullCallbackError");
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("NullCallbackError"));
             }
 
             if (!_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
             {
-                throw new KeyNotFoundException("El lobby con el código especificado no existe.");
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("LobbyCodeNotFound"));
             }
 
             if (lobbyMembers.ContainsKey(callback))
             {
-                throw new InvalidOperationException("El usuario ya se encuentra en el lobby.");
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("UserAlreadyJoined"));
             }
 
-            // Agregar el nuevo usuario al lobby
             lobbyMembers[callback] = user;
             members.Add(user);
 
-            // Notificar a otros usuarios y agregar sus datos a la lista de miembros
             foreach (var member in lobbyMembers)
             {
                 if (!member.Value.Equals(user))
@@ -71,26 +67,25 @@ namespace LobbyManagementService
         }
 
         public string GenerateLobbyCode()
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < 3; i++)
             {
-                Random random = new Random();
-                string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                var stringBuilder = new StringBuilder();
-
-                for (int i = 0; i < 3; i++)
+                if (i > 0)
                 {
-                    if (i > 0)
-                    {
-                        stringBuilder.Append('-');
-                    }
-
-                    for (int j = 0; j < 3; j++)
-                    {
-                        stringBuilder.Append(chars[random.Next(chars.Length)]);
-                    }
+                    stringBuilder.Append('-');
                 }
 
-                return stringBuilder.ToString();
+                for (int j = 0; j < 3; j++)
+                {
+                    stringBuilder.Append(chars[random.Next(chars.Length)]);
+                }
             }
 
+            return stringBuilder.ToString();
         }
-    } 
+    }
+}

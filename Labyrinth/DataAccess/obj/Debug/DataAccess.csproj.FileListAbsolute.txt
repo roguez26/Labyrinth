@@ -3,8 +3,11 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debu
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\DataAccess.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\EntityFramework.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\log4net.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\EntityFramework.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\log4net.pdb
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\bin\Debug\log4net.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\DataAccess\obj\Debug\DataAccess.csproj.Up2Date

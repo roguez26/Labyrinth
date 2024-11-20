@@ -64,7 +64,6 @@ namespace UnitTest
             var newUser = new TransferUser
             {
                 Username = "TestUser",
-                //Password = "TestPassword",
                 Email = "TestEmail@example.com",
                 Country = _testCountryId
             };
@@ -79,7 +78,6 @@ namespace UnitTest
             var newUser = new LabyrinthCommon.TransferUser
             {
                 Username = "TestUser",
-               // Password = "TestPassword",
                 Email = "TestEmail@example.com",
                 Country = 0
             };
@@ -91,6 +89,7 @@ namespace UnitTest
         public void TestAddVerificationCodeSuccessful()
         {
             string email = "axlvaldez74@gmail.com";
+            string username = "axl74";
 
             var newUser = new TransferUser
             {
@@ -100,13 +99,15 @@ namespace UnitTest
                 Country = _testCountryId
             };
             _userManagementServiceImplementation.AddUser(newUser, "TestPassword");
-            Assert.IsTrue(_userManagementServiceImplementation.AddVerificationCode(email) == 1);            
+            Assert.IsTrue(_userManagementServiceImplementation.AddVerificationCode(email, username) == 1);            
         }
 
         [TestMethod]
         public void TestAddVerificationCodeFailure()
         {
             string email = "axlvaldez74@gmail.com";
+            string username = "axl74";
+
 
             var newUser = new TransferUser
             {
@@ -117,7 +118,7 @@ namespace UnitTest
             };
             email = "TestExample@example.com";
             _userManagementServiceImplementation.AddUser(newUser, "TestPassword");
-            Assert.IsTrue(_userManagementServiceImplementation.AddVerificationCode(email) != 1);
+            Assert.IsTrue(_userManagementServiceImplementation.AddVerificationCode(email, username) != 1);
         }
 
         [TestMethod]
@@ -212,10 +213,9 @@ namespace UnitTest
             var testUser = new TransferUser
             {
                 Email = testEmail,
-               // Password = "12345"
             };
             
-            var verificatedUser = _userManagementServiceImplementation.UserVerification(testUser.Email, "12345");
+            var verificatedUser = _userManagementServiceImplementation.VerificateUser(testUser.Email, "12345");
             Assert.IsTrue(verificatedUser.IdUser > 0);            
         }
 
@@ -226,10 +226,9 @@ namespace UnitTest
             var testUser = new TransferUser
             {
                 Email = testEmail,
-               // Password = "12345"
             };
 
-            var verificatedUser = _userManagementServiceImplementation.UserVerification(testUser.Email,  "12345");
+            var verificatedUser = _userManagementServiceImplementation.VerificateUser(testUser.Email,  "12345");
             Assert.IsTrue(verificatedUser.IdUser == 0);
         }
 

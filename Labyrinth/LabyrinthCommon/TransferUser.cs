@@ -17,19 +17,13 @@ namespace LabyrinthCommon
         public string Username { get; set; }
 
         [DataMember]
-        public string Password { get; set; }
-
-        [DataMember]
         public string Email { get; set; }
 
         [DataMember]
         public int Country { get; set; }
 
         [DataMember]
-        public string ErrorCode { get; set; }
-
-        [DataMember]
-        public string ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
         [DataMember]
         public TransferCountry TransferCountry { get; set; }
