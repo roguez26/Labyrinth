@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using LabyrinthCommon;
 using log4net;
+using System.Linq;
 
 namespace LobbyManagementService
 {
@@ -30,39 +31,64 @@ namespace LobbyManagementService
             return lobbyCode;
         }
 
+
         public void JoinToGame(string lobbyCode, TransferUser user)
         {
-            List<TransferUser> members = new List<TransferUser>();
-            ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
-
-            if (callback == null)
+            try
             {
-                _log.Error("NullCallbackError");
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("NullCallbackError"));
+                ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
+
+                Dictionary<ILobbyManagementCallback, TransferUser> lobbyMembers = null;
+
+                if (callback != null && user != null)
+                {
+                    lock (_lobbies)
+                    {
+                        if (!_lobbies.TryGetValue(lobbyCode, out lobbyMembers) || lobbyMembers.ContainsKey(callback))
+                        {
+                            callback.GestMembersList(null);
+                            return;
+                        }
+                        lobbyMembers[callback] = user;
+                    }
+
+                    TransferUser[] members = lobbyMembers.Values.ToArray();
+
+                    foreach (var member in lobbyMembers)
+                    {
+                        member.Key.NotifyUserHasJoined(user);
+                        member.Key.GestMembersList(members);
+                    }
+                }
             }
-
-            if (!_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+            catch (Exception ex)
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("LobbyCodeNotFound"));
+                _log.Error($"Error in JoinToGame: {ex.Message}");
             }
+        }
 
-            if (lobbyMembers.ContainsKey(callback))
+        public void RemoveUserFromLobby(string lobbyCode, TransferUser user)
+        {
+            if (_lobbies.ContainsKey(lobbyCode))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("UserAlreadyJoined"));
-            }
+                var lobby = _lobbies[lobbyCode];
 
-            lobbyMembers[callback] = user;
-            members.Add(user);
+                var callbackToRemove = lobby.FirstOrDefault(kv => kv.Value.Username == user.Username).Key;
 
-            foreach (var member in lobbyMembers)
-            {
-                members.Add(member.Value);
-            }
+                if (callbackToRemove != null)
+                {
+                    lobby.Remove(callbackToRemove);
 
-            foreach (var member in lobbyMembers)
-            {
-                member.Key.NotifyUserHasJoined(user);
-                member.Key.GestMembersList(members);
+                    var members = lobby.Values.ToArray();
+
+                    foreach (var callback in lobby.Keys)
+                    {
+                        
+                        callback.NotifyUserHasLeft(user);
+                        callback.GestMembersList(members);
+                    }
+                    callbackToRemove.KickOutPlayer(user);
+                }
             }
         }
 

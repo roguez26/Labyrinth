@@ -74,9 +74,7 @@ namespace FriendsManagementService
                 {
                     IdUser = u.idUser,
                     Username = u.userName,
-                    ProfilePicture = !string.IsNullOrEmpty(u.profilePicture)
-                        ? userManagement.GetUserProfilePicture(u.profilePicture)
-                        : new byte[0]
+                    ProfilePicture = u.profilePicture
                 }).ToArray();
             }
 
@@ -93,24 +91,37 @@ namespace FriendsManagementService
 
             using (var context = new LabyrinthEntities())
             {
-                friendRequests = context.FriendRequest
+                var friendRequestsData = context.FriendRequest
                     .Where(fr => fr.idRequested == idUser && fr.status == FriendRequestStatus.Pending.ToString())
+                    .Select(fr => new
+                    {
+                        fr.idFriendRequest,
+                        fr.status,
+                        Requester = context.User
+                            .Where(u => u.idUser == fr.idRequester)
+                            .Select(u => new
+                            {
+                                u.idUser,
+                                u.userName,
+                                u.profilePicture
+                            })
+                            .FirstOrDefault()
+                    })
+                    .ToList(); 
+
+                 friendRequests = friendRequestsData
                     .Select(fr => new TransferFriendRequest
                     {
                         IdFriendRequest = fr.idFriendRequest,
                         Status = (FriendRequestStatus)Enum.Parse(typeof(FriendRequestStatus), fr.status),
-                        Requester = context.User
-                            .Where(u => u.idUser == fr.idRequester)
-                            .Select(u => new TransferUser
-                            {
-                                IdUser = u.idUser,
-                                Username = u.userName,
-                                ProfilePicture = userManagement.GetUserProfilePicture(u.profilePicture )
-                            })
-                            .FirstOrDefault() 
+                        Requester = new TransferUser
+                        {
+                            IdUser = fr.Requester.idUser,
+                            Username = fr.Requester.userName,
+                            ProfilePicture = fr.Requester.profilePicture
+                        }
                     })
-                    .ToList(); 
-
+                    .ToList();
             }
 
             return friendRequests.ToArray();
@@ -126,5 +137,32 @@ namespace FriendsManagementService
             return isFriend || IsFriendRequestRegistered(userId, friendId);
         }
 
+        public int AttendFriendRequest(int friendRequestId, LabyrinthCommon.FriendRequestStatus status)
+        {
+            int result = 0;
+
+            using (var context = new LabyrinthEntities())
+            {
+                var friendRequest = context.FriendRequest.FirstOrDefault(fr => fr.idFriendRequest == friendRequestId);
+
+                if (friendRequest != null)
+                {
+                    friendRequest.status = status.ToString();
+                }
+
+                if (status == FriendRequestStatus.Accepted)
+                {
+                    var newFriendship = new FriendList
+                    {
+                        idUserOne = friendRequest.idRequester,
+                        idUserTwo = friendRequest.idRequested
+                    };
+                    context.FriendList.Add(newFriendship);
+                }
+                result = context.SaveChanges();    
+            }
+
+            return result;
+        }
     }
 }

@@ -13,10 +13,13 @@ using LabyrinthCommon;
 
 namespace UserManagementService
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IUserManagementServiceCallback))]
     public interface IUserManagement
     {
         [OperationContract]
+        TransferUser[] GetRanking();
+
+        [OperationContract(IsOneWay = false)]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         int AddUser(TransferUser user, string password);
 
@@ -42,9 +45,8 @@ namespace UserManagementService
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         string ChangeUserProfilePicture(int userId, byte[] imagenData);
 
-        [OperationContract]
-        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        byte[] GetUserProfilePicture(string path);
+        [OperationContract(IsOneWay = true)]
+        void GetUserProfilePicture(int userId, string path);
 
         [OperationContract]
         bool VerificateCode(string email, string code);
@@ -57,7 +59,7 @@ namespace UserManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         bool IsEmailRegistered(string email);
-    }
 
-   
+        
+    }
 }

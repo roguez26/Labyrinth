@@ -24,6 +24,9 @@ namespace FriendsManagementService
 
         [OperationContract]
         bool IsFriend(int userId, int friendId);
+
+        [OperationContract]
+        int AttendFriendRequest(int friendRequestId, LabyrinthCommon.FriendRequestStatus status);
     }
 
 }

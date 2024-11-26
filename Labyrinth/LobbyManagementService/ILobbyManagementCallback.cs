@@ -16,6 +16,12 @@ namespace LobbyManagementService
         void NotifyUserHasJoined(TransferUser user);
 
         [OperationContract]
-        void GestMembersList(List<TransferUser> members);
+        void NotifyUserHasLeft(TransferUser user);
+
+        [OperationContract]
+        void GestMembersList(TransferUser[] members);
+
+        [OperationContract]
+        void KickOutPlayer(TransferUser user);
     }
 }

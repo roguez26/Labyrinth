@@ -23,9 +23,12 @@ namespace LabyrinthCommon
         public int Country { get; set; }
 
         [DataMember]
-        public byte[] ProfilePicture { get; set; }
+        public string ProfilePicture { get; set; }
 
         [DataMember]
         public TransferCountry TransferCountry { get; set; }
+
+        [DataMember]
+        public TransferStats TransferStats { get; set; }
     }
 }

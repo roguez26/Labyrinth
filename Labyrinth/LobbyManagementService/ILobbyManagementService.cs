@@ -17,8 +17,10 @@ namespace LobbyManagementService
         string CreateLobby(TransferUser lobbyCreator);
 
         [OperationContract(IsOneWay = true)]
-        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         void JoinToGame(string lobbyCode, TransferUser user);
+
+        [OperationContract(IsOneWay = true)]
+        void RemoveUserFromLobby(string lobbyCode, TransferUser user);
 
     }
 }

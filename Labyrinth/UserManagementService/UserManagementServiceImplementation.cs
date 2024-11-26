@@ -20,9 +20,11 @@ using System.Data.SqlClient;
 
 namespace UserManagementService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class UserManagementServiceImplementation : IUserManagement
     {
         private static readonly ILog _log = LogManager.GetLogger(typeof(UserManagementServiceImplementation));
+        private const int TOP_MAX = 10;
 
         public int AddUser(TransferUser user, string password)
         {
@@ -298,9 +300,7 @@ namespace UserManagementService
                             IdUser = searchedUser.idUser,
                             Username = searchedUser.userName,
                             Email = searchedUser.email,
-                            ProfilePicture = !string.IsNullOrEmpty(searchedUser.profilePicture)
-                                ? GetUserProfilePicture(searchedUser.profilePicture)
-                                : new byte[0],
+                            ProfilePicture = searchedUser.profilePicture,
                             TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
                         };
                     }
@@ -313,12 +313,8 @@ namespace UserManagementService
             return userForVerification;
         }
 
-
-
-
         public string ChangeUserProfilePicture(int userId, byte[] imagenData)
         {
-    
             string imageDirectory = Path.Combine("C:\\labyrinthImages", "profilePictures");
 
             if (!Directory.Exists(imageDirectory))
@@ -357,19 +353,14 @@ namespace UserManagementService
             return filePath;
         }
 
-        public byte[] GetUserProfilePicture(string path)
+        public void GetUserProfilePicture(int userId, string path)
         {
-            byte[] response = new byte[0];
+            IUserManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IUserManagementServiceCallback>();
 
-            if (File.Exists(path))
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
             {
-                response = File.ReadAllBytes(path);
-            } 
-            else
-            {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("ProfilePictureNotFoundMessage"));
+                callback.ReceiveProfilePicture(userId, File.ReadAllBytes(path));
             }
-            return response;
         }
           
         private string GenerateVerificationCode()
@@ -385,6 +376,35 @@ namespace UserManagementService
 
             return result.ToString();
         }
+
+        public TransferUser[] GetRanking()
+        {
+            using (var context = new LabyrinthEntities())
+            {
+                var topPlayers = (from stat in context.Stats
+                                  join user in context.User on stat.idUser equals user.idUser
+                                  orderby stat.gamesWon descending
+                                  select new TransferUser
+                                  {
+                                      IdUser = user.idUser,
+                                      Username = user.userName,
+                                      ProfilePicture = user.profilePicture,
+                                      Country = user.idCountry,
+
+                                      TransferStats = new TransferStats
+                                      {
+                                          StatId = stat.idStats,
+                                          GamesWon = stat.gamesWon.Value,
+                                          GamesPlayed = stat.gamesPlayed.Value
+                                      }
+                                  })
+                                  .Take(TOP_MAX)
+                                  .ToArray();
+
+                return topPlayers;
+            }
+        }
+
 
     }
 }
