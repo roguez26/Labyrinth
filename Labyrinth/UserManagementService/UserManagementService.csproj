@@ -59,9 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IUserManagement.cs" />
-    <Compile Include="IUserManagementServiceCallback.cs" />
+    <Compile Include="IUserProfilePictureManagementService.cs" />
+    <Compile Include="IUserProfilePictureManagementServiceCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManagementServiceImplementation.cs" />
+    <Compile Include="UserProfilePictureManagementServiceImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

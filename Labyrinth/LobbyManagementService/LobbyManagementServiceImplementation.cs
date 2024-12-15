@@ -17,77 +17,96 @@ namespace LobbyManagementService
 
         public string CreateLobby(TransferUser lobbyCreator)
         {
-            ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
-            string lobbyCode = GenerateLobbyCode();
+            string lobbyCode;
 
-            while (_lobbies.ContainsKey(lobbyCode))
+            if (lobbyCreator == null)
             {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailJoinToLobbyError"));
+            } 
+            else
+            {
+                ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
+
                 lobbyCode = GenerateLobbyCode();
+                if (callback != null)
+                {
+                    while (_lobbies.ContainsKey(lobbyCode))
+                    {
+                        lobbyCode = GenerateLobbyCode();
+                    }
+
+                    _lobbies[lobbyCode] = new Dictionary<ILobbyManagementCallback, TransferUser>();
+                    _lobbies[lobbyCode].Add(callback, lobbyCreator);
+                }
             }
-
-            _lobbies[lobbyCode] = new Dictionary<ILobbyManagementCallback, TransferUser>();
-            _lobbies[lobbyCode].Add(callback, lobbyCreator);
-
             return lobbyCode;
         }
 
 
         public void JoinToGame(string lobbyCode, TransferUser user)
         {
-            try
+            if (string.IsNullOrEmpty(lobbyCode) || user == null)
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailJoinToLobbyError"));
+
+            }
+            else
             {
                 ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
+                Dictionary<ILobbyManagementCallback, TransferUser> lobbyMembers = new Dictionary<ILobbyManagementCallback, TransferUser>();
 
-                Dictionary<ILobbyManagementCallback, TransferUser> lobbyMembers = null;
-
-                if (callback != null && user != null)
+                if (callback != null)
                 {
                     lock (_lobbies)
                     {
-                        if (!_lobbies.TryGetValue(lobbyCode, out lobbyMembers) || lobbyMembers.ContainsKey(callback))
+                        if (_lobbies.TryGetValue(lobbyCode, out lobbyMembers) && !lobbyMembers.ContainsKey(callback))
                         {
-                            callback.GestMembersList(null);
-                            return;
+                            lobbyMembers[callback] = user;
+                            TransferUser[] members = lobbyMembers.Values.ToArray();
+
+                            foreach (var member in lobbyMembers)
+                            {
+                                member.Key.NotifyUserHasJoined(user);
+                                member.Key.GestMembersList(members);
+                            }
                         }
-                        lobbyMembers[callback] = user;
-                    }
-
-                    TransferUser[] members = lobbyMembers.Values.ToArray();
-
-                    foreach (var member in lobbyMembers)
-                    {
-                        member.Key.NotifyUserHasJoined(user);
-                        member.Key.GestMembersList(members);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                _log.Error($"Error in JoinToGame: {ex.Message}");
             }
         }
 
         public void RemoveUserFromLobby(string lobbyCode, TransferUser user)
         {
-            if (_lobbies.ContainsKey(lobbyCode))
+            if (string.IsNullOrEmpty(lobbyCode) || user == null)
             {
-                var lobby = _lobbies[lobbyCode];
-
-                var callbackToRemove = lobby.FirstOrDefault(kv => kv.Value.Username == user.Username).Key;
-
-                if (callbackToRemove != null)
+                return;
+            }
+            else
+            {
+                if (_lobbies.ContainsKey(lobbyCode))
                 {
-                    lobby.Remove(callbackToRemove);
+                    var lobby = _lobbies[lobbyCode];
+                    var memberForRemove = lobby.FirstOrDefault(member => member.Value.Username == user.Username).Key;
 
-                    var members = lobby.Values.ToArray();
-
-                    foreach (var callback in lobby.Keys)
+                    if (memberForRemove != null)
                     {
-                        
-                        callback.NotifyUserHasLeft(user);
-                        callback.GestMembersList(members);
+                        lobby.Remove(memberForRemove);
+                        if(lobby.Count > 0)
+                        {
+                            var members = lobby.Values.ToArray();
+
+                            foreach (var callback in lobby.Keys)
+                            {
+                                callback.NotifyUserHasLeft(user);
+                                callback.GestMembersList(members);
+                            }
+                        } 
+                        else
+                        {
+                            _lobbies.Remove(lobbyCode);
+                        }
+                        memberForRemove.KickOutPlayer(user);
                     }
-                    callbackToRemove.KickOutPlayer(user);
                 }
             }
         }

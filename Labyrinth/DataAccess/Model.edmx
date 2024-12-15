@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="LabyrinthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="idCountry" />
-          </Key>
-          <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="FriendList">
           <Key>
             <PropertyRef Name="idFriendList" />
@@ -70,10 +63,10 @@
           </Key>
           <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="profilePicture" Type="varchar" MaxLength="120" />
-          <Property Name="idCountry" Type="int" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="countryCode" Type="varchar" MaxLength="2" />
         </EntityType>
         <EntityType Name="VerificationCode">
           <Key>
@@ -179,20 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="idCountry" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="idCountry" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="LabyrinthModelStoreContainer">
-          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FriendList" EntityType="Self.FriendList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FriendRequest" EntityType="Self.FriendRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" Schema="dbo" store:Type="Tables" />
@@ -233,23 +213,11 @@
             <End Role="User" EntitySet="User" />
             <End Role="Stats" EntitySet="Stats" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabyrinthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="idCountry" />
-          </Key>
-          <Property Name="idCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="LabyrinthModel.FK_User_Country" FromRole="Country" ToRole="User" />
-        </EntityType>
         <EntityType Name="FriendList">
           <Key>
             <PropertyRef Name="idFriendList" />
@@ -324,7 +292,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LabyrinthEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="FriendList" EntityType="Self.FriendList" />
           <EntitySet Name="FriendRequest" EntityType="Self.FriendRequest" />
           <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" />
@@ -337,10 +304,6 @@
           </AssociationSet>
           <EntitySet Name="VerificationCode" EntityType="LabyrinthModel.VerificationCode" />
           <EntitySet Name="User" EntityType="LabyrinthModel.User" />
-          <AssociationSet Name="FK_User_Country" Association="LabyrinthModel.FK_User_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_FriendList_User" Association="LabyrinthModel.FK_FriendList_User">
             <End Role="User" EntitySet="User" />
             <End Role="FriendList" EntitySet="FriendList" />
@@ -386,9 +349,7 @@
           <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="profilePicture" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-          <Property Name="idCountry" Type="Int32" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Country" Relationship="LabyrinthModel.FK_User_Country" FromRole="User" ToRole="Country" />
           <NavigationProperty Name="FriendList" Relationship="LabyrinthModel.FK_FriendList_User" FromRole="User" ToRole="FriendList" />
           <NavigationProperty Name="FriendList1" Relationship="LabyrinthModel.FK_FriendList_User1" FromRole="User" ToRole="FriendList" />
           <NavigationProperty Name="FriendRequest" Relationship="LabyrinthModel.FK_FriendRequest_User" FromRole="User" ToRole="FriendRequest" />
@@ -396,19 +357,8 @@
           <NavigationProperty Name="PlayerSkins" Relationship="LabyrinthModel.FK_PlayerSkins_User" FromRole="User" ToRole="PlayerSkins" />
           <NavigationProperty Name="Preferences" Relationship="LabyrinthModel.FK_Preferences_User" FromRole="User" ToRole="Preferences" />
           <NavigationProperty Name="Stats" Relationship="LabyrinthModel.FK_Stats_User" FromRole="User" ToRole="Stats" />
+          <Property Name="countryCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_User_Country">
-          <End Type="LabyrinthModel.Country" Role="Country" Multiplicity="1" />
-          <End Type="LabyrinthModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="idCountry" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="idCountry" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FriendList_User">
           <End Type="LabyrinthModel.User" Role="User" Multiplicity="1" />
           <End Type="LabyrinthModel.FriendList" Role="FriendList" Multiplicity="*" />
@@ -499,14 +449,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LabyrinthModelStoreContainer" CdmEntityContainer="LabyrinthEntities">
-          <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="LabyrinthModel.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FriendList">
             <EntityTypeMapping TypeName="LabyrinthModel.FriendList">
               <MappingFragment StoreEntitySet="FriendList">
@@ -577,8 +519,8 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="LabyrinthModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
                 <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="email" ColumnName="email" />

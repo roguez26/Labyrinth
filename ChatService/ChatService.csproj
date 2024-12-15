@@ -58,5 +58,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Labyrinth\LabyrinthCommon\LabyrinthCommon.csproj">
+      <Project>{a0f18e9d-e422-4202-81ab-5082e4ddf86e}</Project>
+      <Name>LabyrinthCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

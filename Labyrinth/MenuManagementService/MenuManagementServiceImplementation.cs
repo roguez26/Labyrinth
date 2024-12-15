@@ -5,6 +5,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using TransferUser = LabyrinthCommon.TransferUser;
+using LabyrinthCommon;
+using log4net;
 
 namespace MenuManagementService
 {
@@ -12,68 +14,97 @@ namespace MenuManagementService
 
     public class MenuManagementServiceImplementation : IMenuManagementService
     {
-        private static Dictionary<IMenuManagementServiceCallback, TransferUser> _players = new Dictionary<IMenuManagementServiceCallback, TransferUser>();
+        private static readonly ILog _log = LogManager.GetLogger(typeof(MenuManagementServiceImplementation));
+        private Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>> _players = new Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>>();
         public void Start(TransferUser user)
         {
-            if (user != null)
+            IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
+            if (user == null || callback == null)
             {
-                IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
-                if (callback != null)
+                return;
+            }
+            else
+            {
+                if (!_players.ContainsKey(user))
                 {
-                    if (!_players.ContainsKey(callback))
+                    _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
                     {
-                        _players.Add(callback, user);
+                        { callback, true }
+                    };
+                }
+                else
+                {
+                    var callbackDictionary = _players[user];
+                    ICommunicationObject communicationObject = callbackDictionary.Keys.FirstOrDefault() as ICommunicationObject;
+
+                    if (communicationObject != null && communicationObject.State == CommunicationState.Opened)
+                    {
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(
+                            new LabyrinthCommon.LabyrinthException("FailActiveSessionAlready")
+                        );
                     }
+                    callbackDictionary[callback] = true;
                 }
             }
         }
 
-        public void End(TransferUser user)
+
+        public void ChangeAvailability(TransferUser user, bool availability)
         {
             if (user != null)
             {
-                IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
-                if (callback != null)
+                if (_players.ContainsKey(user))
                 {
-                    if (_players.ContainsKey(callback))
-                    {
-                        _players.Remove(callback);
-                    }
-                }
-            }
-        }
-
-        public void InviteFriend(string username, string lobbyCode)
-        {
-            if (string.IsNullOrWhiteSpace(username))
-            {
-                throw new ArgumentException("El nombre de usuario no puede estar vacío.", nameof(username));
-            }
-
-            if (string.IsNullOrWhiteSpace(lobbyCode))
-            {
-                throw new ArgumentException("El código de lobby no puede estar vacío.", nameof(lobbyCode));
-            }
-
-            foreach (var entry in _players)
-            {
-                TransferUser user = entry.Value;
-                if (user.Username.Equals(username, StringComparison.OrdinalIgnoreCase))
-                {
-                    IMenuManagementServiceCallback callback = entry.Key;
-
+                    var callback = _players[user].Keys.FirstOrDefault();  
                     if (callback != null)
                     {
-                        callback.AttendInvitation(lobbyCode);
-                        Console.WriteLine($"Invitación enviada a {username} para el lobby {lobbyCode}.");
-                        return;
+                        _players[user][callback] = availability;
+                    }
+                }
+                else
+                {
+                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailCallbackNotFoundMessage"));
+                }
+            }
+        }
+
+        public void UpdateCallback(TransferUser user)
+        {
+            if (user != null)
+            {
+                IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
+                if (callback != null)
+                {
+                    if (_players.ContainsKey(user))
+                    {
+                        var currentAvailability = _players[user].FirstOrDefault().Value;
+
+                        _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
+                        {
+                            { callback, currentAvailability }
+                        };
+                    }
+                    else
+                    {
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("UserNotRegistered"));
                     }
                 }
             }
 
-            Console.WriteLine($"El usuario {username} no fue encontrado o no tiene un callback asociado.");
         }
-
-
+        public void InviteFriend(TransferUser inviter, TransferUser invitee, string lobbyCode)
+        {
+            if (inviter != null && invitee != null)
+            {
+                if (_players.TryGetValue(invitee, out var callback))
+                {
+                    if (callback?.Keys.Any() == true)
+                    {
+                        var firstKey = callback.Keys.ElementAt(0);
+                        firstKey.AttendInvitation(inviter, lobbyCode);
+                    }
+                }
+            }
+        }
     }
 }

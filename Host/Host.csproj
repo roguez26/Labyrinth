@@ -91,6 +91,10 @@
       <Project>{f92b1874-cdbb-44a3-8c9b-c28118b60fd0}</Project>
       <Name>LobbyManagementService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Labyrinth\MenuManagementService\MenuManagementService.csproj">
+      <Project>{8708ad79-4ca0-4768-94d2-f6347cf0ae31}</Project>
+      <Name>MenuManagementService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labyrinth\UserManagementService\UserManagementService.csproj">
       <Project>{cb054e87-4fdc-4879-995b-fa83d58e9cda}</Project>
       <Name>UserManagementService</Name>

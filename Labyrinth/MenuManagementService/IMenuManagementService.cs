@@ -10,15 +10,21 @@ namespace MenuManagementService
 {
     [ServiceContract(CallbackContract = typeof(IMenuManagementServiceCallback))]
 
-    internal interface IMenuManagementService
+    public interface IMenuManagementService
     {
         [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         void Start(TransferUser user);
 
         [OperationContract]
-        void End(TransferUser user);
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        void ChangeAvailability(TransferUser user, bool availability);
+
+        [OperationContract(IsOneWay = true)]
+        void InviteFriend(TransferUser inviter, TransferUser invitee, string lobbyCode);
 
         [OperationContract]
-        void InviteFriend(string username, string lobbyCode);
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        void UpdateCallback(TransferUser user);
     }
 }

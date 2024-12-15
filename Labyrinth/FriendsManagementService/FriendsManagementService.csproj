@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FriendsManagementServiceImplementation.cs" />
-    <Compile Include="IFriendsManagementCallback.cs" />
     <Compile Include="IFriendsManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

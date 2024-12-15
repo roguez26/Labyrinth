@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabyrinthCommon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -11,9 +12,14 @@ namespace ChatService
     public interface IChatService
     {
         [OperationContract(IsOneWay = true)]
-        void SendMessage(string message);
+        void SendMessage(string message, string lobbyCode);
 
-        [OperationContract]
-        void Start();
+        [OperationContract (IsOneWay = true)]
+        void Start(string lobbyCode, TransferUser lobbyCreator);
+        [OperationContract (IsOneWay = true)]
+        void JoinToChat(string lobbyCode, TransferUser user);
+
+        [OperationContract (IsOneWay = true)]
+        void RemoveUserFromChat(string lobbyCode, TransferUser user);
     }
 }
