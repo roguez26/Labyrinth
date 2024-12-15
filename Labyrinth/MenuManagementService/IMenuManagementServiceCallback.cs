@@ -10,9 +10,9 @@ namespace MenuManagementService
 {
     [ServiceContract]
 
-    internal interface IMenuManagementServiceCallback
+    public interface IMenuManagementServiceCallback
     {
         [OperationContract]
-        void AttendInvitation(string lobbyCode);
+        void AttendInvitation(TransferUser inviter, string lobbyCode);
     }
 }

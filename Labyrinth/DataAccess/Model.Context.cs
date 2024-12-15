@@ -25,7 +25,6 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<FriendList> FriendList { get; set; }
         public virtual DbSet<FriendRequest> FriendRequest { get; set; }
         public virtual DbSet<PlayerSkins> PlayerSkins { get; set; }

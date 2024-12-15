@@ -16,6 +16,7 @@ using LabyrinthCommon;
 using log4net;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using System.Data.Entity.Core;
 
 
 namespace UserManagementService
@@ -30,11 +31,18 @@ namespace UserManagementService
         {
             int idUser = 0;
 
-            if (IsEmailRegistered(user.Email))
+            if (user == null || string.IsNullOrEmpty(password))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+            }
+            if (IsEmailRegistered(user.Email) )
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
             }
-
+            if (IsUsernameRegistered(user.Username))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
+            }
             try
             {                
                 using (var context = new LabyrinthEntities())
@@ -44,24 +52,29 @@ namespace UserManagementService
                         userName = user.Username,
                         password = password,
                         email = user.Email,
-                        idCountry = user.Country
+                        countryCode = user.CountryCode
                     };
                     context.User.Add(newUser);
-                    context.SaveChanges();
-
-                    idUser = newUser.idCountry;
+                    idUser = context.SaveChanges();
                 }
-            }
-            catch (DbUpdateException ex)
-            {
-                _log.Error("AddUserError", ex);
             }
             catch (SqlException ex)
             {
-                _log.Error("AddUserError", ex);
+                LogAndWrapException("AddUserError", ex, "FailUserRegistrationError");
             }
-            Console.WriteLine(idUser);
+            catch (EntityException ex)
+            {
+                LogAndWrapException("AddUserError", ex, "FailUserRegistrationError");
+            }
             return idUser;
+        }
+
+        private void LogAndWrapException(string reason, Exception exception, string errorCode)
+        {
+            _log.Error(reason, exception);
+            throw new FaultException<LabyrinthCommon.LabyrinthException>(
+                new LabyrinthCommon.LabyrinthException(errorCode)
+            );
         }
 
         public int AddVerificationCode(string email, string username)
@@ -69,18 +82,22 @@ namespace UserManagementService
             int response = 0;
             string verificationCode = GenerateVerificationCode();
 
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(username))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+            }
+            if (IsEmailRegistered(email))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
+            }
+
+            if (IsUsernameRegistered(username))
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
+            }
+
             try
             {
-                if (IsEmailRegistered(email))
-                {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
-                }
-
-                if (IsUsernameRegistered(username))
-                {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
-                }
-
                 using (var context = new LabyrinthEntities())
                 {
                     context.VerificationCode.Add(new VerificationCode
@@ -90,19 +107,15 @@ namespace UserManagementService
                     });
                     response = context.SaveChanges();
                 }
-
-                if (SendVerificationCode(email, verificationCode) > 0)
-                {
-                    response = 1;
-                }
-            }
-            catch (DbUpdateException ex)
-            {
-                _log.Error("AddVerificationCode", ex);
+                response = SendVerificationCode(email, verificationCode);
             }
             catch (SqlException ex)
             {
-                _log.Error("AddVerificationCode", ex);
+                LogAndWrapException("AddVerificationCode", ex, "FailUserRegistrationError");
+            }
+            catch (EntityException ex)
+            {
+                LogAndWrapException("AddVerificationCode", ex, "FailUserRegistrationError");
             }
 
             return response;
@@ -165,10 +178,9 @@ namespace UserManagementService
                         smtpClient.Send(message);
                         response = 1;
                     }
-                    catch (SmtpException exception)
+                    catch (SmtpException ex)
                     {
-                        _log.Error("SendVerificationCodeError", exception);
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("SendVerificationCodeError"));
+                        LogAndWrapException("SendVerificationCodeError", ex, "FailUserRegistrationError");
                     }
                 }
             }
@@ -205,10 +217,9 @@ namespace UserManagementService
                     {
                         userSearched.email = newUser.Email;
                         userSearched.userName = newUser.Username;
-                        userSearched.idCountry = newUser.Country;
+                        userSearched.countryCode = newUser.CountryCode;
                         context.Entry(userSearched).Property(u => u.email).IsModified = true;
                         context.Entry(userSearched).Property(u => u.userName).IsModified = true;
-                        context.Entry(userSearched).Property(u => u.idCountry).IsModified = true;
                         response = context.SaveChanges();
                     }
                 }
@@ -261,9 +272,9 @@ namespace UserManagementService
             try
             {
                 using (var context = new LabyrinthEntities())
-                {                    
+                {
                     var usersToDelete = context.User.ToList();
-                                        
+
                     context.User.RemoveRange(usersToDelete);
                     usersDeletedCount = context.SaveChanges();
                 }
@@ -277,6 +288,28 @@ namespace UserManagementService
             return usersDeletedCount;
         }
 
+        public int DeleteUser(string username)
+        {
+            int result = 0;
+            try
+            {
+                using (var context = new LabyrinthEntities())
+                {
+                    var user = context.User.FirstOrDefault(userForSearching => userForSearching.userName == username);
+
+                    if (user != null)
+                    {
+                        context.User.Remove(user);
+                        result = context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error eliminando el usuario: {ex.Message}");
+            }
+            return result; 
+        }
 
         public TransferUser VerificateUser(string email, string password)
         {
@@ -301,7 +334,7 @@ namespace UserManagementService
                             Username = searchedUser.userName,
                             Email = searchedUser.email,
                             ProfilePicture = searchedUser.profilePicture,
-                            TransferCountry = catalogManagementServiceImplementation.GetCountryById(searchedUser.idCountry),
+                            CountryCode = searchedUser.countryCode,
                         };
                     }
                     else
@@ -313,7 +346,7 @@ namespace UserManagementService
             return userForVerification;
         }
 
-        public string ChangeUserProfilePicture(int userId, byte[] imagenData)
+        public void ChangeUserProfilePicture(int userId, byte[] imagenData)
         {
             string imageDirectory = Path.Combine("C:\\labyrinthImages", "profilePictures");
 
@@ -348,18 +381,6 @@ namespace UserManagementService
             catch (Exception exception)
             {
                 _log.Error("ChangeUserProfilePictureError", exception);
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("ChangeUserProfilePictureError"));
-            }
-            return filePath;
-        }
-
-        public void GetUserProfilePicture(int userId, string path)
-        {
-            IUserManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IUserManagementServiceCallback>();
-
-            if (!string.IsNullOrEmpty(path) && File.Exists(path))
-            {
-                callback.ReceiveProfilePicture(userId, File.ReadAllBytes(path));
             }
         }
           
@@ -389,7 +410,7 @@ namespace UserManagementService
                                       IdUser = user.idUser,
                                       Username = user.userName,
                                       ProfilePicture = user.profilePicture,
-                                      Country = user.idCountry,
+                                      CountryCode = user.countryCode,
 
                                       TransferStats = new TransferStats
                                       {

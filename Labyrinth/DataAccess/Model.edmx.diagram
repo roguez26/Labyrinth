@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="19fe8d0cc24842129e35c4439e2a9c3d" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="LabyrinthModel.Country" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="LabyrinthModel.FriendList" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LabyrinthModel.FriendRequest" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LabyrinthModel.PlayerSkins" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
@@ -15,7 +14,6 @@
         <AssociationConnector Association="LabyrinthModel.FK_PlayerSkins_Skin" ManuallyRouted="false" />
         <EntityTypeShape EntityType="LabyrinthModel.VerificationCode" Width="1.5" PointX="2.375" PointY="1.5" />
         <EntityTypeShape EntityType="LabyrinthModel.User" Width="1.5" PointX="3" PointY="8" />
-        <AssociationConnector Association="LabyrinthModel.FK_User_Country" />
         <AssociationConnector Association="LabyrinthModel.FK_FriendList_User" />
         <AssociationConnector Association="LabyrinthModel.FK_FriendList_User1" />
         <AssociationConnector Association="LabyrinthModel.FK_FriendRequest_User" />

@@ -30,18 +30,18 @@ namespace UnitTest
 
                 context.User.RemoveRange(context.User.ToList());
 
-                context.Country.RemoveRange(context.Country.ToList());
+              
 
                 context.SaveChanges();
 
-                var testCountry = new DataAccess.Country
-                {
-                    name = "Mexico"
-                };
-                context.Country.Add(testCountry);
-                context.SaveChanges();
+                //var testCountry = new DataAccess.Country
+                //{
+                //    name = "Mexico"
+                //};
+                //context.Country.Add(testCountry);
+                //context.SaveChanges();
 
-                _testCountryId = testCountry.idCountry;
+           //     _testCountryId = testCountry.idCountry;
             }
 
         }
@@ -53,7 +53,7 @@ namespace UnitTest
             {
                 context.VerificationCode.RemoveRange(context.VerificationCode.ToList());
                 context.User.RemoveRange(context.User.ToList());
-                context.Country.RemoveRange(context.Country.ToList());
+              //  context.Country.RemoveRange(context.Country.ToList());
                 context.SaveChanges();
             }
         }
@@ -65,7 +65,7 @@ namespace UnitTest
             {
                 Username = "TestUser",
                 Email = "TestEmail@example.com",
-                Country = _testCountryId
+             //   Country = _testCountryId
             };
 
             Assert.IsTrue(_userManagementServiceImplementation.AddUser(newUser, "TestPassword") > 0);
@@ -79,7 +79,7 @@ namespace UnitTest
             {
                 Username = "TestUser",
                 Email = "TestEmail@example.com",
-                Country = 0
+               // Country = 0
             };
 
             _userManagementServiceImplementation.AddUser(newUser, "TestPassword");
@@ -96,7 +96,7 @@ namespace UnitTest
                 Username = "TestUser",
               //  Password = "TestPassword",
                 Email = email,
-                Country = _testCountryId
+                //Country = _testCountryId
             };
             _userManagementServiceImplementation.AddUser(newUser, "TestPassword");
             Assert.IsTrue(_userManagementServiceImplementation.AddVerificationCode(email, username) == 1);            
@@ -114,7 +114,7 @@ namespace UnitTest
                 Username = "TestUser",
                // Password = "TestPassword",
                 Email = email,
-                Country = _testCountryId
+               // Country = _testCountryId
             };
             email = "TestExample@example.com";
             _userManagementServiceImplementation.AddUser(newUser, "TestPassword");
@@ -133,7 +133,7 @@ namespace UnitTest
                 Username = "TestUser",
                // Password = "TestPassword",
                 Email = testEmail,
-                Country = _testCountryId
+               // Country = _testCountryId
             };
             using (var context = new DataAccess.LabyrinthEntities())
             {
@@ -158,7 +158,6 @@ namespace UnitTest
                     userName = "TestUser",
                     password = "TestPassword",
                     email = "axlvaldez74@gmail.com",
-                    idCountry = _testCountryId
 
                 };
                 context.User.Add(testUser);
@@ -171,7 +170,7 @@ namespace UnitTest
                     Username = "UpdatedUser",
                     Email = "updated@example.com",
                   //  Password = "newpassword",
-                    Country = _testCountryId
+                  //  Country = _testCountryId
                 };
 
                 Assert.AreEqual(1, _userManagementServiceImplementation.UpdateUser(userToUpdate));
@@ -188,7 +187,7 @@ namespace UnitTest
                 Username = "UpdatedUser",
                 Email = "updated@example.com",
                // Password = "newpassword",
-                Country = _testCountryId
+               // Country = _testCountryId
             };
 
             Assert.AreEqual(-1, _userManagementServiceImplementation.UpdateUser(userToUpdate));
@@ -205,7 +204,6 @@ namespace UnitTest
                     userName = "TestUsername",
                     email = testEmail,
                     password = "12345",
-                    idCountry = _testCountryId
                 });
                 context.SaveChanges();
             }
@@ -243,7 +241,6 @@ namespace UnitTest
                     userName = "TestUsername",
                     email = testEmail,
                     password = "12345",
-                    idCountry = _testCountryId
                 });
                 context.SaveChanges();
             }

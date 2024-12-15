@@ -3,59 +3,95 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using log4net;
-using System.Text;
-using System.Threading.Tasks;
+using TransferUser = LabyrinthCommon.TransferUser;
 
 namespace ChatService
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class ChatServiceImplementation : IChatService
     {
-        private static List<IChatServiceCallback> _clients = new List<IChatServiceCallback>();
+        private readonly Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>> _lobbies = new Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>>();
         private static readonly ILog _log = LogManager.GetLogger(typeof(ChatServiceImplementation));
 
-        public void Start()
+        public void Start(string lobbyCode, TransferUser lobbyCreator)
         {
             IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
-
-            if (!_clients.Contains(callback))
+            if (callback == null || lobbyCreator == null || string.IsNullOrEmpty(lobbyCode))
             {
-                _clients.Add(callback);
+                return;
+            }
+           
+            lock (_lobbies)
+            {
+                if (!_lobbies.ContainsKey(lobbyCode))
+                {
+                    _lobbies[lobbyCode] = new Dictionary<IChatServiceCallback, TransferUser>
+                    {
+                        { callback, lobbyCreator }
+                    };
+                }
             }
         }
 
-        public void SendMessage(string message)
+        public void JoinToChat(string lobbyCode, TransferUser user)
         {
-            
-            List<IChatServiceCallback> clientsToRemove = new List<IChatServiceCallback>();
-
-            foreach (var client in _clients)
+            IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
+            if (callback == null || user == null || string.IsNullOrEmpty(lobbyCode))
             {
-                try
+                return;
+            }
+         
+            lock (_lobbies)
+            {
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers) && !lobbyMembers.ContainsKey(callback))
                 {
-                    if (((ICommunicationObject)client).State == CommunicationState.Opened)
-                    {
-                        client.BroadcastMessage(message);
-                    }
-                    else
-                    {
-                        clientsToRemove.Add(client);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    _log.Error("SendMessageError", exception);
+                    lobbyMembers[callback] = user;
                 }
             }
-
-
-            foreach (var clientToRemove in clientsToRemove)
-            {
-                _clients.Remove(clientToRemove);
-            }
-
-            Console.WriteLine(message);
         }
 
+        public void SendMessage(string message, string lobbyCode)
+        {
+            if (string.IsNullOrEmpty(message) || string.IsNullOrEmpty(lobbyCode))
+            {
+                return;
+            }
+
+            lock (_lobbies)
+            {
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                {
+                    foreach (var member in lobbyMembers)
+                    {
+                        member.Key.BroadcastMessage(message);
+                    }
+                }
+            }
+        }
+
+        public void RemoveUserFromChat(string lobbyCode, TransferUser user)
+        {
+            if (string.IsNullOrEmpty(lobbyCode) || user == null)
+            {
+                return;
+            }
+
+            lock (_lobbies)
+            {
+                if (_lobbies.TryGetValue(lobbyCode, out var lobby))
+                {
+                    var callbackToRemove = lobby.FirstOrDefault(callback => callback.Value.Username == user.Username).Key;
+                    if (callbackToRemove != null)
+                    {
+                        lobby.Remove(callbackToRemove);
+                    }
+                    if (lobby.Count == 0)
+                    {
+                        _lobbies.Remove(lobbyCode);
+                    }
+                }
+            }
+        }
     }
+
 }

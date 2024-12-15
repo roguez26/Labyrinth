@@ -19,6 +19,8 @@ namespace Host
         private static ServiceHost _catalogManagementHost;
         private static ServiceHost _lobbyManagementHost;
         private static ServiceHost _friendsManagementHost;
+        private static ServiceHost _menuManagementHost;
+        private static ServiceHost _userProfilePictureManagementHost;
 
         public static void StartHost()
         {
@@ -36,6 +38,8 @@ namespace Host
                 _catalogManagementHost = new ServiceHost(typeof(CatalogManagementService.CatalogManagementServiceImplementation));
                 _lobbyManagementHost = new ServiceHost(typeof(LobbyManagementService.LobbyManagementServiceImplementation));
                 _friendsManagementHost = new ServiceHost(typeof(FriendsManagementService.FriendsManagementServiceImplementation));
+                _menuManagementHost = new ServiceHost(typeof(MenuManagementService.MenuManagementServiceImplementation));
+                _userProfilePictureManagementHost = new ServiceHost(typeof(UserManagementService.UserProfilePictureManagementServiceImplementation));
 
                 _chatHost.Open();
                 log.Info("Chat service is running");
@@ -51,6 +55,12 @@ namespace Host
 
                 _friendsManagementHost.Open();
                 log.Info("Friends management service is running");
+
+                _menuManagementHost.Open();
+                log.Info("Menu management service is running");
+
+                _userProfilePictureManagementHost.Open();
+                log.Info("");
             }
             catch (Exception exception)
             {
@@ -75,6 +85,12 @@ namespace Host
                     log.Info("User management service stopped");
                 }
 
+                if (_userProfilePictureManagementHost != null)
+                {
+                    _userProfilePictureManagementHost.Close();
+                    log.Info("");
+                }
+
                 if (_catalogManagementHost != null)
                 {
                     _catalogManagementHost.Close();
@@ -91,6 +107,12 @@ namespace Host
                 {
                     _friendsManagementHost.Close();
                     log.Info("Friends management service stopped");
+                }
+                
+                if ( _menuManagementHost != null)
+                {
+                    _menuManagementHost.Close();
+                    log.Info("Menu management service stopped");
                 }
             }
             catch (Exception ex)
