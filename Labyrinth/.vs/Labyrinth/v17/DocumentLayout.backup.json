@@ -1,65 +1,43 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
-  "Documents": [],
-=======
-  "WorkspaceRootPath": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\gameservice\\gameserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|solutionrelative:gameservice\\gameserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\usermanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7ECE7631-4B0B-41D1-BE93-BFD2F2E3C8C8}|..\\ChatService\\ChatService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\chatservice\\chatserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\iusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\gameservice\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|solutionrelative:gameservice\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8708AD79-4CA0-4768-94D2-F6347CF0AE31}|MenuManagementService\\MenuManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\menumanagementservice\\menumanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8708AD79-4CA0-4768-94D2-F6347CF0AE31}|MenuManagementService\\MenuManagementService.csproj|solutionrelative:menumanagementservice\\menumanagementserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\labyrinthcommon\\transfergameboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\labyrinthcommon\\transfergameboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transfergameboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\lobbymanagementservice\\ilobbymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F92B1874-CDBB-44A3-8C9B-C28118B60FD0}|LobbyManagementService\\LobbyManagementService.csproj|solutionrelative:lobbymanagementservice\\ilobbymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CB054E87-4FDC-4879-995B-FA83D58E9CDA}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\gameservice\\igameservicecallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|solutionrelative:gameservice\\igameservicecallback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F50AE50-D949-4A4D-8E52-211BAC4AA06F}|..\\Host\\Host.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\host\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\labyrinthcommon\\transfertile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transfertile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\labyrinthcommon\\transferplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transferplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\labyrinthcommon\\transfertreasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transfertreasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{45C9A4A2-EA61-4469-BCAF-1DD02BFE421F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
->>>>>>> ca8e7cd96dbdebd895b5badd47ddb37472a951f9
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-<<<<<<< HEAD
           "DockedWidth": 77,
-          "SelectedChildIndex": -1,
-=======
-          "DockedWidth": 200,
           "SelectedChildIndex": 7,
->>>>>>> ca8e7cd96dbdebd895b5badd47ddb37472a951f9
           "Children": [
             {
               "$type": "Bookmark",
@@ -72,134 +50,97 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-<<<<<<< HEAD
-=======
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ILobbyManagementService.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementService.cs",
-              "RelativeDocumentMoniker": "LobbyManagementService\\ILobbyManagementService.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LobbyManagementService\\ILobbyManagementService.cs",
-              "RelativeToolTip": "LobbyManagementService\\ILobbyManagementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T02:07:32.823Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MenuManagementServiceImplementation.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\MenuManagementService\\MenuManagementServiceImplementation.cs",
-              "RelativeDocumentMoniker": "MenuManagementService\\MenuManagementServiceImplementation.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\MenuManagementService\\MenuManagementServiceImplementation.cs",
-              "RelativeToolTip": "MenuManagementService\\MenuManagementServiceImplementation.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAcwBMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T23:46:17.002Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ChatServiceImplementation.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
-              "RelativeDocumentMoniker": "ChatService\\ChatServiceImplementation.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\ChatService\\ChatServiceImplementation.cs",
-              "RelativeToolTip": "ChatService\\ChatServiceImplementation.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwEAAAAANAAAAAAAAAA==",
+              "Title": "IUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\IUserManagement.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\IUserManagement.cs",
+              "RelativeToolTip": "UserManagementService\\IUserManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T01:49:53.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameServiceImplementation.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\GameServiceImplementation.cs",
-              "RelativeDocumentMoniker": "GameService\\GameServiceImplementation.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\GameServiceImplementation.cs",
-              "RelativeToolTip": "GameService\\GameServiceImplementation.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAswLAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T01:47:18.558Z",
+              "WhenOpened": "2024-12-18T16:34:49.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TransferTreasure.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferTreasure.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferTreasure.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferTreasure.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferTreasure.cs",
+              "DocumentIndex": 2,
+              "Title": "ICatalogManagement.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeDocumentMoniker": "CatalogManagementService\\ICatalogManagement.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeToolTip": "CatalogManagementService\\ICatalogManagement.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T01:03:34.041Z"
+              "WhenOpened": "2024-12-18T16:34:00.395Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TransferPlayer.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferPlayer.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferPlayer.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferPlayer.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferPlayer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "TransferGameBoard.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
+              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferGameBoard.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
+              "RelativeToolTip": "LabyrinthCommon\\TransferGameBoard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T00:55:27.842Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TransferTile.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferTile.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferTile.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferTile.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferTile.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T00:38:04.468Z"
+              "WhenOpened": "2024-12-18T16:00:14.814Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TransferGameBoard.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
-              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferGameBoard.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
-              "RelativeToolTip": "LabyrinthCommon\\TransferGameBoard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T23:48:16.56Z"
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\App.config",
+              "RelativeDocumentMoniker": "UserManagementService\\App.config",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\App.config",
+              "RelativeToolTip": "UserManagementService\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-18T11:26:18.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IGameService.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameService.cs",
-              "RelativeDocumentMoniker": "GameService\\IGameService.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameService.cs",
-              "RelativeToolTip": "GameService\\IGameService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAmAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UserManagementServiceImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\UserManagementService\\UserManagementServiceImplementation.cs",
+              "RelativeToolTip": "UserManagementService\\UserManagementServiceImplementation.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwEAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T23:39:46.262Z"
+              "WhenOpened": "2024-12-18T11:25:08.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "RelativeDocumentMoniker": "..\\Host\\App.config",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Host\\App.config",
+              "RelativeToolTip": "..\\Host\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-18T11:18:14.666Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "IGameServiceCallback.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameServiceCallback.cs",
-              "RelativeDocumentMoniker": "GameService\\IGameServiceCallback.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameServiceCallback.cs",
-              "RelativeToolTip": "GameService\\IGameServiceCallback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T23:39:47.214Z"
->>>>>>> ca8e7cd96dbdebd895b5badd47ddb37472a951f9
+              "Title": "App.Config",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
+              "RelativeDocumentMoniker": "DataAccess\\App.Config",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\DataAccess\\App.Config",
+              "RelativeToolTip": "DataAccess\\App.Config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-12-18T11:17:54.34Z",
+              "EditorCaption": ""
             }
           ]
         }

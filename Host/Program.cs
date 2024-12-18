@@ -10,7 +10,7 @@ using log4net.Config;
 
 namespace Host
 {
-    public class Program
+    public static class Program
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 

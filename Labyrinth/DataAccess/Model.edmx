@@ -4,217 +4,217 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LabyrinthModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="FriendList">
-          <Key>
-            <PropertyRef Name="idFriendList" />
-          </Key>
-          <Property Name="idUserOne" Type="int" Nullable="false" />
-          <Property Name="idUserTwo" Type="int" Nullable="false" />
-          <Property Name="idFriendList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="FriendRequest">
-          <Key>
-            <PropertyRef Name="idFriendRequest" />
-          </Key>
-          <Property Name="idFriendRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idRequester" Type="int" Nullable="false" />
-          <Property Name="idRequested" Type="int" Nullable="false" />
-          <Property Name="status" Type="varchar" MaxLength="12" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PlayerSkins">
-          <Key>
-            <PropertyRef Name="idPlayerSkins" />
-          </Key>
-          <Property Name="idPlayerSkins" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idUser" Type="int" Nullable="false" />
-          <Property Name="idSkin" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Preferences">
-          <Key>
-            <PropertyRef Name="idPreferences" />
-          </Key>
-          <Property Name="idPreferences" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="lastPickedSkin" Type="int" Nullable="false" />
-          <Property Name="idUser" Type="int" Nullable="false" />
-          <Property Name="lastPickedGameboard" Type="int" />
-        </EntityType>
-        <EntityType Name="Skin">
-          <Key>
-            <PropertyRef Name="idSkin" />
-          </Key>
-          <Property Name="idSkin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="lock" Type="bit" Nullable="false" />
-          <Property Name="gamesWonToUnlock" Type="int" />
-        </EntityType>
-        <EntityType Name="Stats">
-          <Key>
-            <PropertyRef Name="idStats" />
-          </Key>
-          <Property Name="idStats" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="gamesWon" Type="int" />
-          <Property Name="gamesPlayed" Type="int" />
-          <Property Name="idUser" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="idUser" />
-          </Key>
-          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="profilePicture" Type="varchar" MaxLength="120" />
-          <Property Name="countryCode" Type="varchar" MaxLength="2" />
-        </EntityType>
-        <EntityType Name="VerificationCode">
-          <Key>
-            <PropertyRef Name="idVerificationCode" />
-          </Key>
-          <Property Name="idVerificationCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="code" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_FriendList_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="FriendList">
-              <PropertyRef Name="idUserOne" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FriendList_User1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="FriendList" Type="Self.FriendList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="FriendList">
-              <PropertyRef Name="idUserTwo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FriendRequest_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="FriendRequest" Type="Self.FriendRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="FriendRequest">
-              <PropertyRef Name="idRequester" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FriendRequest_User1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="FriendRequest" Type="Self.FriendRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="FriendRequest">
-              <PropertyRef Name="idRequested" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PlayerSkins_Skin">
-          <End Role="Skin" Type="Self.Skin" Multiplicity="1" />
-          <End Role="PlayerSkins" Type="Self.PlayerSkins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skin">
-              <PropertyRef Name="idSkin" />
-            </Principal>
-            <Dependent Role="PlayerSkins">
-              <PropertyRef Name="idSkin" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PlayerSkins_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="PlayerSkins" Type="Self.PlayerSkins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="PlayerSkins">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Preferences_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Preferences" Type="Self.Preferences" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="Preferences">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stats_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Stats" Type="Self.Stats" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="idUser" />
-            </Principal>
-            <Dependent Role="Stats">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="LabyrinthModelStoreContainer">
-          <EntitySet Name="FriendList" EntityType="Self.FriendList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FriendRequest" EntityType="Self.FriendRequest" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PlayerSkins" EntityType="Self.PlayerSkins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Preferences" EntityType="Self.Preferences" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Skin" EntityType="Self.Skin" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Stats" EntityType="Self.Stats" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VerificationCode" EntityType="Self.VerificationCode" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_FriendList_User" Association="Self.FK_FriendList_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="FriendList" EntitySet="FriendList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FriendList_User1" Association="Self.FK_FriendList_User1">
-            <End Role="User" EntitySet="User" />
-            <End Role="FriendList" EntitySet="FriendList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FriendRequest_User" Association="Self.FK_FriendRequest_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="FriendRequest" EntitySet="FriendRequest" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FriendRequest_User1" Association="Self.FK_FriendRequest_User1">
-            <End Role="User" EntitySet="User" />
-            <End Role="FriendRequest" EntitySet="FriendRequest" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlayerSkins_Skin" Association="Self.FK_PlayerSkins_Skin">
-            <End Role="Skin" EntitySet="Skin" />
-            <End Role="PlayerSkins" EntitySet="PlayerSkins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlayerSkins_User" Association="Self.FK_PlayerSkins_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="PlayerSkins" EntitySet="PlayerSkins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Preferences_User" Association="Self.FK_Preferences_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Preferences" EntitySet="Preferences" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Stats_User" Association="Self.FK_Stats_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Stats" EntitySet="Stats" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="LabyrinthModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LabyrinthModelStoreContainer">
+    <EntitySet Name="FriendList" EntityType="LabyrinthModel.Store.FriendList" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FriendRequest" EntityType="LabyrinthModel.Store.FriendRequest" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerSkins" EntityType="LabyrinthModel.Store.PlayerSkins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Preferences" EntityType="LabyrinthModel.Store.Preferences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Skin" EntityType="LabyrinthModel.Store.Skin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stats" EntityType="LabyrinthModel.Store.Stats" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VerificationCode" EntityType="LabyrinthModel.Store.VerificationCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="LabyrinthModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PlayerSkins_Skin" Association="LabyrinthModel.Store.FK_PlayerSkins_Skin">
+      <End Role="Skin" EntitySet="Skin" />
+      <End Role="PlayerSkins" EntitySet="PlayerSkins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendList_User" Association="LabyrinthModel.Store.FK_FriendList_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendList" EntitySet="FriendList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendList_User1" Association="LabyrinthModel.Store.FK_FriendList_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendList" EntitySet="FriendList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendRequest_User" Association="LabyrinthModel.Store.FK_FriendRequest_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendRequest" EntitySet="FriendRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FriendRequest_User1" Association="LabyrinthModel.Store.FK_FriendRequest_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="FriendRequest" EntitySet="FriendRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerSkins_User" Association="LabyrinthModel.Store.FK_PlayerSkins_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="PlayerSkins" EntitySet="PlayerSkins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preferences_User" Association="LabyrinthModel.Store.FK_Preferences_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Preferences" EntitySet="Preferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stats_User" Association="LabyrinthModel.Store.FK_Stats_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Stats" EntitySet="Stats" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FriendList">
+    <Key>
+      <PropertyRef Name="idFriendList" />
+    </Key>
+    <Property Name="idUserOne" Type="int" Nullable="false" />
+    <Property Name="idUserTwo" Type="int" Nullable="false" />
+    <Property Name="idFriendList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FriendRequest">
+    <Key>
+      <PropertyRef Name="idFriendRequest" />
+    </Key>
+    <Property Name="idFriendRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRequester" Type="int" Nullable="false" />
+    <Property Name="idRequested" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" Nullable="false" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="PlayerSkins">
+    <Key>
+      <PropertyRef Name="idPlayerSkins" />
+    </Key>
+    <Property Name="idPlayerSkins" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="idSkin" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Preferences">
+    <Key>
+      <PropertyRef Name="idPreferences" />
+    </Key>
+    <Property Name="idPreferences" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lastPickedSkin" Type="int" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+    <Property Name="lastPickedGameboard" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Skin">
+    <Key>
+      <PropertyRef Name="idSkin" />
+    </Key>
+    <Property Name="idSkin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="lock" Type="bit" Nullable="false" />
+    <Property Name="gamesWonToUnlock" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Stats">
+    <Key>
+      <PropertyRef Name="idStats" />
+    </Key>
+    <Property Name="idStats" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gamesWon" Type="int" Nullable="true" />
+    <Property Name="gamesPlayed" Type="int" Nullable="true" />
+    <Property Name="idUser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VerificationCode">
+    <Key>
+      <PropertyRef Name="idVerificationCode" />
+    </Key>
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="code" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="idVerificationCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="userName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="profilePicture" Type="varchar" Nullable="true" MaxLength="120" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="countryCode" Type="varchar" Nullable="true" MaxLength="2" />
+  </EntityType>
+  <Association Name="FK_PlayerSkins_Skin">
+    <End Role="Skin" Type="LabyrinthModel.Store.Skin" Multiplicity="1" />
+    <End Role="PlayerSkins" Type="LabyrinthModel.Store.PlayerSkins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skin">
+        <PropertyRef Name="idSkin" />
+      </Principal>
+      <Dependent Role="PlayerSkins">
+        <PropertyRef Name="idSkin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendList_User">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="FriendList" Type="LabyrinthModel.Store.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="idUserOne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendList_User1">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="FriendList" Type="LabyrinthModel.Store.FriendList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendList">
+        <PropertyRef Name="idUserTwo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendRequest_User">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="FriendRequest" Type="LabyrinthModel.Store.FriendRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendRequest">
+        <PropertyRef Name="idRequester" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FriendRequest_User1">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="FriendRequest" Type="LabyrinthModel.Store.FriendRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="FriendRequest">
+        <PropertyRef Name="idRequested" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerSkins_User">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="PlayerSkins" Type="LabyrinthModel.Store.PlayerSkins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="PlayerSkins">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Preferences_User">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="Preferences" Type="LabyrinthModel.Store.Preferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Preferences">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stats_User">
+    <End Role="User" Type="LabyrinthModel.Store.User" Multiplicity="1" />
+    <End Role="Stats" Type="LabyrinthModel.Store.Stats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Stats">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabyrinthModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -447,90 +447,89 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabyrinthModelStoreContainer" CdmEntityContainer="LabyrinthEntities">
-          <EntitySetMapping Name="FriendList">
-            <EntityTypeMapping TypeName="LabyrinthModel.FriendList">
-              <MappingFragment StoreEntitySet="FriendList">
-                <ScalarProperty Name="idUserOne" ColumnName="idUserOne" />
-                <ScalarProperty Name="idUserTwo" ColumnName="idUserTwo" />
-                <ScalarProperty Name="idFriendList" ColumnName="idFriendList" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FriendRequest">
-            <EntityTypeMapping TypeName="LabyrinthModel.FriendRequest">
-              <MappingFragment StoreEntitySet="FriendRequest">
-                <ScalarProperty Name="idFriendRequest" ColumnName="idFriendRequest" />
-                <ScalarProperty Name="idRequester" ColumnName="idRequester" />
-                <ScalarProperty Name="idRequested" ColumnName="idRequested" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlayerSkins">
-            <EntityTypeMapping TypeName="LabyrinthModel.PlayerSkins">
-              <MappingFragment StoreEntitySet="PlayerSkins">
-                <ScalarProperty Name="idPlayerSkins" ColumnName="idPlayerSkins" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="idSkin" ColumnName="idSkin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Preferences">
-            <EntityTypeMapping TypeName="LabyrinthModel.Preferences">
-              <MappingFragment StoreEntitySet="Preferences">
-                <ScalarProperty Name="idPreferences" ColumnName="idPreferences" />
-                <ScalarProperty Name="lastPickedSkin" ColumnName="lastPickedSkin" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-                <ScalarProperty Name="lastPickedGameboard" ColumnName="lastPickedGameboard" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Skin">
-            <EntityTypeMapping TypeName="LabyrinthModel.Skin">
-              <MappingFragment StoreEntitySet="Skin">
-                <ScalarProperty Name="idSkin" ColumnName="idSkin" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="lock" ColumnName="lock" />
-                <ScalarProperty Name="gamesWonToUnlock" ColumnName="gamesWonToUnlock" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stats">
-            <EntityTypeMapping TypeName="LabyrinthModel.Stats">
-              <MappingFragment StoreEntitySet="Stats">
-                <ScalarProperty Name="idStats" ColumnName="idStats" />
-                <ScalarProperty Name="gamesWon" ColumnName="gamesWon" />
-                <ScalarProperty Name="gamesPlayed" ColumnName="gamesPlayed" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VerificationCode">
-            <EntityTypeMapping TypeName="LabyrinthModel.VerificationCode">
-              <MappingFragment StoreEntitySet="VerificationCode">
-                <ScalarProperty Name="idVerificationCode" ColumnName="idVerificationCode" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="LabyrinthModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LabyrinthModelStoreContainer" CdmEntityContainer="LabyrinthEntities">
+    <EntitySetMapping Name="FriendList">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.FriendList)">
+        <MappingFragment StoreEntitySet="FriendList">
+          <ScalarProperty Name="idFriendList" ColumnName="idFriendList" />
+          <ScalarProperty Name="idUserOne" ColumnName="idUserOne" />
+          <ScalarProperty Name="idUserTwo" ColumnName="idUserTwo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FriendRequest">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.FriendRequest)">
+        <MappingFragment StoreEntitySet="FriendRequest">
+          <ScalarProperty Name="idFriendRequest" ColumnName="idFriendRequest" />
+          <ScalarProperty Name="idRequester" ColumnName="idRequester" />
+          <ScalarProperty Name="idRequested" ColumnName="idRequested" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerSkins">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.PlayerSkins)">
+        <MappingFragment StoreEntitySet="PlayerSkins">
+          <ScalarProperty Name="idPlayerSkins" ColumnName="idPlayerSkins" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idSkin" ColumnName="idSkin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preferences">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.Preferences)">
+        <MappingFragment StoreEntitySet="Preferences">
+          <ScalarProperty Name="idPreferences" ColumnName="idPreferences" />
+          <ScalarProperty Name="lastPickedSkin" ColumnName="lastPickedSkin" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="lastPickedGameboard" ColumnName="lastPickedGameboard" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skin">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.Skin)">
+        <MappingFragment StoreEntitySet="Skin">
+          <ScalarProperty Name="idSkin" ColumnName="idSkin" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lock" ColumnName="lock" />
+          <ScalarProperty Name="gamesWonToUnlock" ColumnName="gamesWonToUnlock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stats">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.Stats)">
+        <MappingFragment StoreEntitySet="Stats">
+          <ScalarProperty Name="idStats" ColumnName="idStats" />
+          <ScalarProperty Name="gamesWon" ColumnName="gamesWon" />
+          <ScalarProperty Name="gamesPlayed" ColumnName="gamesPlayed" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VerificationCode">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.VerificationCode)">
+        <MappingFragment StoreEntitySet="VerificationCode">
+          <ScalarProperty Name="idVerificationCode" ColumnName="idVerificationCode" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="IsTypeOf(LabyrinthModel.User)">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -544,7 +543,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

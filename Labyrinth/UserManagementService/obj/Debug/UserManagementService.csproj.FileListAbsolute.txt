@@ -21,7 +21,7 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementServi
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\obj\Debug\UserMana.E5835132.Up2Date
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\obj\Debug\UserManagementService.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\obj\Debug\UserManagementService.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.dll.config
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Labyrinth\UserManagementService\bin\Debug\App.config
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.dll
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Labyrinth\UserManagementService\bin\Debug\CatalogManagementService.dll

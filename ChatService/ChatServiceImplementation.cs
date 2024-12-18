@@ -12,7 +12,6 @@ namespace ChatService
     public class ChatServiceImplementation : IChatService
     {
         private readonly Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>> _lobbies = new Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>>();
-        private static readonly ILog _log = LogManager.GetLogger(typeof(ChatServiceImplementation));
 
         public int Start(string lobbyCode, TransferUser lobbyCreator)
         {

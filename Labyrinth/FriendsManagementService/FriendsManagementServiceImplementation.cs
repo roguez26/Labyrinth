@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using System.Data.Entity.Core;
 using UserManagementService;
+using System.Runtime.CompilerServices;
 
 
 namespace FriendsManagementService
@@ -59,7 +60,7 @@ namespace FriendsManagementService
             return idFriendRequest;
         }
 
-        private void LogAndWrapException(string reason, Exception exception, string errorCode)
+        private static void LogAndWrapException(string reason, Exception exception, string errorCode)
         {
             _log.Error(reason, exception);
             throw new FaultException<LabyrinthCommon.LabyrinthException>(
@@ -67,7 +68,7 @@ namespace FriendsManagementService
             );
         }
 
-        public bool IsFriendRequestRegistered(int userId, int friendId)
+        public static bool IsFriendRequestRegistered(int userId, int friendId)
         {
             using (var context = new LabyrinthEntities())
             {
@@ -75,19 +76,17 @@ namespace FriendsManagementService
             }
         }
 
-        public TransferUser[] GetMyFriendsList(int idUser)
+        public TransferUser[] GetMyFriendsList(int userId)
         {
             TransferUser[] friends = new TransferUser[0];
 
-            UserManagementService.UserManagementServiceImplementation userManagement =
-                new UserManagementService.UserManagementServiceImplementation();
             try
             {
                 using (var context = new LabyrinthEntities())
                 {
                     var friendIds = context.FriendList
-                        .Where(fr => fr.idUserOne == idUser || fr.idUserTwo == idUser)
-                        .Select(fr => fr.idUserOne == idUser ? fr.idUserTwo : fr.idUserOne)
+                        .Where(fr => fr.idUserOne == userId || fr.idUserTwo == userId)
+                        .Select(fr => fr.idUserOne == userId ? fr.idUserTwo : fr.idUserOne)
                         .ToList();
 
                     var users = context.User
@@ -117,7 +116,6 @@ namespace FriendsManagementService
         public TransferFriendRequest[] GetFriendRequestsList(int idUser)
         {
             List<TransferFriendRequest> friendRequests = new List<TransferFriendRequest>();
-            UserManagementService.UserManagementServiceImplementation userManagement = new UserManagementService.UserManagementServiceImplementation();
 
             try
             {

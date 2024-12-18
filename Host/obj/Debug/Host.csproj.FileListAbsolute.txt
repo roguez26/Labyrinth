@@ -35,6 +35,7 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\obj\Debug\Host.csproj.Co
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\obj\Debug\Host.csproj.Up2Date
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\obj\Debug\Host.exe
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\obj\Debug\Host.pdb
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\App.config
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\Host.exe.config
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\Host.exe
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\Host.pdb
@@ -61,7 +62,6 @@ C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\LabyrinthCommon.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\LobbyManagementService.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\MenuManagementService.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\UserManagementService.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\UserManagementService.dll.config
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\EntityFramework.xml
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\Host\bin\Debug\log4net.pdb
