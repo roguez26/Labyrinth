@@ -4,6 +4,7 @@ using log4net;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.ServiceModel;
@@ -16,12 +17,17 @@ namespace CatalogManagementService
         public TransferStats GetStatsByUserId(int userId)
         {
             TransferStats result = new TransferStats { StatId = 0};
+
+            if (userId <= 0)
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailStatsNotFoundError"));
+            }
+
             try
             {
                 using (var context = new LabyrinthEntities())
                 {
                     Stats stats = context.Stats.FirstOrDefault(statsForSearching => statsForSearching.idUser == userId);
-
                     if (stats != null)
                     {
                         result = new TransferStats
@@ -34,11 +40,59 @@ namespace CatalogManagementService
                     }
                 }
             }
-            catch (SqlException exception) 
+            catch (DbUpdateException exception) 
             {
                 LogAndWrapException("GetStatsByUserId", exception, "FailStatsNotFoundError");
             }
             catch (EntityException exception) {
+                LogAndWrapException("GetStatsByUserId", exception, "FailStatsNotFoundError");
+            }
+            return result;
+        }
+
+        public int AddStat(int userId, bool isWon)
+        {
+            int result = 0;
+            if (userId <= 0)
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailStatsNotFoundError"));
+            }
+
+            try
+            {
+                using (var context = new LabyrinthEntities())
+                {
+                    Stats stats = context.Stats.FirstOrDefault(statsForSearching => statsForSearching.idUser == userId);
+                    if (stats != null)
+                    {
+                        if (isWon)
+                        {
+                            stats.gamesWon = stats.gamesWon + 1;
+                            context.Entry(stats).Property(stat => stat.gamesWon).IsModified = true;
+                        }
+                        stats.gamesPlayed = stats.gamesPlayed + 1;
+                        context.Entry(stats).Property(stat => stat.gamesPlayed).IsModified = true;
+                        result = context.SaveChanges();
+                    } 
+                    else
+                    {
+                        var stat = new Stats
+                        {
+                            idUser = userId,
+                            gamesWon = isWon ? 1 : 0,
+                            gamesPlayed = 1
+                        };
+                        context.Stats.Add(stat);
+                        result = context.SaveChanges();
+                    }
+                }
+            }
+            catch (DbUpdateException exception)
+            {
+                LogAndWrapException("GetStatsByUserId", exception, "FailStatsNotFoundError");
+            }
+            catch (EntityException exception)
+            {
                 LogAndWrapException("GetStatsByUserId", exception, "FailStatsNotFoundError");
             }
             return result;
@@ -50,6 +104,28 @@ namespace CatalogManagementService
             throw new FaultException<LabyrinthCommon.LabyrinthException>(
                 new LabyrinthCommon.LabyrinthException(errorCode)
             );
+        }
+
+        public int DeleteStats()
+        {
+            int result = 0;
+
+            try
+            {
+                using (var context = new LabyrinthEntities())
+                {
+                    var stats = context.Stats.ToList();
+
+                    context.Stats.RemoveRange(stats);
+                    result = context.SaveChanges();
+                }
+            }
+            catch (Exception exception)
+            {
+                _log.Error("DeleteStats", exception);
+            }
+
+            return result;
         }
 
     }

@@ -14,17 +14,20 @@ namespace MenuManagementService
     {
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void Start(TransferUser user);
+        int Start(TransferUser user);
 
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void ChangeAvailability(TransferUser user, bool availability);
+        int ChangeAvailability(TransferUser user, bool availability);
 
         [OperationContract(IsOneWay = true)]
         void InviteFriend(TransferUser inviter, TransferUser invitee, string lobbyCode);
 
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void UpdateCallback(TransferUser user);
+        int UpdateCallback(TransferUser user);
+
+        [OperationContract]
+        void DeleteUsers();
     }
 }

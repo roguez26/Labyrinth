@@ -17,6 +17,14 @@ namespace CatalogManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthException))]
         TransferStats GetStatsByUserId(int userId);
+
+        [OperationContract]
+        [FaultContract(typeof(LabyrinthException))]
+
+        int AddStat(int userId, bool isWon);
+
+        [OperationContract]
+        int DeleteStats();
     }
 }
 

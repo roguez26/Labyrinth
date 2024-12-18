@@ -83,6 +83,10 @@
       <Project>{733d09a4-80e8-44cf-9d83-be70b7e8f2c0}</Project>
       <Name>FriendsManagementService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Labyrinth\GameService\GameService.csproj">
+      <Project>{2b51d536-7b8c-4b7a-b688-94e1dc95ef9b}</Project>
+      <Name>GameService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labyrinth\LabyrinthCommon\LabyrinthCommon.csproj">
       <Project>{a0f18e9d-e422-4202-81ab-5082e4ddf86e}</Project>
       <Name>LabyrinthCommon</Name>

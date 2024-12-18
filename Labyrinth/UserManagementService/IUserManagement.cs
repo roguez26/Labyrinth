@@ -43,12 +43,14 @@ namespace UserManagementService
 
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        int DeleteUser(string username);
-
-        [OperationContract(IsOneWay = true)]
-        void ChangeUserProfilePicture(int userId, byte[] imagenData);
+        int DeleteUser(int userId);
 
         [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        int ChangeUserProfilePicture(int userId, byte[] imagenData);
+
+        [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         bool VerificateCode(string email, string code);
 
         [OperationContract]
@@ -58,5 +60,8 @@ namespace UserManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         bool IsEmailRegistered(string email);
+
+        [OperationContract]
+        int DeleteVerificationCode(string email);
     }
 }

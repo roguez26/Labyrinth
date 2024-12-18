@@ -14,12 +14,18 @@ namespace ChatService
         [OperationContract(IsOneWay = true)]
         void SendMessage(string message, string lobbyCode);
 
-        [OperationContract (IsOneWay = true)]
-        void Start(string lobbyCode, TransferUser lobbyCreator);
-        [OperationContract (IsOneWay = true)]
-        void JoinToChat(string lobbyCode, TransferUser user);
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
 
-        [OperationContract (IsOneWay = true)]
-        void RemoveUserFromChat(string lobbyCode, TransferUser user);
+        int Start(string lobbyCode, TransferUser lobbyCreator);
+
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+
+        int JoinToChat(string lobbyCode, TransferUser user);
+
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        int RemoveUserFromChat(string lobbyCode, TransferUser user);
     }
 }

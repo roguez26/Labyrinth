@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.ServiceModel;
 using log4net;
 using TransferUser = LabyrinthCommon.TransferUser;
@@ -13,14 +14,14 @@ namespace ChatService
         private readonly Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>> _lobbies = new Dictionary<string, Dictionary<IChatServiceCallback, TransferUser>>();
         private static readonly ILog _log = LogManager.GetLogger(typeof(ChatServiceImplementation));
 
-        public void Start(string lobbyCode, TransferUser lobbyCreator)
+        public int Start(string lobbyCode, TransferUser lobbyCreator)
         {
+            int result = 0;
             IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
-            if (callback == null || lobbyCreator == null || string.IsNullOrEmpty(lobbyCode))
+            if (string.IsNullOrEmpty(lobbyCode) || lobbyCreator == null || callback == null)
             {
-                return;
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailChatError"));
             }
-           
             lock (_lobbies)
             {
                 if (!_lobbies.ContainsKey(lobbyCode))
@@ -29,25 +30,31 @@ namespace ChatService
                     {
                         { callback, lobbyCreator }
                     };
+                    result = 1;
                 }
             }
+            return result;
         }
 
-        public void JoinToChat(string lobbyCode, TransferUser user)
+        public int JoinToChat(string lobbyCode, TransferUser user)
         {
+            int result = 0;
+
             IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
             if (callback == null || user == null || string.IsNullOrEmpty(lobbyCode))
             {
-                return;
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailChatError"));
             }
-         
+
             lock (_lobbies)
             {
-                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers) && !lobbyMembers.ContainsKey(callback))
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
                     lobbyMembers[callback] = user;
+                    result = 1;
                 }
             }
+            return result;
         }
 
         public void SendMessage(string message, string lobbyCode)
@@ -56,41 +63,46 @@ namespace ChatService
             {
                 return;
             }
-
             lock (_lobbies)
             {
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
                     foreach (var member in lobbyMembers)
                     {
-                        member.Key.BroadcastMessage(message);
+                        var callbackDictionary = member;
+                        ICommunicationObject communicationObject = callbackDictionary.Key as ICommunicationObject;
+
+                        if (communicationObject != null && communicationObject.State == CommunicationState.Opened)
+                        {
+                            member.Key.BroadcastMessage(message);
+                        }
                     }
                 }
             }
         }
 
-        public void RemoveUserFromChat(string lobbyCode, TransferUser user)
+        public int RemoveUserFromChat(string lobbyCode, TransferUser user)
         {
+            int result = 0;
+
             if (string.IsNullOrEmpty(lobbyCode) || user == null)
             {
-                return;
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailChatError"));
             }
-
-            lock (_lobbies)
+            if (_lobbies.TryGetValue(lobbyCode, out var lobby))
             {
-                if (_lobbies.TryGetValue(lobbyCode, out var lobby))
+                var callbackToRemove = lobby.FirstOrDefault(callback => callback.Value.Username == user.Username).Key;
+                if (callbackToRemove != null)
                 {
-                    var callbackToRemove = lobby.FirstOrDefault(callback => callback.Value.Username == user.Username).Key;
-                    if (callbackToRemove != null)
-                    {
-                        lobby.Remove(callbackToRemove);
-                    }
+                    lobby.Remove(callbackToRemove);
                     if (lobby.Count == 0)
                     {
                         _lobbies.Remove(lobbyCode);
                     }
+                    result = 1;
                 }
             }
+            return result;
         }
     }
 

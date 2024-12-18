@@ -16,85 +16,95 @@ namespace MenuManagementService
     {
         private static readonly ILog _log = LogManager.GetLogger(typeof(MenuManagementServiceImplementation));
         private Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>> _players = new Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>>();
-        public void Start(TransferUser user)
+        public int Start(TransferUser user)
         {
+            int result = 0;
             IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
             if (user == null || callback == null)
             {
-                return;
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyError"));
+            }
+            
+            if (!_players.ContainsKey(user))
+            {
+                _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
+                {
+                    { callback, true }
+                };
+                result = 1;
             }
             else
             {
-                if (!_players.ContainsKey(user))
-                {
-                    _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
-                    {
-                        { callback, true }
-                    };
-                }
-                else
-                {
-                    var callbackDictionary = _players[user];
-                    ICommunicationObject communicationObject = callbackDictionary.Keys.FirstOrDefault() as ICommunicationObject;
+                var callbackDictionary = _players[user];
+                ICommunicationObject communicationObject = callbackDictionary.Keys.FirstOrDefault() as ICommunicationObject;
 
-                    if (communicationObject != null && communicationObject.State == CommunicationState.Opened)
-                    {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                            new LabyrinthCommon.LabyrinthException("FailActiveSessionAlready")
-                        );
-                    }
-                    callbackDictionary[callback] = true;
+                if (communicationObject != null && communicationObject.State == CommunicationState.Opened)
+                {
+                    throw new FaultException<LabyrinthCommon.LabyrinthException>(
+                        new LabyrinthCommon.LabyrinthException("FailActiveSessionAlready")
+                    );
                 }
+                callbackDictionary[callback] = true;
+                result = 1;
             }
+            
+            return result;
         }
 
 
-        public void ChangeAvailability(TransferUser user, bool availability)
+        public int ChangeAvailability(TransferUser user, bool availability)
         {
-            if (user != null)
+            int result = 0;
+            if (user == null)
             {
-                if (_players.ContainsKey(user))
-                {
-                    var callback = _players[user].Keys.FirstOrDefault();  
-                    if (callback != null)
-                    {
-                        _players[user][callback] = availability;
-                    }
-                }
-                else
-                {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailCallbackNotFoundMessage"));
-                }
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyError"));
             }
-        }
 
-        public void UpdateCallback(TransferUser user)
-        {
-            if (user != null)
+            if (_players.ContainsKey(user))
             {
-                IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
+                var callback = _players[user].Keys.FirstOrDefault();  
                 if (callback != null)
                 {
-                    if (_players.ContainsKey(user))
-                    {
-                        var currentAvailability = _players[user].FirstOrDefault().Value;
-
-                        _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
-                        {
-                            { callback, currentAvailability }
-                        };
-                    }
-                    else
-                    {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("UserNotRegistered"));
-                    }
+                    _players[user][callback] = availability;
+                    result = 1;
                 }
             }
-
+            else
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailCallbackNotFoundMessage"));
+            }
+            return result;
         }
+
+        public int UpdateCallback(TransferUser user)
+        {
+            IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
+            int result = 0;
+            if (user == null || callback == null)
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyError"));
+            }
+          
+            if (_players.ContainsKey(user))
+            {
+                var currentAvailability = _players[user].FirstOrDefault().Value;
+
+                _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
+                {
+                    { callback, currentAvailability }
+                };
+                result = 1;
+            }
+            else
+            {
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("UserNotRegistered"));
+            }
+            return result;
+        }
+
         public void InviteFriend(TransferUser inviter, TransferUser invitee, string lobbyCode)
         {
-            if (inviter != null && invitee != null)
+            if (inviter != null && invitee != null && !string.IsNullOrEmpty(lobbyCode))
             {
                 if (_players.TryGetValue(invitee, out var callback))
                 {
@@ -105,6 +115,11 @@ namespace MenuManagementService
                     }
                 }
             }
+        }
+
+        public void DeleteUsers()
+        {
+            _players.Clear();
         }
     }
 }
