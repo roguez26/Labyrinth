@@ -31,5 +31,8 @@ namespace GameService
         [OperationContract(IsOneWay = true)]
         void SendGameBoardToLobby(string lobbyCode, TransferGameBoard gameBoard);
 
+        [OperationContract]
+        void SelectCharacter(string skinPath);
+
     }
 }

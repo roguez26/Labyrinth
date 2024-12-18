@@ -171,16 +171,20 @@ namespace GameService
                             {
                                 player.ReceiveGameBoard(gameBoard);
                             }
-                            catch (Exception ex)
+                            catch (CommunicationException ex)
                             {
                                 _log.Error($"Error al enviar el tablero al jugador: {ex.Message}");
                                 Console.WriteLine("error");
-
                             }
                         }
                     }
                 }
             }
+        }
+
+        public void SelectCharacter(string skinPath)
+        {
+
         }
     }
 
