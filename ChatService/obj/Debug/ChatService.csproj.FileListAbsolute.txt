@@ -10,15 +10,3 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatSer
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatServ.52F73ADC.Up2Date
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatService.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatService.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.dll
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\LabyrinthCommon.dll
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.dll
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\LabyrinthCommon.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.pdb
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.xml
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.csproj.AssemblyReference.cache
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.csproj.CoreCompileInputs.cache
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatServ.52F73ADC.Up2Date
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.dll
-C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.pdb
