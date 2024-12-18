@@ -12,7 +12,9 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatSer
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\ChatService\obj\Debug\ChatService.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.dll
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\ChatService.pdb
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\LabyrinthCommon.dll
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.dll
+C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\LabyrinthCommon.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.pdb
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\bin\Debug\log4net.xml
 C:\Users\axel_\OneDrive\Escritorio\Labyrinth\ChatService\obj\Debug\ChatService.csproj.AssemblyReference.cache
