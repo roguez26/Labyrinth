@@ -10,7 +10,7 @@ namespace LabyrinthCommon
     public class TransferGameBoard
     {
         [DataMember]
-        public List<List<TransferTile>> Board { get; set; }
+        public int[] TilesPositions { get; set; }
 
         [DataMember]
         public (int Row, int Col)[] PlayerPositions { get; set; }
@@ -20,6 +20,9 @@ namespace LabyrinthCommon
 
         [DataMember]
         public List<TransferPlayer> Players { get; set; }
+
+        [DataMember]
+        public bool IsClassicSelected {  get; set; }
 
     }
 }

@@ -14,6 +14,10 @@ namespace GameService
        
         [OperationContract]
         void ReceiveGameBoard(TransferGameBoard gameBoard);
-        
+
+
+        [OperationContract]
+        void NotifyTurn(TransferUser currentUser);
+
     }
 }

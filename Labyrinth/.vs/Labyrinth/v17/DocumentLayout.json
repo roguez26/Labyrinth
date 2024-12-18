@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\gameservice\\gameserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|solutionrelative:gameservice\\gameserviceimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\gameservice\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B51D536-7B8C-4B7A-B688-94E1DC95EF9B}|GameService\\GameService.csproj|solutionrelative:gameservice\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|c:\\users\\ivanr\\downloads\\labyrinthbackup\\labyrinth\\labyrinth\\labyrinthcommon\\transfergameboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0F18E9D-E422-4202-81AB-5082E4DDF86E}|LabyrinthCommon\\LabyrinthCommon.csproj|solutionrelative:labyrinthcommon\\transfergameboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,27 +35,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GameServiceImplementation.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\GameServiceImplementation.cs",
-              "RelativeDocumentMoniker": "GameService\\GameServiceImplementation.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\GameServiceImplementation.cs",
-              "RelativeToolTip": "GameService\\GameServiceImplementation.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAowK8AAAArAAAAAAAAAA==",
+              "Title": "TransferGameBoard.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
+              "RelativeDocumentMoniker": "LabyrinthCommon\\TransferGameBoard.cs",
+              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\LabyrinthCommon\\TransferGameBoard.cs",
+              "RelativeToolTip": "LabyrinthCommon\\TransferGameBoard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T01:47:18.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IGameService.cs",
-              "DocumentMoniker": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameService.cs",
-              "RelativeDocumentMoniker": "GameService\\IGameService.cs",
-              "ToolTip": "C:\\Users\\ivanr\\Downloads\\LabyrinthBackUp\\Labyrinth\\Labyrinth\\GameService\\IGameService.cs",
-              "RelativeToolTip": "GameService\\IGameService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T23:39:46.262Z",
+              "WhenOpened": "2024-12-18T17:41:43.842Z",
               "EditorCaption": ""
             }
           ]

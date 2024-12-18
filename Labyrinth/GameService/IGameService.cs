@@ -34,5 +34,8 @@ namespace GameService
         [OperationContract]
         void SelectCharacter(string skinPath);
 
+        [OperationContract(IsOneWay = true)]
+        void AsignTurn(string lobbyCode, TransferUser currentUser);
+
     }
 }

@@ -150,31 +150,23 @@ namespace GameService
 
         public void SendGameBoardToLobby(string lobbyCode, TransferGameBoard gameBoard)
         {
-            Console.WriteLine("try");
             if (!string.IsNullOrEmpty(lobbyCode) && gameBoard != null)
             {
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
-                    Console.WriteLine("find");
-
-                    // Obtener el primer jugador
                     var firstPlayer = lobbyMembers.Keys.FirstOrDefault();
 
-                    // Enviar el tablero solo a los demás jugadores, no al primero
                     foreach (var player in lobbyMembers.Keys)
                     {
-                        if (player != firstPlayer) // Evitar que el primer jugador reciba el tablero
+                        if (player != firstPlayer) 
                         {
-                            Console.WriteLine("notified");
-
                             try
                             {
                                 player.ReceiveGameBoard(gameBoard);
                             }
                             catch (CommunicationException ex)
                             {
-                                _log.Error($"Error al enviar el tablero al jugador: {ex.Message}");
-                                Console.WriteLine("error");
+                                _log.Error(ex.Message);
                             }
                         }
                     }
@@ -186,6 +178,38 @@ namespace GameService
         {
 
         }
+
+        public void AsignTurn(string lobbyCode, TransferUser currentUser)
+        {
+            if (_lobbies.ContainsKey(lobbyCode))
+            {
+                var lobby = _lobbies[lobbyCode];
+                var users = lobby.Values.ToList();
+
+                int currentIndex = users.FindIndex(user => user.IdUser == currentUser.IdUser);
+
+                if (currentIndex != -1)
+                {
+                    int nextIndex = (currentIndex + 1) % users.Count;
+
+                    TransferUser nextUser = users[nextIndex];
+
+                    Console.WriteLine(nextUser.Username);
+                    foreach (var user in users)
+                    {
+                        IGameServiceCallback userCallback = lobby.FirstOrDefault(x => x.Value == user).Key;
+
+                        if (userCallback != null)
+                        {
+                            userCallback.NotifyTurn(nextUser);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 
 }
