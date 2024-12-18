@@ -53,7 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\LabyrinthCommon\LabyrinthCommon.csproj">
+      <Project>{A0F18E9D-E422-4202-81AB-5082E4DDF86E}</Project>
+      <Name>LabyrinthCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LabyrinthCommon\LabyrinthCommon.csproj">

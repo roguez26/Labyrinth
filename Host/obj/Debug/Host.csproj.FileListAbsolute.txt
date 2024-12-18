@@ -1,3 +1,4 @@
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\App.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\Host.exe.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\Host.exe
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\Host.pdb
@@ -19,13 +20,11 @@ C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\CatalogManagem
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\DataAccess.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\DataAccess.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\FriendsManagementService.pdb
-C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\FriendsManagementService.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\GameService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\LabyrinthCommon.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\LobbyManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\MenuManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\UserManagementService.pdb
-C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\UserManagementService.dll.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\EntityFramework.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Host\bin\Debug\log4net.pdb

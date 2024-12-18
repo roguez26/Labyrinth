@@ -1,4 +1,4 @@
-C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.dll.config
+C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\bin\Debug\App.config
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.dll
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\bin\Debug\UserManagementService.pdb
 C:\Users\ivanr\Downloads\LabyrinthBackUp\Labyrinth\Labyrinth\UserManagementService\bin\Debug\CatalogManagementService.dll

@@ -18,6 +18,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Data.Entity.Core;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 
 namespace UserManagementService
@@ -36,7 +37,7 @@ namespace UserManagementService
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
             }
-            if (IsEmailRegistered(user.Email) )
+            if (IsEmailRegistered(user.Email))
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
             }
@@ -45,7 +46,7 @@ namespace UserManagementService
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
             }
             try
-            {                
+            {
                 using (var context = new LabyrinthEntities())
                 {
                     var newUser = new User
@@ -226,7 +227,6 @@ namespace UserManagementService
             }
             return response;
         }
-
 
         public int UpdateUser(TransferUser newUser)
         {

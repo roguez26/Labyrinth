@@ -14,8 +14,7 @@ namespace MenuManagementService
 
     public class MenuManagementServiceImplementation : IMenuManagementService
     {
-        private static readonly ILog _log = LogManager.GetLogger(typeof(MenuManagementServiceImplementation));
-        private Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>> _players = new Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>>();
+        private readonly Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>> _players = new Dictionary<TransferUser, Dictionary<IMenuManagementServiceCallback, bool>>();
         public int Start(TransferUser user)
         {
             int result = 0;

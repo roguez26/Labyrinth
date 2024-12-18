@@ -50,7 +50,7 @@ namespace CatalogManagementService
             return result;
         }
 
-        public int AddStat(int userId, bool isWon)
+        public int AddStat(int userId, bool hasWon)
         {
             int result = 0;
             if (userId <= 0)
@@ -65,7 +65,7 @@ namespace CatalogManagementService
                     Stats stats = context.Stats.FirstOrDefault(statsForSearching => statsForSearching.idUser == userId);
                     if (stats != null)
                     {
-                        if (isWon)
+                        if (hasWon)
                         {
                             stats.gamesWon = stats.gamesWon + 1;
                             context.Entry(stats).Property(stat => stat.gamesWon).IsModified = true;
@@ -79,7 +79,7 @@ namespace CatalogManagementService
                         var stat = new Stats
                         {
                             idUser = userId,
-                            gamesWon = isWon ? 1 : 0,
+                            gamesWon = hasWon ? 1 : 0,
                             gamesPlayed = 1
                         };
                         context.Stats.Add(stat);
@@ -98,7 +98,7 @@ namespace CatalogManagementService
             return result;
         }
 
-        private void LogAndWrapException(string reason, Exception exception, string errorCode)
+        private static void LogAndWrapException(string reason, Exception exception, string errorCode)
         {
             _log.Error(reason, exception);
             throw new FaultException<LabyrinthCommon.LabyrinthException>(
@@ -106,7 +106,7 @@ namespace CatalogManagementService
             );
         }
 
-        public int DeleteStats()
+        public static int DeleteStats()
         {
             int result = 0;
 
