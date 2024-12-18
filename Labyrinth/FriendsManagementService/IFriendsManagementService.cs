@@ -59,6 +59,13 @@ namespace FriendsManagementService
         /// <param name="status">El estado de la solicitud de amistad (aceptada o rechazada).</param>
         /// <returns>El ID de la solicitud de amistad que fue atendida.</returns>
         [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         int AttendFriendRequest(int friendRequestId, LabyrinthCommon.FriendRequestStatus status);
+
+        [OperationContract]
+        int DeleteFriendRequests(int friendRequestId);
+
+        [OperationContract]
+        int DeleteFriendList(int friendRequestId);
     }
 }

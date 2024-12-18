@@ -87,15 +87,11 @@ namespace UserManagementService
         /// <exception cref="LabyrinthException">Lanzada cuando ocurre un error al eliminar el usuario.</exception>
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        int DeleteUser(string username);
+        int DeleteUser(int userId);
 
-        /// <summary>
-        /// Cambia la foto de perfil de un usuario.
-        /// </summary>
-        /// <param name="userId">El ID del usuario cuya foto de perfil se cambiará.</param>
-        /// <param name="imagenData">Los datos de la nueva imagen de perfil en formato byte[].</param>
-        [OperationContract(IsOneWay = true)]
-        void ChangeUserProfilePicture(int userId, byte[] imagenData);
+        [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        int ChangeUserProfilePicture(int userId, byte[] imagenData);
 
         /// <summary>
         /// Verifica un código de verificación para un usuario.
@@ -104,6 +100,7 @@ namespace UserManagementService
         /// <param name="code">El código de verificación a comprobar.</param>
         /// <returns>True si el código es válido, de lo contrario, false.</returns>
         [OperationContract]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         bool VerificateCode(string email, string code);
 
         /// <summary>
@@ -125,5 +122,8 @@ namespace UserManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         bool IsEmailRegistered(string email);
+
+        [OperationContract]
+        int DeleteVerificationCode(string email);
     }
 }

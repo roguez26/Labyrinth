@@ -13,62 +13,48 @@ namespace LobbyManagementService
     public class LobbyManagementServiceImplementation : ILobbyManagementService
     {
         private Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>> _lobbies = new Dictionary<string, Dictionary<ILobbyManagementCallback, TransferUser>>();
-        private static readonly ILog _log = LogManager.GetLogger(typeof(LobbyManagementServiceImplementation));
 
         public string CreateLobby(TransferUser lobbyCreator)
         {
             string lobbyCode;
+            ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
 
-            if (lobbyCreator == null)
+            if (lobbyCreator == null || callback == null)
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailJoinToLobbyError"));
             } 
-            else
+            lobbyCode = GenerateLobbyCode();
+            
+            while (_lobbies.ContainsKey(lobbyCode))
             {
-                ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
-
                 lobbyCode = GenerateLobbyCode();
-                if (callback != null)
-                {
-                    while (_lobbies.ContainsKey(lobbyCode))
-                    {
-                        lobbyCode = GenerateLobbyCode();
-                    }
-
-                    _lobbies[lobbyCode] = new Dictionary<ILobbyManagementCallback, TransferUser>();
-                    _lobbies[lobbyCode].Add(callback, lobbyCreator);
-                }
             }
+            _lobbies[lobbyCode] = new Dictionary<ILobbyManagementCallback, TransferUser>();
+            _lobbies[lobbyCode].Add(callback, lobbyCreator);
+            
             return lobbyCode;
         }
 
 
         public void JoinToGame(string lobbyCode, TransferUser user)
         {
-            if (string.IsNullOrEmpty(lobbyCode) || user == null)
-            {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailJoinToLobbyError"));
+            ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
 
-            }
-            else
+            if (!string.IsNullOrEmpty(lobbyCode) && user != null && callback != null) 
             {
-                ILobbyManagementCallback callback = OperationContext.Current.GetCallbackChannel<ILobbyManagementCallback>();
                 Dictionary<ILobbyManagementCallback, TransferUser> lobbyMembers = new Dictionary<ILobbyManagementCallback, TransferUser>();
 
-                if (callback != null)
+                lock (_lobbies)
                 {
-                    lock (_lobbies)
+                    if (_lobbies.TryGetValue(lobbyCode, out lobbyMembers))
                     {
-                        if (_lobbies.TryGetValue(lobbyCode, out lobbyMembers) && !lobbyMembers.ContainsKey(callback))
-                        {
-                            lobbyMembers[callback] = user;
-                            TransferUser[] members = lobbyMembers.Values.ToArray();
+                        lobbyMembers[callback] = user;
+                        TransferUser[] members = lobbyMembers.Values.ToArray();
 
-                            foreach (var member in lobbyMembers)
-                            {
-                                member.Key.NotifyUserHasJoined(user);
-                                member.Key.GestMembersList(members);
-                            }
+                        foreach (var member in lobbyMembers)
+                        {
+                            member.Key.NotifyUserHasJoined(user);
+                            member.Key.GestMembersList(members);
                         }
                     }
                 }
@@ -77,11 +63,7 @@ namespace LobbyManagementService
 
         public void RemoveUserFromLobby(string lobbyCode, TransferUser user)
         {
-            if (string.IsNullOrEmpty(lobbyCode) || user == null)
-            {
-                return;
-            }
-            else
+            if (!string.IsNullOrEmpty(lobbyCode) && user != null)
             {
                 if (_lobbies.ContainsKey(lobbyCode))
                 {
@@ -91,7 +73,7 @@ namespace LobbyManagementService
                     if (memberForRemove != null)
                     {
                         lobby.Remove(memberForRemove);
-                        if(lobby.Count > 0)
+                        if (lobby.Count > 0)
                         {
                             var members = lobby.Values.ToArray();
 
@@ -100,7 +82,7 @@ namespace LobbyManagementService
                                 callback.NotifyUserHasLeft(user);
                                 callback.GestMembersList(members);
                             }
-                        } 
+                        }
                         else
                         {
                             _lobbies.Remove(lobbyCode);
@@ -111,7 +93,7 @@ namespace LobbyManagementService
             }
         }
 
-        public string GenerateLobbyCode()
+        private string GenerateLobbyCode()
         {
             Random random = new Random();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

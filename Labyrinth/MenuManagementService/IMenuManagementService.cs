@@ -20,7 +20,7 @@ namespace MenuManagementService
         /// <param name="user">El usuario que inicia la partida.</param>
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void Start(TransferUser user);
+        int Start(TransferUser user);
 
         /// <summary>
         /// Cambia la disponibilidad de un usuario para unirse a la partida.
@@ -29,7 +29,7 @@ namespace MenuManagementService
         /// <param name="availability">La nueva disponibilidad del usuario (true si está disponible, false si no lo está).</param>
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void ChangeAvailability(TransferUser user, bool availability);
+        int ChangeAvailability(TransferUser user, bool availability);
 
         /// <summary>
         /// Invita a un amigo a unirse a la partida mediante un código de sala.
@@ -46,6 +46,9 @@ namespace MenuManagementService
         /// <param name="user">El usuario cuyo callback se debe actualizar.</param>
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        void UpdateCallback(TransferUser user);
+        int UpdateCallback(TransferUser user);
+
+        [OperationContract]
+        void DeleteUsers();
     }
 }

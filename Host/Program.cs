@@ -21,6 +21,7 @@ namespace Host
         private static ServiceHost _friendsManagementHost;
         private static ServiceHost _menuManagementHost;
         private static ServiceHost _userProfilePictureManagementHost;
+        private static ServiceHost _gameHost;
 
         public static void StartHost()
         {
@@ -40,6 +41,7 @@ namespace Host
                 _friendsManagementHost = new ServiceHost(typeof(FriendsManagementService.FriendsManagementServiceImplementation));
                 _menuManagementHost = new ServiceHost(typeof(MenuManagementService.MenuManagementServiceImplementation));
                 _userProfilePictureManagementHost = new ServiceHost(typeof(UserManagementService.UserProfilePictureManagementServiceImplementation));
+                _gameHost = new ServiceHost(typeof(GameService.GameServiceImplementation));
 
                 _chatHost.Open();
                 log.Info("Chat service is running");
@@ -61,6 +63,9 @@ namespace Host
 
                 _userProfilePictureManagementHost.Open();
                 log.Info("");
+
+                _gameHost.Open();
+                log.Info("Game service is running");
             }
             catch (Exception exception)
             {
@@ -113,6 +118,12 @@ namespace Host
                 {
                     _menuManagementHost.Close();
                     log.Info("Menu management service stopped");
+                }
+
+                if (_gameHost != null)
+                {
+                    _gameHost.Close();
+                    log.Info("Game service stopped");
                 }
             }
             catch (Exception ex)

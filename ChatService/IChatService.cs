@@ -22,6 +22,7 @@ namespace ChatService
         [OperationContract(IsOneWay = true)]
         void SendMessage(string message, string lobbyCode);
 
+<<<<<<< HEAD
         /// <summary>
         /// Inicia una nueva sesión de chat para un lobby, creando el chat y asignando al creador.
         /// </summary>
@@ -45,5 +46,20 @@ namespace ChatService
         /// <param name="user">El usuario que será removido del chat.</param>
         [OperationContract(IsOneWay = true)]
         void RemoveUserFromChat(string lobbyCode, TransferUser user);
+=======
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+
+        int Start(string lobbyCode, TransferUser lobbyCreator);
+
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+
+        int JoinToChat(string lobbyCode, TransferUser user);
+
+        [OperationContract ]
+        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
+        int RemoveUserFromChat(string lobbyCode, TransferUser user);
+>>>>>>> ca8e7cd96dbdebd895b5badd47ddb37472a951f9
     }
 }

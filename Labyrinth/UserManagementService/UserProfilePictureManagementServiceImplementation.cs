@@ -16,9 +16,12 @@ namespace UserManagementService
         {
             IUserProfilePictureManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IUserProfilePictureManagementServiceCallback>();
 
-            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+            if (userId > 0 && !string.IsNullOrEmpty(path) && callback != null) 
             {
-                callback.ReceiveProfilePicture(userId, File.ReadAllBytes(path));
+                if (!string.IsNullOrEmpty(path) && File.Exists(path))
+                {
+                    callback.ReceiveProfilePicture(userId, File.ReadAllBytes(path));
+                }
             }
         }
     }

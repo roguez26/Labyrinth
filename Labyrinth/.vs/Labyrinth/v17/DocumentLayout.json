@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13E8A0F2-A7B0-4642-8AE6-1410522759A5}|CatalogManagementService\\CatalogManagementService.csproj|solutionrelative:catalogmanagementservice\\icatalogmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinth\\labyrinth\\friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{733D09A4-80E8-44CF-9D83-BE70B7E8F2C0}|FriendsManagementService\\FriendsManagementService.csproj|solutionrelative:friendsmanagementservice\\ifriendsmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 77,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +31,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ICatalogManagement.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeDocumentMoniker": "CatalogManagementService\\ICatalogManagement.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\CatalogManagementService\\ICatalogManagement.cs",
+              "RelativeToolTip": "CatalogManagementService\\ICatalogManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T02:57:32.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IFriendsManagementService.cs",
+              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeDocumentMoniker": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\Labyrinth\\Labyrinth\\FriendsManagementService\\IFriendsManagementService.cs",
+              "RelativeToolTip": "FriendsManagementService\\IFriendsManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-18T02:57:20.94Z",
+              "EditorCaption": ""
             }
           ]
         }
