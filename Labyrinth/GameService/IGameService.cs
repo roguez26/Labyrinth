@@ -23,9 +23,6 @@ namespace GameService
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
         int RemoveUserFromGame(string lobbyCode, TransferPlayer user);
 
-        [OperationContract]
-        void ChangeGameStatus(string lobbyCode, bool isStarted);
-
         [OperationContract(IsOneWay = true)]
         void SendGameBoardToLobby(string lobbyCode, TransferGameBoard gameBoard);
 
@@ -33,7 +30,7 @@ namespace GameService
         void SelectCharacter(string lobbyCode, string username, string character);
 
         [OperationContract(IsOneWay = true)]
-        void AsignTurn(string lobbyCode, TransferPlayer currentUser);
+        void AssignTurn(string lobbyCode, TransferPlayer currentUser);
 
         [OperationContract(IsOneWay = true)]
         void MovePlayer(string lobbyCode, string username, string direction);

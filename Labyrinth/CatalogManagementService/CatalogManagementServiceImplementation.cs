@@ -106,7 +106,7 @@ namespace CatalogManagementService
             );
         }
 
-        public static int DeleteStats()
+        public int DeleteStats()
         {
             int result = 0;
 

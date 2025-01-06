@@ -118,8 +118,9 @@ namespace UserManagementService
                         email = email,
                         code = verificationCode
                     });
-
                     result = context.SaveChanges();
+                    Console.WriteLine(result);
+
                 }
                 if (SendVerificationCode(email, verificationCode) <= 0)
                 {

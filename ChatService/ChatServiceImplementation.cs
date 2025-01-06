@@ -52,7 +52,6 @@ namespace ChatService
                 }
                 else
                 {
-                    Console.WriteLine("no se encontro");
                     throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyNotFoundMessage"));
                 }
             }

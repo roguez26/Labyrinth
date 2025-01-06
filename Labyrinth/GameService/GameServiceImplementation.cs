@@ -27,7 +27,7 @@ namespace GameService
             if (string.IsNullOrEmpty(lobbyCode) || lobbyCreator == null || callback == null)
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                    new LabyrinthCommon.LabyrinthException("FailGameError"));
+                    new LabyrinthCommon.LabyrinthException("FailGameMessage"));
             }
 
             lock (_lobbies)
@@ -54,26 +54,24 @@ namespace GameService
                 return;
             }                
 
-            if (!_lobbyStatus.TryGetValue(lobbyCode, out bool gameStarted) || gameStarted)
-            {
-                return;
-            }
-
             if (!_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
             {
                 return;
             }
+
             lobbyMembers[callback] = user;
             foreach (var player in lobbyMembers.Keys)
             {
-                try
+                if (player is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened)
                 {
-                    player.NotifyPlayerHasJoined(user);
-                    Console.WriteLine("join");
-                }
-                catch (CommunicationException exception)
-                {
-                    _log.Error(exception.Message);
+                    try
+                    {
+                        player.NotifyPlayerHasJoined(user);
+                    }
+                    catch (CommunicationException exception)
+                    {
+                        _log.Error(exception.Message);
+                    }
                 }
             }
         }
@@ -86,7 +84,7 @@ namespace GameService
             if (string.IsNullOrEmpty(lobbyCode) || user == null)
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                    new LabyrinthCommon.LabyrinthException("FailChatError"));
+                    new LabyrinthCommon.LabyrinthException("FailGameMessage"));
             }
 
             lock (_lobbies)
@@ -109,46 +107,6 @@ namespace GameService
             return result;
         }
 
-        public void StartGame(string lobbyCode)
-        {
-            lock (_lobbyStatus)
-            {
-                if (_lobbyStatus.ContainsKey(lobbyCode))
-                {
-                    _lobbyStatus[lobbyCode] = true; 
-                }
-                else
-                {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                        new LabyrinthCommon.LabyrinthException("LobbyNotFoundError"));
-                }
-            }
-        }
-
-        public bool IsGameStarted(string lobbyCode)
-        {
-            lock (_lobbyStatus)
-            {
-                return _lobbyStatus.TryGetValue(lobbyCode, out bool gameStarted) && gameStarted;
-            }
-        }
-
-        public void ChangeGameStatus(string lobbyCode, bool isStarted)
-        {
-            lock (_lobbyStatus)
-            {
-                if (_lobbyStatus.ContainsKey(lobbyCode))
-                {
-                    _lobbyStatus[lobbyCode] = isStarted; 
-                }
-                else
-                {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                        new LabyrinthCommon.LabyrinthException("LobbyNotFoundError"));
-                }
-            }
-        }
-
         public void SendGameBoardToLobby(string lobbyCode, TransferGameBoard gameBoard)
         {
             if (!string.IsNullOrEmpty(lobbyCode) && gameBoard != null)
@@ -159,7 +117,7 @@ namespace GameService
 
                     foreach (var player in lobbyMembers.Keys)
                     {
-                        if (player != firstPlayer) 
+                        if (player is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened && player != firstPlayer)
                         {
                             try
                             {
@@ -184,20 +142,23 @@ namespace GameService
                 {
                     foreach (var player in lobbyMembers.Keys)
                     {
-                        try
+                        if (player is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened)
                         {
-                            player.UpdatePlayerCharacter(username, character);
-                        } 
-                        catch (CommunicationException exception)
-                        {
-                            _log.Error(exception.Message);
+                            try
+                            {
+                                player.UpdatePlayerCharacter(username, character);
+                            }
+                            catch (CommunicationException exception)
+                            {
+                                _log.Error(exception.Message);
+                            }
                         }
                     }
                 }
             }
         }
 
-        public void AsignTurn(string lobbyCode, TransferPlayer currentUser)
+        public void AssignTurn(string lobbyCode, TransferPlayer currentUser)
         {
             if (_lobbies.ContainsKey(lobbyCode))
             {
@@ -205,22 +166,27 @@ namespace GameService
                 var users = lobby.Values.ToList();
 
                 int currentIndex = users.FindIndex(user => user.Username == currentUser.Username);
-
                 if (currentIndex != -1)
                 {
-                    int nextIndex = (currentIndex + 1) % users.Count;
-
-                    TransferPlayer nextUser = users[nextIndex];
-
-                    foreach (var user in users)
+                    int usersCount = users.Count;
+                    int attempts = 0;
+                    do
                     {
-                        IGameServiceCallback userCallback = lobby.FirstOrDefault(x => x.Value == user).Key;
+                        int nextIndex = (currentIndex + 1) % usersCount;
+                        TransferPlayer nextUser = users[nextIndex];
 
-                        if (userCallback != null)
+                        var userCallbackPair = lobby.FirstOrDefault(member => member.Value == nextUser);
+                        IGameServiceCallback userCallback = userCallbackPair.Key;
+
+                        if (userCallback is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened)
                         {
                             userCallback.NotifyTurn(nextUser);
+                            return; 
                         }
-                    }
+
+                        currentIndex = nextIndex;
+                        attempts++;
+                    } while (attempts < usersCount);
                 }
             }
         }
@@ -229,25 +195,26 @@ namespace GameService
         {
             if (!string.IsNullOrEmpty(lobbyCode) && !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(direction))
             {
-
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
-
-                    foreach (var player in lobbyMembers.Keys)
+                    foreach (var playerCallback in lobbyMembers.Keys)
                     {
-                        try
+                        if (playerCallback is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened)
                         {
-                            Console.WriteLine("se movio");
-                            player.MovePlayerOnTile(username, direction);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            _log.Error(ex.Message);
+                            try
+                            {
+                                playerCallback.MovePlayerOnTile(username, direction);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                _log.Error(ex.Message);
+                            }
                         }
                     }
                 }
             }
         }
+
 
         public void MoveRow(string lobbyCode, string direction, int indexRow, bool toRight) 
         {
@@ -255,21 +222,22 @@ namespace GameService
             {
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
-
                     foreach (var player in lobbyMembers.Keys)
                     {
-                        try
+                        if (player is ICommunicationObject communicationObject &&communicationObject.State == CommunicationState.Opened)
                         {
-                            player.MoveRowOnBoard(direction, indexRow, toRight);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            _log.Error(ex.Message);
+                            try
+                            {
+                                player.MoveRowOnBoard(direction, indexRow, toRight);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                _log.Error(ex.Message);
+                            }
                         }
                     }
                 }
             }
-
         }
 
         public void MoveColumn(string lobbyCode, string direction, int indexRow, bool toRight)
@@ -278,16 +246,18 @@ namespace GameService
             {
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
-
                     foreach (var player in lobbyMembers.Keys)
                     {
-                        try
+                        if (player is ICommunicationObject communicationObject && communicationObject.State == CommunicationState.Opened)
                         {
-                            player.MoveColumnOnBoard(direction, indexRow, toRight);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            _log.Error(ex.Message);
+                            try
+                            {
+                                player.MoveColumnOnBoard(direction, indexRow, toRight);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                _log.Error(ex.Message);
+                            }
                         }
                     }
                 }

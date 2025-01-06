@@ -35,5 +35,8 @@ namespace CatalogManagementService
         [OperationContract]
         [FaultContract(typeof(LabyrinthException))]
         int AddStat(int userId, bool hasWon);
+        [OperationContract]
+        [FaultContract(typeof(LabyrinthException))]
+        int DeleteStats();
     }
 }
