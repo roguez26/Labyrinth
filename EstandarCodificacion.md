@@ -277,11 +277,9 @@ Ejemplo correcto:
 ```
 public class Example
 {
-    // Declaración de variables
     private int _orderCount;
     private string _customerName;
 
-    // Métodos
     public void InitializeOrder(int count, string name)
     {
         orderCount = count;
@@ -320,12 +318,12 @@ public class Example
 {
     public void ProcessOrder(int orderId)
     {
-        // Código para procesar el pedido
+        // code 
     }
 
     public void CancelOrder(int orderId)
     {
-        // Código para cancelar el pedido
+        // code
     }
 }
 ```
@@ -335,11 +333,11 @@ public class Example
 {
     public void ProcessOrder(int orderId)
     {
-        // Código para procesar el pedido
+        // code
     }
     public void CancelOrder(int orderId)
     {
-        // Código para cancelar el pedido
+        // code
     }
 }
 ```
@@ -351,14 +349,14 @@ Se utilizará el formato “/*  */” para realizar comentarios que necesiten m�
 Ejemplo correcto:
 ```
 /* 
-* El bucle for se utiliza en lugar de foreach para evitar la sobrecarga 
-* de enumeradores en grandes conjuntos de datos.
+* The for loop is used instead of foreach to avoid overloading
+* on large data sets.
 */
 ```
 Ejemplo incorrecto:
 ```
 /* 
-* El bucle for se utiliza en lugar de foreach para evitar la sobrecarga 
+* The for loop is used instead of foreach to avoid overloading 
 * /
 ```
 ### Comentarios de línea
@@ -366,12 +364,12 @@ Se utilizará el formato “//” para realizar comentarios que solamente necesi
 
 Ejemplo correcto:
 ```
-// Se utiliza while debido a que sólo se necesita un objeto que cumpla la condición
+// While is used because only one object is needed that meets the condition.
 ```
 Ejemplo incorrecto:
 ```
-// La función retornará el valor final del objeto
-// Los parámetros que se necesitan es el precio y el descuento
+// The function will return the final value of the object
+// The parameters that are needed are the price and the discount.
 ```
 ### Comentarios de documentación 
 Solo se utilizaran para la interface que expone la funcionalidad del servicio y las clases que implementan esa interface.
@@ -408,19 +406,19 @@ Ejemplo de varias líneas:
 
 Ejemplo correcto:
 ```
-if (condición)
+if (condition)
 {
-    // código
+    // code
 }
 else
 {
-    // código
+    // code
 }
 ```
 Ejemplo incorrecto: 
 ```
-if(condición)
-    // código
+if(condition)
+    // code
 ```
 ### Switch 
 * Siempre se debe incluir un caso “Default” para manejar valores inesperados.
@@ -506,13 +504,13 @@ Ejemplo correcto:
 ```
 while (true)
 {
-    // código 
+    // code 
 }
 ```
 Ejemplo incorrecto:
 ```
 while(true){
-    // código 
+    // code 
 }
 ```
 ### Do-While
@@ -524,13 +522,13 @@ Ejemplo correcto:
 ```
 do 
 {
-    // código 
+    // code 
 } while (true);
 ```
 Ejemplo incorrecto:
 ```
 do{
-// código }
+// code }
 while(true);
 ```
 
@@ -544,24 +542,20 @@ Ejemplo correcto:
 ```
 try
 {
-    // Código que puede lanzar una excepción
     reader = new StreamReader(filePath);
     string content = reader.ReadToEnd();
     Console.WriteLine(content);
 }
 catch (FileNotFoundException exception)
 {
-    // Manejo específico de excepción para archivo no encontrado
     Console.WriteLine($"File not found: {exception.Message}");
 }
 catch (IOException exception)
 {
-    // Manejo específico de excepción para errores de entrada/salida
     Console.WriteLine($"I/O error: {exception.Message}");
 }
 finally
 {
-    // Liberación de recursos
     if (reader != null)
     {
         reader.Close();
@@ -585,7 +579,7 @@ catch (FileNotFoundException exception)
 catch (IOException exception)
 {
     Console.WriteLine($"I/O error: {exception.Message}");
-} // No se liberan los recursos
+}
 ```
 ## Niveles de errores
 Se utilizarán los siguientes niveles de error para clasificar su grado de gravedad:
@@ -609,10 +603,10 @@ Se utilizará la librería “log4net” para llevar el registro de la bitácora
 | --------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Trace**       | 0     | **Contiene los mensajes más detallados. Estos mensajes pueden contener datos confidenciales de la aplicación.**                                                   |
 | **Debug**       | 1     | **Para depuración y desarrollo**                                                                                                                                  |
-| **Information** | 2     | **Realiza un seguimiento del flujo general de la aplicación.**                                                                                                    |
+| **Info** | 2     | **Realiza un seguimiento del flujo general de la aplicación.**                                                                                                    |
 | **Warning**     | 3     | **Por eventos anormales o inesperados. Por lo general, incluye errores o condiciones que no hacen que se produzca un error en la aplicación.**                    |
 | **Error**       | 4     | **Para errores y excepciones que no se pueden controlar. Estos mensajes indican un error en la operación o solicitud actual, no un error en toda la aplicación.** |
-| **Critical**    | 5     | **Para fallos que requieren atención inmediata.**                                                                                                                 |
+| **Fatal**    | 5     | **Para fallos que requieren atención inmediata.**                                                                                                                 |
 ## Prácticas seguras de construcción 
 * Validación de entradas: Se deben validar todas las entradas del usuario para evitar inyección de código, se validará para cada tipo de dato.
 * Manejo adecuado de excepciones: Se deben de atrapar las excepciones específicas para el caso que se necesite y manejarla de acuerdo a la jerarquía de excepciones especificado en la sección “Niveles de errores”.
