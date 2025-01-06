@@ -37,9 +37,8 @@ namespace ChatService
 
         public int JoinToChat(string lobbyCode, TransferUser user)
         {
-            int result = 0;
-
             IChatServiceCallback callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>();
+
             if (callback == null || user == null || string.IsNullOrEmpty(lobbyCode))
             {
                 throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailChatError"));
@@ -50,10 +49,14 @@ namespace ChatService
                 if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
                 {
                     lobbyMembers[callback] = user;
-                    result = 1;
+                }
+                else
+                {
+                    Console.WriteLine("no se encontro");
+                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyNotFoundMessage"));
                 }
             }
-            return result;
+            return 1;
         }
 
         public void SendMessage(string message, string lobbyCode)

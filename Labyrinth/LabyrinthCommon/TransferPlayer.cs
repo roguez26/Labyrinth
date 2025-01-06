@@ -9,6 +9,8 @@ namespace LabyrinthCommon
 {
     public class TransferPlayer
     {
+
+        public string Username { get; set; }
         [DataMember]
         public string SkinPath { get; set; }
 
@@ -16,9 +18,9 @@ namespace LabyrinthCommon
         public int InactivityCount { get; set; }
 
         [DataMember]
-        public TransferTreasure[] Treasures { get; set; }
+        public string[] TreasuresForSearching { get; set; }
 
         [DataMember]
-        public (int Row, int Col) Position { get; set; }
+        public (int Row, int Col) InitialPosition { get; set; }
     }
 }

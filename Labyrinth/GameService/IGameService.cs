@@ -14,16 +14,14 @@ namespace GameService
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
 
-        int Start(string lobbyCode, TransferUser lobbyCreator);
+        int Start(string lobbyCode, TransferPlayer lobbyCreator);
+
+        [OperationContract(IsOneWay = true)]
+        void JoinToGame(string lobbyCode, TransferPlayer user);
 
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-
-        int JoinToGame(string lobbyCode, TransferUser user);
-
-        [OperationContract]
-        [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        int RemoveUserFromGame(string lobbyCode, TransferUser user);
+        int RemoveUserFromGame(string lobbyCode, TransferPlayer user);
 
         [OperationContract]
         void ChangeGameStatus(string lobbyCode, bool isStarted);
@@ -31,11 +29,19 @@ namespace GameService
         [OperationContract(IsOneWay = true)]
         void SendGameBoardToLobby(string lobbyCode, TransferGameBoard gameBoard);
 
-        [OperationContract]
-        void SelectCharacter(string skinPath);
+        [OperationContract(IsOneWay = true)]
+        void SelectCharacter(string lobbyCode, string username, string character);
 
         [OperationContract(IsOneWay = true)]
-        void AsignTurn(string lobbyCode, TransferUser currentUser);
+        void AsignTurn(string lobbyCode, TransferPlayer currentUser);
 
+        [OperationContract(IsOneWay = true)]
+        void MovePlayer(string lobbyCode, string username, string direction);
+
+        [OperationContract(IsOneWay = true)]
+        void MoveRow(string lobbyCode, string direction, int indexRow, bool toRight);
+
+        [OperationContract(IsOneWay = true)]
+        void MoveColumn(string lobbyCode, string direction, int indexRow, bool toRight);
     }
 }

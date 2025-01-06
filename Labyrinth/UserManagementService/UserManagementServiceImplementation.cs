@@ -28,6 +28,17 @@ namespace UserManagementService
     {
         private static readonly ILog _log = LogManager.GetLogger(typeof(UserManagementServiceImplementation));
         private const int TOP_MAX = 10;
+        private const string FailUserRegistrationError = "FailUserRegistrationError";
+        private const string FailDuplicatedEmailMessage = "FailDuplicatedEmailMessage";
+        private const string FailDuplicatedUsernameMessage = "FailDuplicatedUsernameMessage";
+        private const string InvalidVerificationCodeMessage = "InvalidVerificationCodeMessage";
+        private const string FailUserUpdatingError = "FailUserUpdatingError";
+        private const string FailIncorrectPasswordMessage = "FailIncorrectPasswordMessage";
+        private const string FailUserVerficationError = "FailUserVerificationError";
+        private const string FailUserNotFoundMessage = "FailUserNotFoundMessage";
+        private const string AddUserError = "AddUserError";
+        private const string AddVerification = "AddVerificationCode";
+        private const string DeleteAllUsersError = "DeleteAllUsersError";
 
         public int AddUser(TransferUser user, string password)
         {
@@ -35,15 +46,15 @@ namespace UserManagementService
 
             if (user == null || string.IsNullOrEmpty(password))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserRegistrationError));
             }
             if (IsEmailRegistered(user.Email))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedEmailMessage));
             }
             if (IsUsernameRegistered(user.Username))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedUsernameMessage));
             }
             try
             {
@@ -62,16 +73,16 @@ namespace UserManagementService
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("AddUserError", ex, "FailUserRegistrationError");
+                LogAndWrapException(AddUserError, ex, FailUserRegistrationError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("AddUserError", ex, "FailUserRegistrationError");
+                LogAndWrapException(AddUserError, ex, FailUserRegistrationError);
             }
             return idUser;
         }
 
-        private void LogAndWrapException(string reason, Exception exception, string errorCode)
+        private static void LogAndWrapException(string reason, Exception exception, string errorCode)
         {
             _log.Error(reason, exception);
             throw new FaultException<LabyrinthCommon.LabyrinthException>(
@@ -86,16 +97,16 @@ namespace UserManagementService
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(username))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserRegistrationError));
             }
             if (IsEmailRegistered(email))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedEmailMessage));
             }
 
             if (IsUsernameRegistered(username))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedUsernameMessage));
             }
 
             try
@@ -113,16 +124,16 @@ namespace UserManagementService
                 if (SendVerificationCode(email, verificationCode) <= 0)
                 {
                     DeleteVerificationCode(email);
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+                    throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserRegistrationError));
                 }
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("AddVerificationCode", ex, "FailUserRegistrationError");
+                LogAndWrapException(AddVerification, ex, FailUserRegistrationError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("AddVerificationCode", ex, "FailUserRegistrationError");
+                LogAndWrapException(AddVerification, ex, FailUserRegistrationError);
             }
             return result;
         }
@@ -146,11 +157,11 @@ namespace UserManagementService
                 }
                 catch (DbUpdateException ex)
                 {
-                    _log.Error("DeleteAllUsersError", ex);
+                    _log.Error(DeleteAllUsersError, ex);
                 }
                 catch (EntityException ex)
                 {
-                    _log.Error("DeleteAllUsersError", ex);
+                    _log.Error(DeleteAllUsersError, ex);
                 }
             }
             return result;
@@ -162,7 +173,7 @@ namespace UserManagementService
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(code))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserRegistrationError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserRegistrationError));
             }
 
             try
@@ -179,22 +190,22 @@ namespace UserManagementService
                     }
                     else
                     {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("InvalidVerificationCodeMessage"));
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(InvalidVerificationCodeMessage));
                     }
                 }
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("VerificateCode", ex, "FailUserRegistrationError");
+                LogAndWrapException("VerificateCode", ex, FailUserRegistrationError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("VerificateCode", ex, "FailUserRegistrationError");
+                LogAndWrapException("VerificateCode", ex, FailUserRegistrationError);
             }
             return response;
         }
 
-        private int SendVerificationCode(string email, string code)
+        private static int SendVerificationCode(string email, string code)
         {
             int response = 0;
             MailAddress addressFrom = new MailAddress("labyrinththerealgame@gmail.com", "Labyrinth");
@@ -221,7 +232,7 @@ namespace UserManagementService
                     catch (SmtpException ex)
                     {
                         response = 0;
-                        _log.Error("DeleteAllUsersError", ex);
+                        _log.Error(DeleteAllUsersError, ex);
                     }
                 }
             }
@@ -234,7 +245,7 @@ namespace UserManagementService
 
             if (newUser == null)
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserUpdatingError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserUpdatingError));
             }
             try
             {
@@ -245,14 +256,17 @@ namespace UserManagementService
                     {
                         if (userSearched.email != newUser.Email || userSearched.userName != newUser.Username)
                         {
-                            var duplicatedUser = context.User.FirstOrDefault(userForConfirmation => (userForConfirmation.email == newUser.Email) || (userForConfirmation.userName == newUser.Username));
+                            var duplicatedUser = context.User.FirstOrDefault(userForConfirmation =>
+                                (userForConfirmation.email == newUser.Email || userForConfirmation.userName == newUser.Username) &&
+                                userForConfirmation.idUser != newUser.IdUser);
+
                             if (duplicatedUser != null && duplicatedUser.email == newUser.Email)
                             {
-                                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedEmailMessage"));
+                                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedEmailMessage));
                             }
                             if (duplicatedUser != null && duplicatedUser.userName == newUser.Username)
                             {
-                                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailDuplicatedUsernameMessage"));
+                                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailDuplicatedUsernameMessage));
                             }
                         }
                         userSearched.email = newUser.Email;
@@ -262,15 +276,16 @@ namespace UserManagementService
                         context.Entry(userSearched).Property(user => user.userName).IsModified = true;
                         response = context.SaveChanges();
                     }
+
                 }
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("updateUser", ex, "FailUserUpdatingError");
+                LogAndWrapException("updateUser", ex, FailUserUpdatingError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("updateUser", ex, "FailUserUpdatingError");
+                LogAndWrapException("updateUser", ex, FailUserUpdatingError);
             }
             return response;
         }
@@ -283,7 +298,7 @@ namespace UserManagementService
             }
         }
 
-        public bool IsUsernameRegistered(string username)
+        public static bool IsUsernameRegistered(string username)
         {
             using (var context = new LabyrinthEntities())
             {
@@ -297,7 +312,7 @@ namespace UserManagementService
 
             if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(email))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserUpdatingError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserUpdatingError));
             }
             try
             {
@@ -312,17 +327,17 @@ namespace UserManagementService
                     }
                     else
                     {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailIncorrectPasswordMessage"));
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailIncorrectPasswordMessage));
                     }
                 }
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("updatePassword", ex, "FailUserUpdatingError");
+                LogAndWrapException("updatePassword", ex, FailUserUpdatingError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("updatePassword", ex, "FailUserUpdatingError");
+                LogAndWrapException("updatePassword", ex, FailUserUpdatingError);
             }
 
             return response;
@@ -344,7 +359,7 @@ namespace UserManagementService
             }
             catch (Exception exception)
             {
-                _log.Error("DeleteAllUsersError", exception);
+                _log.Error(DeleteAllUsersError, exception);
             }
 
             return usersDeletedCount;
@@ -370,11 +385,11 @@ namespace UserManagementService
                 }
                 catch (DbUpdateException ex)
                 {
-                    _log.Error("DeleteAllUsersError", ex);
+                    _log.Error(DeleteAllUsersError, ex);
                 }
                 catch (EntityException ex)
                 {
-                    _log.Error("DeleteAllUsersError", ex);
+                    _log.Error(DeleteAllUsersError, ex);
                 }
             }
             return result; 
@@ -386,7 +401,7 @@ namespace UserManagementService
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserVerficationError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserVerficationError));
             }
             try
             {
@@ -396,15 +411,14 @@ namespace UserManagementService
 
                     if (searchedUser == null)
                     {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailUserNotFoundMessage"));
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailUserNotFoundMessage));
                     } 
                     else if (searchedUser.password != password)
                     {
-                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailIncorrectPasswordMessage"));
+                        throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailIncorrectPasswordMessage));
                     }
                     else
                     {
-                        var catalogManagementServiceImplementation = new CatalogManagementServiceImplementation();
                         userForVerification = new TransferUser
                         {
                             IdUser = searchedUser.idUser,
@@ -418,11 +432,11 @@ namespace UserManagementService
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("verificateUser", ex, "FailUserVerficationError");
+                LogAndWrapException("verificateUser", ex, FailUserVerficationError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("verificateUser", ex, "FailUserVerficationError");
+                LogAndWrapException("verificateUser", ex, FailUserVerficationError);
             }
             return userForVerification;
         }
@@ -463,16 +477,16 @@ namespace UserManagementService
             }
             catch (DbUpdateException ex)
             {
-                LogAndWrapException("changeUserProfilePicture", ex, "FailUserUpdatingError");
+                LogAndWrapException("changeUserProfilePicture", ex, FailUserUpdatingError);
             }
             catch (EntityException ex)
             {
-                LogAndWrapException("changeUserProfilePicture", ex, "FailUserUpdatingError");
+                LogAndWrapException("changeUserProfilePicture", ex, FailUserUpdatingError);
             }
             return result;
         }
           
-        private string GenerateVerificationCode()
+        private static string GenerateVerificationCode()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             StringBuilder result = new StringBuilder(12);

@@ -113,8 +113,8 @@ namespace Host
                     _friendsManagementHost.Close();
                     log.Info("Friends management service stopped");
                 }
-                
-                if ( _menuManagementHost != null)
+
+                if (_menuManagementHost != null)
                 {
                     _menuManagementHost.Close();
                     log.Info("Menu management service stopped");
@@ -139,6 +139,5 @@ namespace Host
             Console.ReadLine();
             StopHost();
         }
-
     }
 }

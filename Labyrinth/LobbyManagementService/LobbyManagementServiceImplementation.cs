@@ -93,7 +93,7 @@ namespace LobbyManagementService
             }
         }
 
-        private string GenerateLobbyCode()
+        private static string GenerateLobbyCode()
         {
             Random random = new Random();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

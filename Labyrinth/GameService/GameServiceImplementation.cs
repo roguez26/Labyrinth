@@ -12,14 +12,14 @@ namespace GameService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class GameServiceImplementation : IGameService
     {
-        private readonly Dictionary<string, Dictionary<IGameServiceCallback, TransferUser>> _lobbies
-            = new Dictionary<string, Dictionary<IGameServiceCallback, TransferUser>>();
+        private readonly Dictionary<string, Dictionary<IGameServiceCallback, TransferPlayer>> _lobbies
+            = new Dictionary<string, Dictionary<IGameServiceCallback, TransferPlayer>>();
 
         private readonly Dictionary<string, bool> _lobbyStatus = new Dictionary<string, bool>();
 
         private static readonly ILog _log = LogManager.GetLogger(typeof(GameServiceImplementation));
 
-        public int Start(string lobbyCode, TransferUser lobbyCreator)
+        public int Start(string lobbyCode, TransferPlayer lobbyCreator)
         {
             int result = 0;
             IGameServiceCallback callback = OperationContext.Current.GetCallbackChannel<IGameServiceCallback>();
@@ -34,51 +34,52 @@ namespace GameService
             {
                 if (!_lobbies.ContainsKey(lobbyCode))
                 {
-                    _lobbies[lobbyCode] = new Dictionary<IGameServiceCallback, TransferUser>
-                {
-                    { callback, lobbyCreator }
-                };
-
+                    _lobbies[lobbyCode] = new Dictionary<IGameServiceCallback, TransferPlayer>
+                    {
+                        { callback, lobbyCreator }
+                    };
                     _lobbyStatus[lobbyCode] = false;
-                    Console.WriteLine("join" + lobbyCreator.Username);
                     result = 1;
                 }
             }
             return result;
         }
 
-        public int JoinToGame(string lobbyCode, TransferUser user)
+        public void JoinToGame(string lobbyCode, TransferPlayer user)
         {
-            int result = 0;
-
             IGameServiceCallback callback = OperationContext.Current.GetCallbackChannel<IGameServiceCallback>();
 
             if (callback == null || user == null || string.IsNullOrEmpty(lobbyCode))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                    new LabyrinthCommon.LabyrinthException("FailGameError"));
-            }
+                return;
+            }                
 
-            lock (_lobbies)
+            if (!_lobbyStatus.TryGetValue(lobbyCode, out bool gameStarted) || gameStarted)
             {
-                if (_lobbyStatus.TryGetValue(lobbyCode, out bool gameStarted) && gameStarted)
+                return;
+            }
+
+            if (!_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+            {
+                return;
+            }
+            lobbyMembers[callback] = user;
+            foreach (var player in lobbyMembers.Keys)
+            {
+                try
                 {
-                    throw new FaultException<LabyrinthCommon.LabyrinthException>(
-                        new LabyrinthCommon.LabyrinthException("GameAlreadyStartedError"));
+                    player.NotifyPlayerHasJoined(user);
+                    Console.WriteLine("join");
                 }
-
-                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                catch (CommunicationException exception)
                 {
-                    lobbyMembers[callback] = user;
-                    Console.WriteLine("join" + user.Username);
-
-                    result = 1;
+                    _log.Error(exception.Message);
                 }
             }
-            return result;
         }
 
-        public int RemoveUserFromGame(string lobbyCode, TransferUser user)
+
+        public int RemoveUserFromGame(string lobbyCode, TransferPlayer user)
         {
             int result = 0;
 
@@ -164,9 +165,9 @@ namespace GameService
                             {
                                 player.ReceiveGameBoard(gameBoard);
                             }
-                            catch (CommunicationException ex)
+                            catch (CommunicationException exception)
                             {
-                                _log.Error(ex.Message);
+                                _log.Error(exception.Message);
                             }
                         }
                     }
@@ -174,27 +175,43 @@ namespace GameService
             }
         }
 
-        public void SelectCharacter(string skinPath)
+        public void SelectCharacter(string lobbyCode, string username,string character)
         {
+            if (!string.IsNullOrEmpty(lobbyCode) && !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(character)) 
+            {
 
+                if(_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                {
+                    foreach (var player in lobbyMembers.Keys)
+                    {
+                        try
+                        {
+                            player.UpdatePlayerCharacter(username, character);
+                        } 
+                        catch (CommunicationException exception)
+                        {
+                            _log.Error(exception.Message);
+                        }
+                    }
+                }
+            }
         }
 
-        public void AsignTurn(string lobbyCode, TransferUser currentUser)
+        public void AsignTurn(string lobbyCode, TransferPlayer currentUser)
         {
             if (_lobbies.ContainsKey(lobbyCode))
             {
                 var lobby = _lobbies[lobbyCode];
                 var users = lobby.Values.ToList();
 
-                int currentIndex = users.FindIndex(user => user.IdUser == currentUser.IdUser);
+                int currentIndex = users.FindIndex(user => user.Username == currentUser.Username);
 
                 if (currentIndex != -1)
                 {
                     int nextIndex = (currentIndex + 1) % users.Count;
 
-                    TransferUser nextUser = users[nextIndex];
+                    TransferPlayer nextUser = users[nextIndex];
 
-                    Console.WriteLine(nextUser.Username);
                     foreach (var user in users)
                     {
                         IGameServiceCallback userCallback = lobby.FirstOrDefault(x => x.Value == user).Key;
@@ -208,8 +225,75 @@ namespace GameService
             }
         }
 
+        public void MovePlayer(string lobbyCode, string username, string direction)
+        {
+            if (!string.IsNullOrEmpty(lobbyCode) && !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(direction))
+            {
 
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                {
 
+                    foreach (var player in lobbyMembers.Keys)
+                    {
+                        try
+                        {
+                            Console.WriteLine("se movio");
+                            player.MovePlayerOnTile(username, direction);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            _log.Error(ex.Message);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void MoveRow(string lobbyCode, string direction, int indexRow, bool toRight) 
+        {
+            if (!string.IsNullOrEmpty(lobbyCode) && !string.IsNullOrEmpty(direction) && indexRow >= 0)
+            {
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                {
+
+                    foreach (var player in lobbyMembers.Keys)
+                    {
+                        try
+                        {
+                            player.MoveRowOnBoard(direction, indexRow, toRight);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            _log.Error(ex.Message);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        public void MoveColumn(string lobbyCode, string direction, int indexRow, bool toRight)
+        {
+            if (!string.IsNullOrEmpty(lobbyCode) && !string.IsNullOrEmpty(direction) && indexRow >= 0)
+            {
+                if (_lobbies.TryGetValue(lobbyCode, out var lobbyMembers))
+                {
+
+                    foreach (var player in lobbyMembers.Keys)
+                    {
+                        try
+                        {
+                            player.MoveColumnOnBoard(direction, indexRow, toRight);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            _log.Error(ex.Message);
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
 }

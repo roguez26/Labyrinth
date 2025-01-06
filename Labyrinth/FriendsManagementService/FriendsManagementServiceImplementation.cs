@@ -15,22 +15,27 @@ using System.Data.Entity.Core;
 using UserManagementService;
 using System.Runtime.CompilerServices;
 
-
 namespace FriendsManagementService
 {
-    public class FriendsManagementServiceImplementation: IFriendsManagementService
+    public class FriendsManagementServiceImplementation : IFriendsManagementService
     {
         private static readonly ILog _log = LogManager.GetLogger(typeof(FriendsManagementServiceImplementation));
+
+        private const string FailFriendManagementError = "FailFriendManagementError";
+        private const string FailFriendRequestDuplicated = "FailFriendRequestDuplicated";
+        private const string SendFriendRequestCode = "SendFriendRequest";
+        private const string AttendFriendRequestCode = "AttendFriendRequest";
+
         public int SendFriendRequest(int userId, int friendId)
         {
             int idFriendRequest = 0;
             if (userId <= 0 || friendId <= 0)
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailFriendManagementError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailFriendManagementError));
             }
             if (IsFriendRequestRegistered(userId, friendId))
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailFriendRequestDuplicated"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailFriendRequestDuplicated));
             }
             try
             {
@@ -38,7 +43,6 @@ namespace FriendsManagementService
                 {
                     var newFriendRequest = new FriendRequest
                     {
-
                         idRequester = userId,
                         idRequested = friendId,
                         status = FriendRequestStatus.Pending.ToString()
@@ -49,13 +53,13 @@ namespace FriendsManagementService
                     idFriendRequest = newFriendRequest.idFriendRequest;
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
             return idFriendRequest;
         }
@@ -72,14 +76,14 @@ namespace FriendsManagementService
         {
             using (var context = new LabyrinthEntities())
             {
-                return context.FriendRequest.Any(friendRequest => (friendRequest.idRequester == userId && friendRequest.idRequested == friendId) || (friendRequest.idRequested == userId && friendRequest.idRequester == friendId));
+                var friendRequest = context.FriendRequest.FirstOrDefault(fr => (fr.idRequester == userId && fr.idRequested == friendId) || (fr.idRequested == userId && fr.idRequester == friendId));
+                return friendRequest != null;
             }
         }
 
         public TransferUser[] GetMyFriendsList(int userId)
         {
             TransferUser[] friends = new TransferUser[0];
-
             try
             {
                 using (var context = new LabyrinthEntities())
@@ -101,19 +105,18 @@ namespace FriendsManagementService
                     }).ToArray();
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-
             return friends;
         }
 
-        public TransferFriendRequest[] GetFriendRequestsList(int idUser)
+        public TransferFriendRequest[] GetFriendRequestsList(int userId)
         {
             List<TransferFriendRequest> friendRequests = new List<TransferFriendRequest>();
 
@@ -122,7 +125,7 @@ namespace FriendsManagementService
                 using (var context = new LabyrinthEntities())
                 {
                     var friendRequestsData = context.FriendRequest
-                        .Where(fr => fr.idRequested == idUser && fr.status == FriendRequestStatus.Pending.ToString())
+                        .Where(fr => fr.idRequested == userId && fr.status == FriendRequestStatus.Pending.ToString())
                         .Select(fr => new
                         {
                             fr.idFriendRequest,
@@ -154,13 +157,13 @@ namespace FriendsManagementService
                        .ToList();
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
 
             return friendRequests.ToArray();
@@ -173,16 +176,18 @@ namespace FriendsManagementService
             {
                 using (var context = new LabyrinthEntities())
                 {
-                    isFriend = context.FriendList.Any(friends => (friends.User.idUser == userId && friends.User1.idUser == friendId) || (friends.User.idUser == userId && friends.User1.idUser == friendId));
+                    var friendship = context.FriendList.FirstOrDefault(fs => (fs.User.idUser == userId && fs.User1.idUser == friendId) || (fs.User1.idUser == userId && fs.User.idUser == friendId));
+
+                    isFriend = friendship != null;
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
 
             return isFriend || IsFriendRequestRegistered(userId, friendId);
@@ -194,7 +199,7 @@ namespace FriendsManagementService
 
             if (friendRequestId <= 0)
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailFriendManagementError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException(FailFriendManagementError));
             }
             try
             {
@@ -219,13 +224,13 @@ namespace FriendsManagementService
                     }
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("AttendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(AttendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("AttendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(AttendFriendRequestCode, exception, FailFriendManagementError);
             }
 
             return result;
@@ -243,17 +248,17 @@ namespace FriendsManagementService
                     if (newFriendRequest != null)
                     {
                         context.FriendRequest.Remove(newFriendRequest);
-                        result =  context.SaveChanges();
+                        result = context.SaveChanges();
                     }
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
             return result;
         }
@@ -274,13 +279,13 @@ namespace FriendsManagementService
                     }
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
-            catch (EntityException ex)
+            catch (EntityException exception)
             {
-                LogAndWrapException("SendFriendRequest", ex, "FailFriendManagementError");
+                LogAndWrapException(SendFriendRequestCode, exception, FailFriendManagementError);
             }
             return result;
         }

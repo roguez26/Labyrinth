@@ -32,5 +32,8 @@ namespace LobbyManagementService
         /// <param name="user">El usuario que está intentando unirse a la sala de juego.</param>
         [OperationContract(IsOneWay = true)]
         void JoinToGame(string lobbyCode, TransferUser user);
+
+        [OperationContract(IsOneWay =true)]
+        void RemoveUserFromLobby(string lobbyCode, TransferUser user);
     }
 }

@@ -13,9 +13,6 @@ namespace LabyrinthCommon
         public int[] TilesPositions { get; set; }
 
         [DataMember]
-        public (int Row, int Col)[] PlayerPositions { get; set; }
-
-        [DataMember]
         public TransferTile ExtraTile { get; set; }
 
         [DataMember]
@@ -23,6 +20,9 @@ namespace LabyrinthCommon
 
         [DataMember]
         public bool IsClassicSelected {  get; set; }
+
+        [DataMember]
+        public int MaxTreasures {  get; set; }
 
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace UserManagementService
 {
+    [ServiceContract]
     public interface IUserProfilePictureManagementServiceCallback
     {
         [OperationContract]

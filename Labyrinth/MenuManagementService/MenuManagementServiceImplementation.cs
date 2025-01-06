@@ -21,9 +21,9 @@ namespace MenuManagementService
             IMenuManagementServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMenuManagementServiceCallback>();
             if (user == null || callback == null)
             {
-                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailLobbyError"));
+                throw new FaultException<LabyrinthCommon.LabyrinthException>(new LabyrinthCommon.LabyrinthException("FailMenuError"));
             }
-            
+
             if (!_players.ContainsKey(user))
             {
                 _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
@@ -42,8 +42,14 @@ namespace MenuManagementService
                     throw new FaultException<LabyrinthCommon.LabyrinthException>(
                         new LabyrinthCommon.LabyrinthException("FailActiveSessionAlready")
                     );
+                } 
+                else
+                {
+                    _players[user] = new Dictionary<IMenuManagementServiceCallback, bool>
+                    {
+                        { callback, true }
+                    };
                 }
-                callbackDictionary[callback] = true;
                 result = 1;
             }
             

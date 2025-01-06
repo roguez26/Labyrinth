@@ -68,7 +68,7 @@ namespace UserManagementService
         /// <exception cref="LabyrinthException">Lanzada cuando ocurre un error al actualizar la contraseña.</exception>
         [OperationContract]
         [FaultContract(typeof(LabyrinthCommon.LabyrinthException))]
-        int UpdatePassword(string pasword, string newPassword, string email);
+        int UpdatePassword(string password, string newPassword, string email);
 
         /// <summary>
         /// Elimina todos los usuarios del sistema.
